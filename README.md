@@ -1,6 +1,6 @@
-# Guest Guide
+# HUHU House Guest Guide
 
-Airbnb 숙소 게스트를 위한 모바일 우선 정적 가이드북입니다.
+HUHU 하우스 게스트를 위한 모바일 우선 정적 가이드북입니다.
 
 ## GitHub Pages 배포
 
