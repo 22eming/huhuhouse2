@@ -1,0 +1,1240 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>푸른 바다 스테이 Guest Guide</title>
+    <meta
+      name="description"
+      content="푸른 바다 스테이 게스트를 위한 모바일 숙소 가이드북입니다."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&family=Noto+Sans+KR:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #fcf9f8;
+        --surface: #ffffff;
+        --surface-soft: #f6f3f2;
+        --surface-strong: #ebe7e6;
+        --text: #1f1f1f;
+        --muted: #6f5a5b;
+        --line: #e6d7d8;
+        --brand: #ff385c;
+        --brand-deep: #ba0036;
+        --teal: #007a7c;
+        --green: #08734d;
+        --shadow: 0 14px 34px rgba(31, 31, 31, 0.12);
+        --soft-shadow: 0 8px 22px rgba(31, 31, 31, 0.08);
+        --nav-height: 78px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100dvh;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+        letter-spacing: 0;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button {
+        border: 0;
+        cursor: pointer;
+      }
+
+      .icon {
+        font-family: "Material Symbols Rounded";
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24px;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-feature-settings: "liga";
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .app-shell {
+        width: min(100%, 480px);
+        min-height: 100dvh;
+        margin: 0 auto;
+        background: var(--bg);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.03);
+        position: relative;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: calc(12px + env(safe-area-inset-top)) 20px 12px;
+        background: rgba(252, 249, 248, 0.9);
+        border-bottom: 1px solid rgba(230, 215, 216, 0.8);
+        backdrop-filter: blur(16px);
+      }
+
+      .brand-lockup {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .brand-mark {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        background: var(--brand);
+        color: white;
+        box-shadow: 0 8px 18px rgba(255, 56, 92, 0.22);
+      }
+
+      .brand-copy {
+        min-width: 0;
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 15px;
+        line-height: 18px;
+        color: var(--brand-deep);
+      }
+
+      .brand-copy span {
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .lang-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: var(--surface);
+        color: var(--muted);
+        box-shadow: var(--soft-shadow);
+      }
+
+      main {
+        padding-bottom: calc(var(--nav-height) + 22px + env(safe-area-inset-bottom));
+      }
+
+      .view {
+        display: none;
+      }
+
+      .view.active {
+        display: block;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 394px;
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        background:
+          linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.72)),
+          url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=82")
+            center / cover;
+      }
+
+      .hero-content {
+        position: absolute;
+        inset: auto 24px 28px;
+        color: white;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: rgba(255, 56, 92, 0.92);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 11em;
+        font-size: 32px;
+        line-height: 1.13;
+        font-weight: 800;
+      }
+
+      .hero p {
+        margin-top: 10px;
+        max-width: 22em;
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .section {
+        padding: 28px 24px 0;
+      }
+
+      .quick-grid {
+        display: grid;
+        gap: 12px;
+        margin-top: -32px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .info-card,
+      .guide-card,
+      .faq-card,
+      .spot-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .info-card {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px;
+        backdrop-filter: blur(14px);
+      }
+
+      .info-icon {
+        display: grid;
+        place-items: center;
+        flex: 0 0 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ffdce2;
+        color: var(--brand-deep);
+      }
+
+      .info-body {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .label {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 700;
+      }
+
+      .value {
+        margin-top: 2px;
+        font-size: 17px;
+        line-height: 22px;
+        font-weight: 800;
+      }
+
+      .copy-button {
+        display: grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: var(--surface-soft);
+        color: var(--brand-deep);
+      }
+
+      .section-header {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+
+      .section-header h2 {
+        font-size: 21px;
+        line-height: 27px;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 18px;
+      }
+
+      .tile-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .guide-card {
+        display: flex;
+        flex-direction: column;
+        min-height: 132px;
+        padding: 15px;
+        text-align: left;
+        color: var(--text);
+      }
+
+      .guide-card .icon {
+        margin-bottom: auto;
+        color: var(--brand);
+      }
+
+      .guide-card strong {
+        margin-top: 18px;
+        font-size: 15px;
+        line-height: 20px;
+      }
+
+      .guide-card span:last-child {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .map-teaser {
+        position: relative;
+        display: block;
+        min-height: 190px;
+        overflow: hidden;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(31, 31, 31, 0.42)),
+          url("https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1000&q=78")
+            center / cover;
+        color: white;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .map-teaser-content {
+        position: absolute;
+        inset: auto 18px 18px;
+      }
+
+      .map-teaser h3 {
+        font-size: 21px;
+        line-height: 27px;
+      }
+
+      .map-teaser p {
+        margin-top: 4px;
+        color: rgba(255, 255, 255, 0.88);
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      .chips {
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 2px 24px 4px;
+        scrollbar-width: none;
+      }
+
+      .chips::-webkit-scrollbar {
+        display: none;
+      }
+
+      .chip {
+        flex: 0 0 auto;
+        padding: 9px 14px;
+        border-radius: 999px;
+        background: var(--surface-strong);
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 800;
+      }
+
+      .chip.active {
+        background: var(--text);
+        color: white;
+      }
+
+      .spot-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .spot-card {
+        overflow: hidden;
+        background: var(--surface);
+      }
+
+      .spot-image {
+        position: relative;
+        min-height: 176px;
+        background: var(--surface-soft) center / cover;
+      }
+
+      .spot-image.restaurant {
+        background-image: url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .spot-image.cafe {
+        background-image: url("https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .spot-image.music {
+        background-image: url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .rating {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px 9px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .rating .icon {
+        color: var(--brand);
+        font-size: 17px;
+        font-variation-settings: "FILL" 1;
+      }
+
+      .spot-copy {
+        padding: 16px;
+      }
+
+      .spot-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        gap: 12px;
+      }
+
+      .spot-title h3 {
+        font-size: 18px;
+        line-height: 24px;
+      }
+
+      .category {
+        flex: 0 0 auto;
+        color: var(--brand-deep);
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 800;
+      }
+
+      .spot-copy > p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      .host-tip {
+        display: flex;
+        gap: 10px;
+        margin-top: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        background: var(--surface-soft);
+      }
+
+      .host-tip .icon {
+        display: grid;
+        place-items: center;
+        flex: 0 0 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #ffdce2;
+        color: var(--brand-deep);
+        font-size: 19px;
+      }
+
+      .host-tip p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      .page-intro {
+        padding: 28px 24px 16px;
+      }
+
+      .page-intro h1 {
+        color: var(--text);
+        font-size: 25px;
+        line-height: 31px;
+      }
+
+      .page-intro p {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 21px;
+      }
+
+      .search-box {
+        position: relative;
+        margin: 0 24px 14px;
+      }
+
+      .search-box .icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--muted);
+      }
+
+      .search-box input {
+        width: 100%;
+        height: 52px;
+        padding: 0 16px 0 48px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--text);
+        outline: 0;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .search-box input:focus {
+        border-color: var(--brand);
+        box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.16);
+      }
+
+      .faq-list {
+        display: grid;
+        gap: 12px;
+        padding: 16px 24px 0;
+      }
+
+      .faq-card {
+        overflow: hidden;
+        background: var(--surface);
+      }
+
+      .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        padding: 18px 16px;
+        background: transparent;
+        color: var(--text);
+        text-align: left;
+        font-weight: 800;
+      }
+
+      .faq-question .icon {
+        flex: 0 0 auto;
+        color: var(--muted);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-answer {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.25s ease;
+      }
+
+      .faq-answer > div {
+        overflow: hidden;
+      }
+
+      .faq-answer p {
+        padding: 0 16px 18px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 22px;
+      }
+
+      .faq-card.open .faq-answer {
+        grid-template-rows: 1fr;
+      }
+
+      .faq-card.open .faq-question .icon {
+        transform: rotate(180deg);
+      }
+
+      .floor-map {
+        position: relative;
+        min-height: 520px;
+        margin: 0 24px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background:
+          linear-gradient(90deg, rgba(255, 255, 255, 0.58) 1px, transparent 1px),
+          linear-gradient(rgba(255, 255, 255, 0.58) 1px, transparent 1px),
+          #ddd5d1;
+        background-size: 34px 34px;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .room {
+        position: absolute;
+        border: 4px solid rgba(255, 255, 255, 0.78);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .room.kitchen {
+        inset: 8% 52% 54% 8%;
+      }
+
+      .room.living {
+        inset: 8% 8% 35% 48%;
+      }
+
+      .room.bath {
+        inset: 50% 56% 10% 8%;
+      }
+
+      .room.bed {
+        inset: 66% 8% 10% 46%;
+      }
+
+      .pin {
+        position: absolute;
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        color: white;
+        box-shadow: var(--shadow);
+      }
+
+      .pin::before {
+        content: "";
+        position: absolute;
+        inset: -8px;
+        border-radius: inherit;
+        background: currentColor;
+        opacity: 0.14;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .pin .icon {
+        position: relative;
+      }
+
+      .pin.kitchen {
+        top: 19%;
+        left: 24%;
+        background: var(--brand);
+      }
+
+      .pin.living {
+        top: 38%;
+        left: 68%;
+        background: var(--teal);
+      }
+
+      .pin.bath {
+        top: 67%;
+        left: 25%;
+        background: var(--green);
+      }
+
+      .pin.entrance {
+        top: 78%;
+        left: 73%;
+        background: var(--text);
+      }
+
+      @keyframes pulse {
+        50% {
+          transform: scale(1.15);
+          opacity: 0.22;
+        }
+      }
+
+      .map-sheet {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: start;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.66);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+        transform: translateY(18px);
+        opacity: 0;
+        pointer-events: none;
+        transition: 0.22s ease;
+      }
+
+      .map-sheet.visible {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .sheet-icon {
+        display: grid;
+        place-items: center;
+        flex: 0 0 42px;
+        height: 42px;
+        border-radius: 8px;
+        background: var(--brand);
+        color: white;
+      }
+
+      .map-sheet h3 {
+        font-size: 17px;
+        line-height: 22px;
+      }
+
+      .map-sheet p {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      .close-sheet {
+        display: grid;
+        place-items: center;
+        flex: 0 0 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--surface-soft);
+        color: var(--muted);
+      }
+
+      .bottom-nav {
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        z-index: 30;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width: min(100%, 480px);
+        min-height: var(--nav-height);
+        padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+        transform: translateX(-50%);
+        border-top: 1px solid var(--line);
+        border-radius: 14px 14px 0 0;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 -10px 30px rgba(31, 31, 31, 0.1);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-item {
+        display: grid;
+        place-items: center;
+        gap: 3px;
+        min-width: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .nav-item .icon {
+        font-size: 24px;
+      }
+
+      .nav-item.active {
+        color: var(--brand);
+      }
+
+      .toast {
+        position: fixed;
+        left: 50%;
+        bottom: calc(var(--nav-height) + 18px + env(safe-area-inset-bottom));
+        z-index: 50;
+        width: min(calc(100% - 48px), 390px);
+        padding: 13px 16px;
+        transform: translate(-50%, 18px);
+        border-radius: 8px;
+        background: var(--text);
+        color: white;
+        opacity: 0;
+        pointer-events: none;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 700;
+        transition: 0.2s ease;
+      }
+
+      .toast.visible {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+
+      @media (min-width: 760px) {
+        body {
+          background: #efe9e7;
+        }
+
+        .app-shell {
+          min-height: 100dvh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <div class="brand-mark" aria-hidden="true"><span class="icon">home_pin</span></div>
+          <div class="brand-copy">
+            <strong>Guest Guide</strong>
+            <span>푸른 바다 스테이</span>
+          </div>
+        </div>
+        <button class="lang-button" type="button" aria-label="언어 변경">
+          <span class="icon">translate</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="view active" id="home-view" aria-label="홈">
+          <div class="hero">
+            <div class="hero-content">
+              <div class="eyebrow"><span class="icon" aria-hidden="true">waving_hand</span> Welcome</div>
+              <h1>푸른 바다 스테이에 오신 것을 환영합니다</h1>
+              <p>체크인부터 주변 추천까지, 머무는 동안 필요한 안내를 한곳에 모았습니다.</p>
+            </div>
+          </div>
+
+          <section class="section quick-grid" aria-label="빠른 정보">
+            <article class="info-card">
+              <div class="info-icon"><span class="icon">wifi</span></div>
+              <div class="info-body">
+                <div class="label">Wi-Fi 비밀번호</div>
+                <div class="value" id="wifi-password">Stay_Guest_2026!</div>
+              </div>
+              <button class="copy-button" type="button" aria-label="Wi-Fi 비밀번호 복사" data-copy="Stay_Guest_2026!">
+                <span class="icon">content_copy</span>
+              </button>
+            </article>
+            <article class="info-card">
+              <div class="info-icon"><span class="icon">event_busy</span></div>
+              <div class="info-body">
+                <div class="label">체크아웃</div>
+                <div class="value">오전 11:00</div>
+              </div>
+            </article>
+          </section>
+
+          <section class="section" aria-label="주요 안내">
+            <div class="section-header">
+              <div>
+                <h2>주요 안내 사항</h2>
+                <p>자주 확인하는 내용을 빠르게 열어보세요.</p>
+              </div>
+            </div>
+            <div class="tile-grid">
+              <button class="guide-card" type="button" data-nav="faq" data-filter="house">
+                <span class="icon">rule</span>
+                <strong>숙소 이용 규칙</strong>
+                <span>소음, 금연, 반려동물 안내</span>
+              </button>
+              <button class="guide-card" type="button" data-nav="map">
+                <span class="icon">map</span>
+                <strong>실내 안내 지도</strong>
+                <span>기기별 위치와 사용법</span>
+              </button>
+              <button class="guide-card" type="button" data-nav="spots">
+                <span class="icon">restaurant</span>
+                <strong>주변 맛집</strong>
+                <span>호스트가 고른 동네 스팟</span>
+              </button>
+              <button class="guide-card" type="button" data-nav="faq" data-filter="emergency">
+                <span class="icon">contact_support</span>
+                <strong>호스트 연락</strong>
+                <span>긴급 상황 및 문의</span>
+              </button>
+            </div>
+          </section>
+
+          <section class="section" aria-label="주변 지도">
+            <button class="map-teaser" type="button" data-nav="spots">
+              <div class="map-teaser-content">
+                <span class="icon" aria-hidden="true">location_on</span>
+                <h3>주변 탐색하기</h3>
+                <p>도보권 편의점, 카페, 저녁 식사 장소를 확인하세요.</p>
+              </div>
+            </button>
+          </section>
+        </section>
+
+        <section class="view" id="map-view" aria-label="지도 Q&A">
+          <div class="page-intro">
+            <h1>숙소 안내 지도</h1>
+            <p>아이콘을 누르면 위치별 사용법과 체크 포인트가 표시됩니다.</p>
+          </div>
+          <div class="floor-map">
+            <div class="room kitchen"></div>
+            <div class="room living"></div>
+            <div class="room bath"></div>
+            <div class="room bed"></div>
+            <button class="pin kitchen" type="button" data-pin="kitchen" aria-label="주방 커피 머신">
+              <span class="icon">coffee_maker</span>
+            </button>
+            <button class="pin living" type="button" data-pin="living" aria-label="거실 프로젝터">
+              <span class="icon">tv</span>
+            </button>
+            <button class="pin bath" type="button" data-pin="bath" aria-label="욕실 온수">
+              <span class="icon">hot_tub</span>
+            </button>
+            <button class="pin entrance" type="button" data-pin="entrance" aria-label="현관 쓰레기 배출">
+              <span class="icon">delete</span>
+            </button>
+            <article class="map-sheet" id="map-sheet" aria-live="polite">
+              <div class="sheet-icon" id="sheet-icon-wrap"><span class="icon" id="sheet-icon">coffee_maker</span></div>
+              <div>
+                <h3 id="sheet-title">주방 커피 머신</h3>
+                <p id="sheet-copy">캡슐을 넣고 오른쪽 상단 버튼을 눌러주세요.</p>
+              </div>
+              <button class="close-sheet" type="button" aria-label="안내 닫기" id="close-sheet">
+                <span class="icon">close</span>
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="faq-view" aria-label="FAQ">
+          <div class="page-intro">
+            <h1>자주 묻는 질문</h1>
+            <p>체크인, 가전제품, 긴급상황을 검색하거나 카테고리로 골라보세요.</p>
+          </div>
+          <label class="search-box">
+            <span class="icon">search</span>
+            <input id="faq-search" type="search" placeholder="궁금한 내용을 검색해보세요" />
+          </label>
+          <nav class="chips" aria-label="FAQ 카테고리">
+            <button class="chip active" type="button" data-faq-filter="all">전체</button>
+            <button class="chip" type="button" data-faq-filter="check">체크인/아웃</button>
+            <button class="chip" type="button" data-faq-filter="device">가전제품</button>
+            <button class="chip" type="button" data-faq-filter="house">숙소 규칙</button>
+            <button class="chip" type="button" data-faq-filter="emergency">긴급상황</button>
+          </nav>
+          <div class="faq-list" id="faq-list">
+            <article class="faq-card open" data-category="check">
+              <button class="faq-question" type="button">
+                <span>비대면 체크인은 어떻게 하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>체크인 당일 오전 10시에 예약자 연락처로 도어락 비밀번호가 발송됩니다. 현관에서 비밀번호 입력 후 별표 버튼을 누르면 문이 열립니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
+                <span>얼리 체크인이 가능한가요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>당일 청소 상황에 따라 가능 여부가 달라집니다. 도착 전 메시지를 주시면 가능한 시간과 추가 비용 여부를 바로 안내드릴게요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="device">
+              <button class="faq-question" type="button">
+                <span>에어컨 리모컨은 어디에 있나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>거실 소파 옆 원형 테이블 위에 있습니다. 냉방 모드와 24도 설정을 권장하며, 외출 시에는 전원을 꺼주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="house">
+              <button class="faq-question" type="button">
+                <span>숙소에서 흡연이 가능한가요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>실내와 베란다 모두 금연입니다. 흡연 흔적이 남을 경우 특수 청소 비용이 청구될 수 있습니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="emergency">
+              <button class="faq-question" type="button">
+                <span>긴급 상황에는 어디로 연락하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>화재, 누수, 잠금 문제는 호스트 긴급 번호로 연락해주세요. 생명과 안전이 관련된 상황은 119 또는 112에 먼저 신고해 주세요.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="spots-view" aria-label="현지 가이드">
+          <div class="page-intro">
+            <h1>현지 가이드 추천 스팟</h1>
+            <p>호스트가 직접 고른 도보권 맛집, 카페, 저녁 코스를 모았습니다.</p>
+          </div>
+          <nav class="chips" aria-label="장소 카테고리">
+            <button class="chip active" type="button" data-spot-filter="all">전체보기</button>
+            <button class="chip" type="button" data-spot-filter="food">맛집</button>
+            <button class="chip" type="button" data-spot-filter="cafe">카페</button>
+            <button class="chip" type="button" data-spot-filter="night">액티비티</button>
+          </nav>
+          <section class="section spot-list">
+            <article class="spot-card" data-spot="food">
+              <div class="spot-image restaurant"><div class="rating"><span class="icon">star</span>4.9</div></div>
+              <div class="spot-copy">
+                <div class="spot-title">
+                  <h3>정담 소미엔</h3>
+                  <span class="category">맛집</span>
+                </div>
+                <p>전통 한식을 현대적으로 재해석한 조용한 저녁 식사 장소입니다.</p>
+                <div class="host-tip">
+                  <span class="icon">person</span>
+                  <p>"트러플 들기름 국수는 꼭 드셔보세요. 예약은 하루 전 추천해요."</p>
+                </div>
+              </div>
+            </article>
+            <article class="spot-card" data-spot="cafe">
+              <div class="spot-image cafe"><div class="rating"><span class="icon">star</span>4.7</div></div>
+              <div class="spot-copy">
+                <div class="spot-title">
+                  <h3>아카이브 커피룸</h3>
+                  <span class="category">카페</span>
+                </div>
+                <p>큰 창과 조용한 좌석이 있어 오전 산책 후 들르기 좋습니다.</p>
+                <div class="host-tip">
+                  <span class="icon">local_cafe</span>
+                  <p>"오전 10시쯤 가면 갓 구운 휘낭시에가 나옵니다."</p>
+                </div>
+              </div>
+            </article>
+            <article class="spot-card" data-spot="night">
+              <div class="spot-image music"><div class="rating"><span class="icon">star</span>4.8</div></div>
+              <div class="spot-copy">
+                <div class="spot-title">
+                  <h3>블루 노트 라이브</h3>
+                  <span class="category">액티비티</span>
+                </div>
+                <p>저녁 산책 후 가볍게 즐기기 좋은 라이브 라운지입니다.</p>
+                <div class="host-tip">
+                  <span class="icon">lightbulb</span>
+                  <p>"금요일 공연은 좌석이 빨리 마감돼서 미리 예약하는 편이 좋아요."</p>
+                </div>
+              </div>
+            </article>
+          </section>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="하단 내비게이션">
+        <button class="nav-item active" type="button" data-nav="home">
+          <span class="icon">home</span>
+          <span>Home</span>
+        </button>
+        <button class="nav-item" type="button" data-nav="map">
+          <span class="icon">map</span>
+          <span>Map Q&amp;A</span>
+        </button>
+        <button class="nav-item" type="button" data-nav="faq">
+          <span class="icon">quiz</span>
+          <span>FAQ</span>
+        </button>
+        <button class="nav-item" type="button" data-nav="spots">
+          <span class="icon">menu_book</span>
+          <span>Guide</span>
+        </button>
+      </nav>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite">복사되었습니다.</div>
+
+    <script>
+      const views = {
+        home: document.getElementById("home-view"),
+        map: document.getElementById("map-view"),
+        faq: document.getElementById("faq-view"),
+        spots: document.getElementById("spots-view"),
+      };
+
+      const navItems = [...document.querySelectorAll("[data-nav]")];
+      const bottomNavItems = [...document.querySelectorAll(".bottom-nav [data-nav]")];
+      const toast = document.getElementById("toast");
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("visible");
+        window.clearTimeout(showToast.timer);
+        showToast.timer = window.setTimeout(() => toast.classList.remove("visible"), 1800);
+      }
+
+      function setView(name) {
+        Object.entries(views).forEach(([key, view]) => view.classList.toggle("active", key === name));
+        bottomNavItems.forEach((item) => item.classList.toggle("active", item.dataset.nav === name));
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      navItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          setView(item.dataset.nav);
+          if (item.dataset.filter) {
+            setFaqFilter(item.dataset.filter);
+          }
+        });
+      });
+
+      document.querySelector("[data-copy]").addEventListener("click", async (event) => {
+        const text = event.currentTarget.dataset.copy;
+        try {
+          await navigator.clipboard.writeText(text);
+          showToast("Wi-Fi 비밀번호가 복사되었습니다.");
+        } catch {
+          showToast(text);
+        }
+      });
+
+      document.querySelectorAll(".faq-question").forEach((button) => {
+        button.addEventListener("click", () => {
+          button.closest(".faq-card").classList.toggle("open");
+        });
+      });
+
+      const faqCards = [...document.querySelectorAll(".faq-card")];
+      const faqSearch = document.getElementById("faq-search");
+
+      function setFaqFilter(filter) {
+        document.querySelectorAll("[data-faq-filter]").forEach((chip) => {
+          chip.classList.toggle("active", chip.dataset.faqFilter === filter);
+        });
+        faqCards.forEach((card) => {
+          const matchesCategory = filter === "all" || card.dataset.category === filter;
+          const matchesText = card.innerText.toLowerCase().includes(faqSearch.value.trim().toLowerCase());
+          card.hidden = !(matchesCategory && matchesText);
+        });
+      }
+
+      document.querySelectorAll("[data-faq-filter]").forEach((chip) => {
+        chip.addEventListener("click", () => setFaqFilter(chip.dataset.faqFilter));
+      });
+
+      faqSearch.addEventListener("input", () => {
+        const activeFilter = document.querySelector("[data-faq-filter].active").dataset.faqFilter;
+        setFaqFilter(activeFilter);
+      });
+
+      document.querySelectorAll("[data-spot-filter]").forEach((chip) => {
+        chip.addEventListener("click", () => {
+          document.querySelectorAll("[data-spot-filter]").forEach((item) => item.classList.remove("active"));
+          chip.classList.add("active");
+          const filter = chip.dataset.spotFilter;
+          document.querySelectorAll("[data-spot]").forEach((card) => {
+            card.hidden = filter !== "all" && card.dataset.spot !== filter;
+          });
+        });
+      });
+
+      const pinData = {
+        kitchen: {
+          title: "주방 커피 머신",
+          copy: "캡슐을 넣고 오른쪽 상단 버튼을 눌러주세요. 물통은 뒤쪽에 있습니다.",
+          icon: "coffee_maker",
+          color: "#ff385c",
+        },
+        living: {
+          title: "거실 프로젝터",
+          copy: "검은색 리모컨의 전원 버튼을 3초간 누르면 켜집니다. 커튼을 닫으면 더 선명합니다.",
+          icon: "tv",
+          color: "#007a7c",
+        },
+        bath: {
+          title: "욕실 온수",
+          copy: "수전 손잡이를 왼쪽으로 완전히 돌리고 약 30초 기다리면 온수가 나옵니다.",
+          icon: "hot_tub",
+          color: "#08734d",
+        },
+        entrance: {
+          title: "현관 분리배출",
+          copy: "일반 쓰레기는 회색 통, 재활용품은 흰색 바구니에 넣어주세요.",
+          icon: "delete",
+          color: "#1f1f1f",
+        },
+      };
+
+      const mapSheet = document.getElementById("map-sheet");
+      const sheetIconWrap = document.getElementById("sheet-icon-wrap");
+      const sheetIcon = document.getElementById("sheet-icon");
+      const sheetTitle = document.getElementById("sheet-title");
+      const sheetCopy = document.getElementById("sheet-copy");
+
+      document.querySelectorAll("[data-pin]").forEach((pin) => {
+        pin.addEventListener("click", () => {
+          const data = pinData[pin.dataset.pin];
+          sheetTitle.textContent = data.title;
+          sheetCopy.textContent = data.copy;
+          sheetIcon.textContent = data.icon;
+          sheetIconWrap.style.background = data.color;
+          mapSheet.classList.add("visible");
+        });
+      });
+
+      document.getElementById("close-sheet").addEventListener("click", () => {
+        mapSheet.classList.remove("visible");
+      });
+    </script>
+  </body>
+</html>
