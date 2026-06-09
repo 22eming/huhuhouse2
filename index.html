@@ -623,11 +623,28 @@
         overflow: hidden;
       }
 
-      .faq-answer p {
-        padding: 0 16px 18px;
+      .faq-answer p,
+      .faq-answer ul {
+        margin: 0;
+        padding: 0 16px 14px;
         color: var(--muted);
         font-size: 14px;
         line-height: 22px;
+      }
+
+      .faq-answer ul {
+        display: grid;
+        gap: 8px;
+        padding-left: 34px;
+      }
+
+      .faq-answer li {
+        padding-left: 2px;
+      }
+
+      .faq-answer strong {
+        color: var(--text);
+        font-weight: 800;
       }
 
       .faq-card.open .faq-answer {
@@ -990,7 +1007,7 @@
         <section class="view" id="faq-view" aria-label="FAQ">
           <div class="page-intro">
             <h1>자주 묻는 질문</h1>
-            <p>체크인, 가전제품, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.</p>
+            <p>체크인, 오시는 길, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.</p>
           </div>
           <label class="search-box">
             <span class="icon">search</span>
@@ -999,75 +1016,216 @@
           <nav class="chips" aria-label="FAQ 카테고리">
             <button class="chip active" type="button" data-faq-filter="all">전체</button>
             <button class="chip" type="button" data-faq-filter="check">체크인/아웃</button>
-            <button class="chip" type="button" data-faq-filter="device">가전제품</button>
+            <button class="chip" type="button" data-faq-filter="access">오시는 길</button>
+            <button class="chip" type="button" data-faq-filter="parking">주차</button>
             <button class="chip" type="button" data-faq-filter="house">숙소 규칙</button>
+            <button class="chip" type="button" data-faq-filter="amenity">어메니티</button>
             <button class="chip" type="button" data-faq-filter="waste">쓰레기 배출</button>
-            <button class="chip" type="button" data-faq-filter="emergency">긴급상황</button>
           </nav>
           <div class="faq-list" id="faq-list">
             <article class="faq-card open" data-category="check">
               <button class="faq-question" type="button">
-                <span>비대면 체크인은 어떻게 하나요?</span>
+                <span>체크인과 체크아웃 시간은 언제인가요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>체크인 당일 오전 10시에 예약자 연락처로 도어락 비밀번호가 발송됩니다. 현관에서 비밀번호 입력 후 별표 버튼을 누르면 문이 열립니다.</p>
+                  <p><strong>Check-in:</strong> 오후 3시부터 셀프 체크인 가능합니다.</p>
+                  <p><strong>Check-out:</strong> 오전 11시까지입니다.</p>
+                  <p>얼리 체크인이나 레이트 체크아웃이 필요하시면 미리 문의해 주세요. 가능한 경우 최대한 도와드리겠습니다.</p>
                 </div>
               </div>
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
-                <span>얼리 체크인이 가능한가요?</span>
+                <span>체크인은 어떻게 하나요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>당일 청소 상황에 따라 가능 여부가 달라집니다. 도착 전 메시지를 주시면 가능한 시간과 추가 비용 여부를 바로 안내드릴게요.</p>
+                  <p>대문은 키박스에 있는 열쇠로 열어주세요. 키박스는 현관문 왼쪽에 있습니다.</p>
+                  <p>키박스 비밀번호는 체크인 하루 전에 안내드립니다.</p>
+                  <p>열쇠를 분실하지 않도록 주의해 주세요. 분실 시 교체 비용 8,000원이 발생합니다.</p>
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="device">
+            <article class="faq-card" data-category="access">
               <button class="faq-question" type="button">
-                <span>에어컨 리모컨은 어디에 있나요?</span>
+                <span>숙소 주소는 어디인가요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>거실 소파 옆 원형 테이블 위에 있습니다. 냉방 모드와 24도 설정을 권장하며, 외출 시에는 전원을 꺼주세요.</p>
+                  <p><strong>English:</strong> 22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea</p>
+                  <p><strong>국문:</strong> 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="access">
+              <button class="faq-question" type="button">
+                <span>서울역에서 어떻게 오나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <ul>
+                    <li>서울역 11번 출구로 나와 약 90m 직진해 주세요.</li>
+                    <li>버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.</li>
+                    <li>길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.</li>
+                    <li>골목 안으로 약 90m 걸으면 숙소가 있습니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="access">
+              <button class="faq-question" type="button">
+                <span>숙대입구역에서 어떻게 오나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <ul>
+                    <li>숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.</li>
+                    <li>4정거장 뒤 후암시장 정류장에서 하차합니다.</li>
+                    <li>길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.</li>
+                    <li>골목 안으로 약 90m 걸으면 숙소가 있습니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="access">
+              <button class="faq-question" type="button">
+                <span>가까운 지하철과 버스는 무엇인가요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p><strong>지하철:</strong> 서울역 1호선/4호선, 숙대입구역 4호선</p>
+                  <p><strong>버스:</strong> 400, 605, 202, 용산02</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="parking">
+              <button class="faq-question" type="button">
+                <span>주차는 어디에 하면 되나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>숙소에서 약 260m 떨어진 <strong>후암재래시장 공영주차장</strong>을 이용해 주세요.</p>
                 </div>
               </div>
             </article>
             <article class="faq-card" data-category="house">
               <button class="faq-question" type="button">
-                <span>숙소에서 흡연이 가능한가요?</span>
+                <span>계단이나 짐 이동 시 주의할 점이 있나요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>실내와 베란다 모두 금연입니다. 흡연 흔적이 남을 경우 특수 청소 비용이 청구될 수 있습니다.</p>
+                  <p>숙소는 2층 가장 윗층에 있으며, 입구까지 계단을 이용해야 합니다. 체크인과 짐 이동 시 이 점을 참고해 주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="house">
+              <button class="faq-question" type="button">
+                <span>소음 관련 주의사항이 있나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>오래된 주택이라 방음이 완벽하지 않습니다. 특히 밤늦은 시간에는 이웃을 위해 목소리, 통화 소리, 음악 소리를 낮춰 주세요.</p>
+                  <p>밤 10시 이후에는 큰 음악이나 큰 대화를 삼가 주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="house">
+              <button class="faq-question" type="button">
+                <span>욕실 사용 시 주의할 점이 있나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>샤워 후에는 바닥 물기가 잘 마를 수 있도록 욕실 문을 열어두는 것을 추천드립니다.</p>
+                  <p>변기에는 반드시 화장지만 넣어주세요. 물티슈 등 다른 물건을 넣으면 변기가 막힐 수 있습니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="amenity">
+              <button class="faq-question" type="button">
+                <span>Wi-Fi는 어떻게 연결하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.</p>
+                  <p>직접 입력할 경우 Wi-Fi 이름은 <strong>U+NetEFC5</strong>, 비밀번호는 <strong>7C25259EM*</strong>입니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="amenity">
+              <button class="faq-question" type="button">
+                <span>커피 캡슐과 인센스는 사용해도 되나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.</p>
+                  <p>사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.</p>
                 </div>
               </div>
             </article>
             <article class="faq-card" data-category="waste">
               <button class="faq-question" type="button">
-                <span>쓰레기는 어떻게 분리 배출하나요?</span>
+                <span>실내 쓰레기통은 어디에 있고 어떻게 나누나요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>일반 쓰레기는 현관 밖 회색 통에 넣어주세요. 재활용품은 종이, 플라스틱, 캔, 유리로 나누어 흰색 바구니에 모아두시면 됩니다. 음식물 쓰레기는 물기를 제거한 뒤 음식물 전용 봉투에 담아주세요.</p>
+                  <p>쓰레기통은 부엌 옆 창고에 있습니다.</p>
+                  <p>3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.</p>
+                  <p>각 쓰레기통 옆에 걸어둔 비닐은 해당 종류의 쓰레기만 담아달라는 뜻입니다. 세부 분류는 쓰레기통에 붙은 안내를 확인해 주세요.</p>
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="emergency">
+            <article class="faq-card" data-category="waste">
               <button class="faq-question" type="button">
-                <span>긴급 상황에는 어디로 연락하나요?</span>
+                <span>일반 쓰레기와 음식물 쓰레기는 어떻게 버리나요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>화재, 누수, 잠금 문제는 호스트 긴급 번호로 연락해주세요. 생명과 안전이 관련된 상황은 119 또는 112에 먼저 신고해 주세요.</p>
+                  <p><strong>일반 쓰레기:</strong> 각 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.</p>
+                  <p><strong>음식물 쓰레기:</strong> 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.</p>
+                  <p>동물 뼈, 생선 뼈, 달걀 껍데기는 음식물 쓰레기가 아니므로 일반 쓰레기로 버려주세요.</p>
+                  <p>음식물 쓰레기도 공식 봉투에 담아 배출해야 하며, 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="waste">
+              <button class="faq-question" type="button">
+                <span>재활용은 어떻게 분리하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>재활용은 쓰레기통 옆에 걸린 투명 봉투를 사용해 주세요.</p>
+                  <p>일반적으로 단단한 플라스틱, 캔, 유리로 분리합니다. 배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.</p>
+                  <p>봉투가 가득 차면 잘 묶어서 밖에 내놓아 주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="waste">
+              <button class="faq-question" type="button">
+                <span>쓰레기는 어디에 내놓나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>모든 봉투는 새지 않도록 단단히 묶어 주세요.</p>
+                  <p>집 앞 전봇대 근처에 넘어지지 않게 가지런히 놓아 주세요.</p>
+                  <p>음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.</p>
+                  <p>쓰레기는 밤에 수거됩니다.</p>
                 </div>
               </div>
             </article>
