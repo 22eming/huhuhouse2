@@ -282,6 +282,34 @@
         font-weight: 800;
       }
 
+      .wifi-details {
+        display: grid;
+        gap: 3px;
+        margin-top: 4px;
+      }
+
+      .wifi-details div {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .wifi-details span {
+        flex: 0 0 auto;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .wifi-details strong {
+        min-width: 0;
+        font-size: 16px;
+        line-height: 21px;
+        font-weight: 800;
+        overflow-wrap: anywhere;
+      }
+
       .copy-button {
         display: grid;
         place-items: center;
@@ -863,10 +891,13 @@
             <article class="info-card">
               <div class="info-icon"><span class="icon">wifi</span></div>
               <div class="info-body">
-                <div class="label">Wi-Fi 비밀번호</div>
-                <div class="value" id="wifi-password">HUHU_Guest_2026!</div>
+                <div class="label">Wi-Fi</div>
+                <div class="wifi-details">
+                  <div><span>이름</span><strong>U+NetEFC5</strong></div>
+                  <div><span>비밀번호</span><strong id="wifi-password">7C25259EM*</strong></div>
+                </div>
               </div>
-              <button class="copy-button" type="button" aria-label="Wi-Fi 비밀번호 복사" data-copy="HUHU_Guest_2026!">
+              <button class="copy-button" type="button" aria-label="Wi-Fi 비밀번호 복사" data-copy="7C25259EM*">
                 <span class="icon">content_copy</span>
               </button>
             </article>
@@ -902,10 +933,10 @@
                 <strong>주변 맛집</strong>
                 <span>호스트가 고른 동네 스팟</span>
               </button>
-              <button class="guide-card" type="button" data-nav="faq" data-filter="emergency">
-                <span class="icon">contact_support</span>
-                <strong>호스트 연락</strong>
-                <span>긴급 상황 및 문의</span>
+              <button class="guide-card" type="button" data-nav="faq" data-filter="waste">
+                <span class="icon">delete</span>
+                <strong>쓰레기 분리 배출</strong>
+                <span>일반 쓰레기와 재활용 안내</span>
               </button>
             </div>
           </section>
@@ -959,7 +990,7 @@
         <section class="view" id="faq-view" aria-label="FAQ">
           <div class="page-intro">
             <h1>자주 묻는 질문</h1>
-            <p>체크인, 가전제품, 긴급상황을 검색하거나 카테고리로 골라보세요.</p>
+            <p>체크인, 가전제품, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.</p>
           </div>
           <label class="search-box">
             <span class="icon">search</span>
@@ -970,6 +1001,7 @@
             <button class="chip" type="button" data-faq-filter="check">체크인/아웃</button>
             <button class="chip" type="button" data-faq-filter="device">가전제품</button>
             <button class="chip" type="button" data-faq-filter="house">숙소 규칙</button>
+            <button class="chip" type="button" data-faq-filter="waste">쓰레기 배출</button>
             <button class="chip" type="button" data-faq-filter="emergency">긴급상황</button>
           </nav>
           <div class="faq-list" id="faq-list">
@@ -1014,6 +1046,17 @@
               <div class="faq-answer">
                 <div>
                   <p>실내와 베란다 모두 금연입니다. 흡연 흔적이 남을 경우 특수 청소 비용이 청구될 수 있습니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="waste">
+              <button class="faq-question" type="button">
+                <span>쓰레기는 어떻게 분리 배출하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>일반 쓰레기는 현관 밖 회색 통에 넣어주세요. 재활용품은 종이, 플라스틱, 캔, 유리로 나누어 흰색 바구니에 모아두시면 됩니다. 음식물 쓰레기는 물기를 제거한 뒤 음식물 전용 봉투에 담아주세요.</p>
                 </div>
               </div>
             </article>
