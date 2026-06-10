@@ -556,8 +556,10 @@
       }
 
       .search-box {
+        display: block;
         position: relative;
-        margin: 0 24px 14px;
+        width: calc(100% - 48px);
+        margin: 0 auto 14px;
       }
 
       .search-box .icon {
@@ -569,7 +571,9 @@
       }
 
       .search-box input {
+        display: block;
         width: 100%;
+        min-width: 0;
         height: 52px;
         padding: 0 16px 0 48px;
         border: 1px solid var(--line);
@@ -981,8 +985,7 @@
         }
 
         .search-box {
-          margin-right: 18px;
-          margin-left: 18px;
+          width: calc(100% - 36px);
         }
 
         .chips {
