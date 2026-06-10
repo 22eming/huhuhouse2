@@ -148,6 +148,59 @@
         box-shadow: var(--soft-shadow);
       }
 
+      .language-picker {
+        position: relative;
+        flex: 0 0 auto;
+      }
+
+      .language-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        right: 0;
+        z-index: 30;
+        display: grid;
+        gap: 4px;
+        min-width: 150px;
+        padding: 8px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        transform-origin: top right;
+      }
+
+      .language-menu[hidden] {
+        display: none;
+      }
+
+      .language-option {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: 100%;
+        padding: 10px 11px;
+        border-radius: 7px;
+        background: transparent;
+        color: var(--text);
+        font-size: 14px;
+        line-height: 18px;
+        text-align: left;
+      }
+
+      .language-option:hover,
+      .language-option.active {
+        background: var(--surface-soft);
+      }
+
+      .language-option.active::after {
+        content: "check";
+        font-family: "Material Symbols Rounded";
+        color: var(--brand);
+        font-size: 20px;
+        line-height: 1;
+      }
+
       main {
         padding-bottom: calc(var(--nav-height) + 22px + env(safe-area-inset-bottom));
       }
@@ -1107,9 +1160,17 @@
             <span>HUHU House</span>
           </div>
         </div>
-        <button class="lang-button" type="button" aria-label="언어 변경">
-          <span class="icon">translate</span>
-        </button>
+        <div class="language-picker">
+          <button class="lang-button" id="language-toggle" type="button" aria-label="언어 변경" aria-expanded="false" aria-controls="language-menu">
+            <span class="icon">translate</span>
+          </button>
+          <div class="language-menu" id="language-menu" role="menu" hidden>
+            <button class="language-option active" type="button" role="menuitemradio" aria-checked="true" data-lang="ko">한국어</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="en">English</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="zh">中文</button>
+            <button class="language-option" type="button" role="menuitemradio" aria-checked="false" data-lang="ja">日本語</button>
+          </div>
+        </div>
       </header>
 
       <main>
@@ -1237,10 +1298,10 @@
           <nav class="chips" aria-label="FAQ 카테고리">
             <button class="chip active" type="button" data-faq-filter="all">전체</button>
             <button class="chip" type="button" data-faq-filter="check">체크인/아웃</button>
-            <button class="chip" type="button" data-faq-filter="parking">주차</button>
             <button class="chip" type="button" data-faq-filter="house">숙소 규칙</button>
-            <button class="chip" type="button" data-faq-filter="amenity">어메니티</button>
             <button class="chip" type="button" data-faq-filter="waste">쓰레기 배출</button>
+            <button class="chip" type="button" data-faq-filter="amenity">편의</button>
+            <button class="chip" type="button" data-faq-filter="other">기타</button>
           </nav>
           <div class="faq-list" id="faq-list">
             <article class="faq-card open" data-category="check">
@@ -1265,8 +1326,7 @@
                 <div>
                   <div class="faq-photos">
                     <figure>
-                      <img src="images/checkin-building.jpg" alt="숙소 건물 외관과 입구 위치" />
-                      <figcaption>사진의 화살표 방향으로 올라와 해당 건물의 가장 윗층으로 오시면 됩니다.</figcaption>
+                      <img src="images/checkin-building-directions.png" alt="숙소 건물 외관과 입구 위치" />
                     </figure>
                     <figure>
                       <img src="images/checkin-keybox.jpg" alt="현관문 왼쪽에 있는 키박스" />
@@ -1309,6 +1369,25 @@
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
+                <span>서울역에서 걸어오고 싶어요</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>서울역에서 숙소까지 도보로 약 10~12분 정도 걸립니다. 서울역에 도착하시면 11번 또는 12번 출구 이용을 추천드립니다.</p>
+                  <ul>
+                    <li>출구에서 나와 남쪽 방향으로 걸어가 주세요.</li>
+                    <li><strong>Twin City Namsan</strong>이라는 큰 건물이 보이면, 건물 앞에서 왼쪽으로 꺾어 길을 따라 직진해 주세요.</li>
+                    <li>계속 걷다 보면 후암시장이 나옵니다. 시장을 지나 길을 건너면 LG U+ 매장이 보입니다.</li>
+                    <li>LG U+ 매장 옆 골목으로 들어와 오르막길을 따라 올라오면 HUHU House에 도착합니다.</li>
+                  </ul>
+                  <p><strong>도보 이동 팁:</strong> 한국에서는 Google Maps의 도보 길찾기가 부정확할 때가 있습니다. 영어를 지원하는 <strong>Naver Map</strong> 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.</p>
+                  <p>서울특별시 용산구 후암로30길 22</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
                 <span>숙대입구역에서 어떻게 오나요?</span>
                 <span class="icon">expand_more</span>
               </button>
@@ -1335,7 +1414,7 @@
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="parking">
+            <article class="faq-card" data-category="other">
               <button class="faq-question" type="button">
                 <span>주차는 어디에 하면 되나요?</span>
                 <span class="icon">expand_more</span>
@@ -1445,15 +1524,27 @@
             </article>
             <article class="faq-card" data-category="waste">
               <button class="faq-question" type="button">
-                <span>일반 쓰레기와 음식물 쓰레기는 어떻게 버리나요?</span>
+                <span>일반 쓰레기는 어떻게 버리나요?</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p><strong>일반 쓰레기:</strong> 각 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.</p>
-                  <p><strong>음식물 쓰레기:</strong> 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.</p>
-                  <p>동물 뼈, 생선 뼈, 달걀 껍데기는 음식물 쓰레기가 아니므로 일반 쓰레기로 버려주세요.</p>
+                  <p>일반 쓰레기는 일반 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.</p>
+                  <p>휴지, 비닐, 오염된 포장재, 작은 생활 쓰레기처럼 재활용이나 음식물로 분리하기 어려운 것은 일반 쓰레기에 넣어 주세요.</p>
+                  <p>어디에 넣어야 할지 모르겠는 쓰레기는 호스트에게 문의하시거나 일반 쓰레기로 버려 주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="waste">
+              <button class="faq-question" type="button">
+                <span>음식물 쓰레기는 어떻게 버리나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>음식물 쓰레기는 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.</p>
                   <p>음식물 쓰레기도 공식 봉투에 담아 배출해야 하며, 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.</p>
+                  <p>동물 뼈, 생선 뼈, 달걀 껍데기처럼 딱딱하거나 분해가 어려운 것은 음식물 쓰레기가 아니므로 일반 쓰레기로 버려 주세요.</p>
                 </div>
               </div>
             </article>
@@ -1464,8 +1555,9 @@
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>재활용은 쓰레기통 옆에 걸린 투명 봉투를 사용해 주세요.</p>
-                  <p>일반적으로 단단한 플라스틱, 캔, 유리로 분리합니다. 배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.</p>
+                  <p>재활용은 쓰레기통 옆에 걸린 반투명 봉투를 사용해 주세요.</p>
+                  <p>각 쓰레기통에 부착된 종류를 기준으로 플라스틱, 캔, 유리 등을 구별해 넣어 주세요.</p>
+                  <p>배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.</p>
                   <p>봉투가 가득 차면 잘 묶어서 밖에 내놓아 주세요.</p>
                 </div>
               </div>
@@ -1477,10 +1569,28 @@
               </button>
               <div class="faq-answer">
                 <div>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/waste-dropoff.png" alt="집 앞 전봇대와 음식물 쓰레기통 배출 위치" />
+                      <figcaption>전봇대 앞에 봉투를 가지런히 놓고, 음식물 쓰레기는 주황색 뚜껑의 검정색 통에 넣어 주세요.</figcaption>
+                    </figure>
+                  </div>
                   <p>모든 봉투는 새지 않도록 단단히 묶어 주세요.</p>
                   <p>집 앞 전봇대 근처에 넘어지지 않게 가지런히 놓아 주세요.</p>
                   <p>음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.</p>
                   <p>쓰레기는 밤에 수거됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="other">
+              <button class="faq-question" type="button">
+                <span>공유자전거는 어떻게 이용하나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>서울 공공자전거 따릉이를 이용하실 수 있습니다.</p>
+                  <p><strong>이용 순서:</strong> 따릉이 앱 열기 → 외국인 선택 → 이용권 구매 → 이용권 사용</p>
                 </div>
               </div>
             </article>
@@ -1567,6 +1677,514 @@
     <div class="toast" id="toast" role="status" aria-live="polite">복사되었습니다.</div>
 
     <script>
+      const languageNames = {
+        ko: "한국어",
+        en: "English",
+        zh: "中文",
+        ja: "日本語",
+      };
+
+      const textTranslations = {
+        en: {
+          "언어 변경": "Change language",
+          "홈": "Home",
+          "지도 Q&A": "Map Q&A",
+          "FAQ": "FAQ",
+          "현지 가이드": "Local Guide",
+          "복사되었습니다.": "Copied.",
+          "Guest Guide": "Guest Guide",
+          "HUHU House": "HUHU House",
+          "Welcome": "Welcome",
+          "HUHU 하우스에 오신 것을 환영합니다": "Welcome to HUHU House",
+          "체크인부터 주변 추천까지, 머무는 동안 필요한 안내를 한곳에 모았습니다.": "Everything you need during your stay, from check-in to local recommendations, is gathered here.",
+          "빠른 정보": "Quick Info",
+          "이름": "Name",
+          "비밀번호": "Password",
+          "Wi-Fi 비밀번호 복사": "Copy Wi-Fi password",
+          "체크아웃": "Check-out",
+          "오전 11:00": "11:00 AM",
+          "주요 안내": "Main Guide",
+          "주요 안내 사항": "Main Guide",
+          "자주 확인하는 내용을 빠르게 열어보세요.": "Open the most-used guide items quickly.",
+          "숙소 이용 규칙": "House Rules",
+          "소음, 금연, 반려동물 안내": "Noise, smoking, and pet rules",
+          "실내 안내 지도": "Indoor Guide Map",
+          "기기별 위치와 사용법": "Locations and how to use each item",
+          "주변 맛집": "Nearby Spots",
+          "호스트가 고른 동네 스팟": "Local spots picked by the host",
+          "쓰레기 분리 배출": "Trash Sorting",
+          "일반 쓰레기와 재활용 안내": "General trash and recycling guide",
+          "숙소 안내 지도": "House Guide Map",
+          "아이콘을 누르면 위치별 요약, 사용법, 주의점이 표시됩니다.": "Tap an icon to see the summary, how to use it, and any cautions for that location.",
+          "쓰레기통": "Trash Bins",
+          "전구 스위치": "Light Switch",
+          "음식물 쓰레기 봉투": "Food Waste Bags",
+          "변기 사용 안내": "Toilet Guide",
+          "블라인드 고정": "Blind Cord",
+          "커피 머신": "Coffee Tools",
+          "문 잠금": "Door Lock",
+          "온수 보일러": "Hot Water Boiler",
+          "안내 닫기": "Close guide",
+          "자주 묻는 질문": "Frequently Asked Questions",
+          "체크인/아웃, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.": "Search check-in/out, parking, house rules, and trash instructions, or browse by category.",
+          "궁금한 내용을 검색해보세요": "Search what you need",
+          "FAQ 카테고리": "FAQ categories",
+          "전체": "All",
+          "체크인/아웃": "Check-in/out",
+          "숙소 규칙": "House Rules",
+          "쓰레기 배출": "Trash Disposal",
+          "편의": "Amenities",
+          "기타": "Other",
+          "체크인과 체크아웃 시간은 언제인가요?": "What are the check-in and check-out times?",
+          "Check-in:": "Check-in:",
+          " 오후 3시부터 셀프 체크인 가능합니다.": " Self check-in is available from 3:00 PM.",
+          "Check-out:": "Check-out:",
+          " 오전 11시까지입니다.": " Please check out by 11:00 AM.",
+          "얼리 체크인이나 레이트 체크아웃이 필요하시면 미리 문의해 주세요. 가능한 경우 최대한 도와드리겠습니다.": "If you need early check-in or late check-out, please ask in advance. We will help whenever possible.",
+          "체크인은 어떻게 하나요?": "How do I check in?",
+          "숙소 건물 외관과 입구 위치": "Building exterior and entrance location",
+          "현관문 왼쪽에 있는 키박스": "Key box on the left side of the front door",
+          "현관문 왼쪽 벽면에 키박스가 있습니다.": "The key box is on the wall to the left of the front door.",
+          "숙소는 해당 건물의 가장 윗층입니다. 계단을 따라 가장 위까지 올라와 주세요.": "The house is on the top floor of this building. Please follow the stairs all the way up.",
+          "현관문 왼쪽에 키박스가 있습니다. 키박스 비밀번호는 예약자분의 연락처 뒷 4자리입니다.": "There is a key box to the left of the front door. The password is the last four digits of the booking guest's phone number.",
+          "열쇠를 분실하지 않도록 주의해 주세요. 분실 시 교체 비용 8,000원이 발생합니다.": "Please be careful not to lose the key. A replacement fee of KRW 8,000 will be charged if it is lost.",
+          "숙소 주소는 어디인가요?": "What is the address?",
+          "English:": "English:",
+          " 22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea": " 22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea",
+          "국문:": "Korean:",
+          " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea",
+          "서울역에서 어떻게 오나요?": "How do I get here from Seoul Station?",
+          "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "Exit Seoul Station through Exit 11 and walk straight for about 90 meters.",
+          "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "Take bus 400 or 605 and get off after 2 stops.",
+          "길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.": "Cross the street and enter the alley next to the LG U+ mobile store.",
+          "골목 안으로 약 90m 걸으면 숙소가 있습니다.": "Walk about 90 meters up the alley to reach the house.",
+          "서울역에서 걸어오고 싶어요": "I want to walk from Seoul Station",
+          "서울역에서 숙소까지 도보로 약 10~12분 정도 걸립니다. 서울역에 도착하시면 11번 또는 12번 출구 이용을 추천드립니다.": "It takes about 10 to 12 minutes to walk from Seoul Station to the house. We recommend using Exit 11 or Exit 12.",
+          "출구에서 나와 남쪽 방향으로 걸어가 주세요.": "After exiting, walk south.",
+          "Twin City Namsan": "Twin City Namsan",
+          "이라는 큰 건물이 보이면, 건물 앞에서 왼쪽으로 꺾어 길을 따라 직진해 주세요.": " is the large building to look for. Turn left at the building and continue straight along the road.",
+          "계속 걷다 보면 후암시장이 나옵니다. 시장을 지나 길을 건너면 LG U+ 매장이 보입니다.": "You will eventually reach Huam Market. After passing the market, cross the street and you will see an LG U+ store.",
+          "LG U+ 매장 옆 골목으로 들어와 오르막길을 따라 올라오면 HUHU House에 도착합니다.": "Enter the alley next to the LG U+ store and walk uphill to reach HUHU House.",
+          "도보 이동 팁:": "Walking tip:",
+          " 한국에서는 Google Maps의 도보 길찾기가 부정확할 때가 있습니다. 영어를 지원하는 ": " In Korea, Google Maps walking directions can sometimes be inaccurate. We recommend downloading ",
+          "Naver Map": "Naver Map",
+          " 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.": ", which supports English, and searching the Korean address below.",
+          "서울특별시 용산구 후암로30길 22": "22 Huam-ro 30-gil, Yongsan-gu, Seoul",
+          "숙대입구역에서 어떻게 오나요?": "How do I get here from Sookmyung Women's Univ. Station?",
+          "숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.": "Exit Sookmyung Women's Univ. Station through Exit 5 and take the Yongsan 02 village bus at the stop in front.",
+          "4정거장 뒤 후암시장 정류장에서 하차합니다.": "Get off after 4 stops at Huam Market.",
+          "가까운 지하철과 버스는 무엇인가요?": "What are the nearest subway and bus options?",
+          "지하철:": "Subway:",
+          " 서울역 1호선/4호선, 숙대입구역 4호선": " Seoul Station Lines 1/4, Sookmyung Women's Univ. Station Line 4",
+          "버스:": "Bus:",
+          " 400, 605, 202, 용산02": " 400, 605, 202, Yongsan 02",
+          "주차는 어디에 하면 되나요?": "Where can I park?",
+          "숙소에서 약 260m 떨어진 ": "Please use ",
+          "후암재래시장 공영주차장": "Huam Traditional Market Public Parking Lot",
+          "을 이용해 주세요.": ", about 260 meters from the house.",
+          "계단이나 짐 이동 시 주의할 점이 있나요?": "Anything to know about stairs or luggage?",
+          "해당 숙소는 2.5층 높이의 계단을 올라야 합니다. 체크인과 짐 이동 시 참고해 주세요.": "The house requires climbing stairs equivalent to about 2.5 floors. Please keep this in mind for check-in and luggage.",
+          "가끔 1층 할머니가 1층 문을 열어둘 때가 있습니다. 조용히 살짝 지나가시면 됩니다.": "Sometimes the elderly neighbor on the first floor leaves her door open. Please just pass by quietly.",
+          "소음 관련 주의사항이 있나요?": "Are there any noise rules?",
+          "오래된 주택이라 방음이 완벽하지 않습니다. 특히 밤늦은 시간에는 이웃을 위해 목소리, 통화 소리, 음악 소리를 낮춰 주세요.": "This is an older house, so soundproofing is not perfect. Please keep voices, phone calls, and music low, especially late at night.",
+          "밤 10시 이후에는 큰 음악이나 큰 대화를 삼가 주세요.": "Please avoid loud music or loud conversations after 10:00 PM.",
+          "욕실 사용 시 주의할 점이 있나요?": "Anything to know about using the bathroom?",
+          "샤워 후에는 바닥 물기가 잘 마를 수 있도록 욕실 문을 열어두는 것을 추천드립니다.": "After showering, we recommend leaving the bathroom door open so the floor can dry well.",
+          "변기 사용 시 주의할 점이 있나요?": "Anything to know about using the toilet?",
+          "변기에는 비치된 화장실 휴지만 넣어 주세요.": "Please put only the provided toilet paper in the toilet.",
+          "물티슈, 여성용품 등은 변기에 넣지 말고 쓰레기통에 버려 주세요.": "Do not flush wet wipes, feminine products, or similar items. Please put them in the trash bin.",
+          "물에 녹는 물티슈도 오래된 배관을 막을 수 있어 사용 금지입니다.": "Even flushable wipes can block the old pipes, so they are not allowed.",
+          "금연 관련 규칙이 있나요?": "What is the smoking rule?",
+          "숙소 내부에서는 절대 금연입니다.": "Smoking is strictly prohibited inside the house.",
+          "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "If you smoke outside, please bring the cigarette butts back and dispose of them properly.",
+          "Wi-Fi는 어떻게 연결하나요?": "How do I connect to Wi-Fi?",
+          "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "Please scan the QR code on the first page of the guestbook next to the green sofa.",
+          "직접 입력할 경우 Wi-Fi 이름은 ": "If entering manually, the Wi-Fi name is ",
+          ", 비밀번호는 ": ", and the password is ",
+          "입니다.": ".",
+          "커피 캡슐과 인센스는 사용해도 되나요?": "Can I use the coffee capsules and incense?",
+          "준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.": "You are welcome to use the prepared coffee capsules and incense.",
+          "사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.": "Please dispose of used capsules and incense ash properly.",
+          "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "Where are the indoor trash bins and how are they sorted?",
+          "쓰레기통은 부엌 옆 창고에 있습니다.": "The trash bins are in the storage area next to the kitchen.",
+          "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "The three-tier bin is divided into general trash, cans, and bottles. There is also a separate bin for hard plastic.",
+          "각 쓰레기통 옆에 걸어둔 비닐은 해당 종류의 쓰레기만 담아달라는 뜻입니다. 세부 분류는 쓰레기통에 붙은 안내를 확인해 주세요.": "The bag hanging next to each bin is for that specific trash category only. Please check the labels on the bins for details.",
+          "일반 쓰레기는 어떻게 버리나요?": "How do I dispose of general trash?",
+          "일반 쓰레기는 일반 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "For general trash, please use the bag hanging next to the general trash bin. Extra bags can be purchased at convenience stores or supermarkets.",
+          "휴지, 비닐, 오염된 포장재, 작은 생활 쓰레기처럼 재활용이나 음식물로 분리하기 어려운 것은 일반 쓰레기에 넣어 주세요.": "Tissues, plastic film, contaminated packaging, and small household waste that cannot be recycled or treated as food waste should go in general trash.",
+          "어디에 넣어야 할지 모르겠는 쓰레기는 호스트에게 문의하시거나 일반 쓰레기로 버려 주세요.": "If you are not sure where something goes, please ask the host or put it in general trash.",
+          "음식물 쓰레기는 어떻게 버리나요?": "How do I dispose of food waste?",
+          "음식물 쓰레기는 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.": "Please use the small yellow bags in the far-left kitchen drawer for food waste.",
+          "음식물 쓰레기도 공식 봉투에 담아 배출해야 하며, 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "Food waste must also be placed in official bags. Extra bags can be purchased at convenience stores or supermarkets.",
+          "동물 뼈, 생선 뼈, 달걀 껍데기처럼 딱딱하거나 분해가 어려운 것은 음식물 쓰레기가 아니므로 일반 쓰레기로 버려 주세요.": "Hard or difficult-to-break-down items such as animal bones, fish bones, and eggshells are not food waste. Please put them in general trash.",
+          "재활용은 어떻게 분리하나요?": "How do I sort recyclables?",
+          "재활용은 쓰레기통 옆에 걸린 반투명 봉투를 사용해 주세요.": "Please use the translucent bags hanging next to the trash bins for recyclables.",
+          "각 쓰레기통에 부착된 종류를 기준으로 플라스틱, 캔, 유리 등을 구별해 넣어 주세요.": "Sort plastic, cans, glass, and other items according to the labels attached to each bin.",
+          "배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.": "Empty and rinse items before disposal.",
+          "봉투가 가득 차면 잘 묶어서 밖에 내놓아 주세요.": "When the bag is full, tie it securely and place it outside.",
+          "쓰레기는 어디에 내놓나요?": "Where should I put trash outside?",
+          "집 앞 전봇대와 음식물 쓰레기통 배출 위치": "Trash drop-off location by the utility pole and food waste bin",
+          "전봇대 앞에 봉투를 가지런히 놓고, 음식물 쓰레기는 주황색 뚜껑의 검정색 통에 넣어 주세요.": "Place tied bags neatly in front of the utility pole, and put food waste in the black bin with the orange lid.",
+          "모든 봉투는 새지 않도록 단단히 묶어 주세요.": "Tie all bags securely so nothing leaks.",
+          "집 앞 전봇대 근처에 넘어지지 않게 가지런히 놓아 주세요.": "Place them neatly near the utility pole in front of the house so they do not tip over.",
+          "음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.": "Put food waste in the black bin with the orange lid in front of the house.",
+          "쓰레기는 밤에 수거됩니다.": "Trash is collected at night.",
+          "공유자전거는 어떻게 이용하나요?": "How do I use shared bikes?",
+          "서울 공공자전거 따릉이를 이용하실 수 있습니다.": "You can use Seoul Bike, also known as Ddareungi.",
+          "이용 순서:": "Steps:",
+          " 따릉이 앱 열기 → 외국인 선택 → 이용권 구매 → 이용권 사용": " Open the Ddareungi app → Select Foreigner → Buy a pass → Use the pass",
+          "현지 가이드 추천 스팟": "Local Guide Spots",
+          "호스트가 직접 고른 도보권 맛집, 카페, 저녁 코스를 모았습니다.": "Restaurants, cafes, and evening spots within walking distance, handpicked by the host.",
+          "장소 카테고리": "Place categories",
+          "전체보기": "All",
+          "맛집": "Restaurants",
+          "카페": "Cafes",
+          "액티비티": "Activities",
+          "정담 소미엔": "Jeongdam Somien",
+          "전통 한식을 현대적으로 재해석한 조용한 저녁 식사 장소입니다.": "A quiet dinner spot with a modern take on traditional Korean food.",
+          "\"트러플 들기름 국수는 꼭 드셔보세요. 예약은 하루 전 추천해요.\"": "\"Try the truffle perilla oil noodles. Reserving a day ahead is recommended.\"",
+          "아카이브 커피룸": "Archive Coffee Room",
+          "큰 창과 조용한 좌석이 있어 오전 산책 후 들르기 좋습니다.": "A nice stop after a morning walk, with large windows and quiet seating.",
+          "\"오전 10시쯤 가면 갓 구운 휘낭시에가 나옵니다.\"": "\"Freshly baked financiers are usually out around 10 AM.\"",
+          "블루 노트 라이브": "Blue Note Live",
+          "저녁 산책 후 가볍게 즐기기 좋은 라이브 라운지입니다.": "A casual live lounge that is easy to enjoy after an evening walk.",
+          "\"금요일 공연은 좌석이 빨리 마감돼서 미리 예약하는 편이 좋아요.\"": "\"Friday shows fill up quickly, so booking ahead is a good idea.\"",
+          "Map Q&A": "Map Q&A",
+          "Home": "Home",
+          "FAQ": "FAQ",
+          "Guide": "Guide",
+          "Wi-Fi 비밀번호가 복사되었습니다.": "Wi-Fi password copied.",
+        },
+        zh: {
+          "언어 변경": "更改语言",
+          "홈": "首页",
+          "지도 Q&A": "地图问答",
+          "현지 가이드": "本地指南",
+          "복사되었습니다.": "已复制。",
+          "Welcome": "欢迎",
+          "HUHU 하우스에 오신 것을 환영합니다": "欢迎来到 HUHU House",
+          "체크인부터 주변 추천까지, 머무는 동안 필요한 안내를 한곳에 모았습니다.": "从入住到周边推荐，住宿期间需要的信息都整理在这里。",
+          "빠른 정보": "快速信息",
+          "이름": "名称",
+          "비밀번호": "密码",
+          "Wi-Fi 비밀번호 복사": "复制 Wi-Fi 密码",
+          "체크아웃": "退房",
+          "오전 11:00": "上午 11:00",
+          "주요 안내": "主要指南",
+          "주요 안내 사항": "主要指南",
+          "자주 확인하는 내용을 빠르게 열어보세요.": "快速查看常用内容。",
+          "숙소 이용 규칙": "住宿规则",
+          "소음, 금연, 반려동물 안내": "噪音、禁烟、宠物相关说明",
+          "실내 안내 지도": "室内指南地图",
+          "기기별 위치와 사용법": "各设备位置与使用方法",
+          "주변 맛집": "周边推荐",
+          "호스트가 고른 동네 스팟": "房东推荐的附近地点",
+          "쓰레기 분리 배출": "垃圾分类投放",
+          "일반 쓰레기와 재활용 안내": "一般垃圾与回收说明",
+          "숙소 안내 지도": "住宿指南地图",
+          "아이콘을 누르면 위치별 요약, 사용법, 주의점이 표시됩니다.": "点击图标即可查看各位置的概要、使用方法和注意事项。",
+          "쓰레기통": "垃圾桶",
+          "전구 스위치": "电灯开关",
+          "음식물 쓰레기 봉투": "厨余垃圾袋",
+          "변기 사용 안내": "马桶使用说明",
+          "블라인드 고정": "百叶窗固定",
+          "커피 머신": "咖啡器具",
+          "문 잠금": "门锁",
+          "온수 보일러": "热水锅炉",
+          "안내 닫기": "关闭说明",
+          "자주 묻는 질문": "常见问题",
+          "체크인/아웃, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.": "可搜索入住/退房、停车、住宿规则、垃圾投放说明，或按分类查看。",
+          "궁금한 내용을 검색해보세요": "搜索想了解的内容",
+          "FAQ 카테고리": "FAQ 分类",
+          "전체": "全部",
+          "체크인/아웃": "入住/退房",
+          "숙소 규칙": "住宿规则",
+          "쓰레기 배출": "垃圾投放",
+          "편의": "便利设施",
+          "기타": "其他",
+          "체크인과 체크아웃 시간은 언제인가요?": "入住和退房时间是什么时候？",
+          "Check-in:": "入住：",
+          " 오후 3시부터 셀프 체크인 가능합니다.": " 下午 3 点起可自助入住。",
+          "Check-out:": "退房：",
+          " 오전 11시까지입니다.": " 请在上午 11 点前退房。",
+          "얼리 체크인이나 레이트 체크아웃이 필요하시면 미리 문의해 주세요. 가능한 경우 최대한 도와드리겠습니다.": "如需提前入住或延迟退房，请提前联系。若条件允许，我们会尽量协助。",
+          "체크인은 어떻게 하나요?": "如何入住？",
+          "숙소 건물 외관과 입구 위치": "住宿建筑外观和入口位置",
+          "현관문 왼쪽에 있는 키박스": "位于入户门左侧的钥匙盒",
+          "현관문 왼쪽 벽면에 키박스가 있습니다.": "钥匙盒在入户门左侧墙面。",
+          "숙소는 해당 건물의 가장 윗층입니다. 계단을 따라 가장 위까지 올라와 주세요.": "住宿位于该建筑的最上层。请沿楼梯一直走到最上面。",
+          "현관문 왼쪽에 키박스가 있습니다. 키박스 비밀번호는 예약자분의 연락처 뒷 4자리입니다.": "入户门左侧有钥匙盒。钥匙盒密码为预订人电话号码后 4 位。",
+          "열쇠를 분실하지 않도록 주의해 주세요. 분실 시 교체 비용 8,000원이 발생합니다.": "请注意不要遗失钥匙。如遗失，将产生 8,000 韩元更换费用。",
+          "숙소 주소는 어디인가요?": "住宿地址是什么？",
+          "English:": "英文：",
+          "국문:": "中文：",
+          " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 韩国首尔特别市龙山区厚岩路30街22，2层（顶层）",
+          "서울역에서 어떻게 오나요?": "从首尔站怎么来？",
+          "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "从首尔站 11 号出口出来后，直走约 90 米。",
+          "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "乘坐 400 路或 605 路公交，2 站后下车。",
+          "길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.": "过马路后，进入 LG U+ 手机店旁边的小巷。",
+          "골목 안으로 약 90m 걸으면 숙소가 있습니다.": "沿小巷步行约 90 米即可到达住宿。",
+          "서울역에서 걸어오고 싶어요": "想从首尔站步行过来",
+          "서울역에서 숙소까지 도보로 약 10~12분 정도 걸립니다. 서울역에 도착하시면 11번 또는 12번 출구 이용을 추천드립니다.": "从首尔站步行到住宿约需 10–12 分钟。到达首尔站后，建议使用 11 号或 12 号出口。",
+          "출구에서 나와 남쪽 방향으로 걸어가 주세요.": "出站后请向南步行。",
+          "이라는 큰 건물이 보이면, 건물 앞에서 왼쪽으로 꺾어 길을 따라 직진해 주세요.": " 这栋大型建筑出现后，在建筑前左转并沿道路直行。",
+          "계속 걷다 보면 후암시장이 나옵니다. 시장을 지나 길을 건너면 LG U+ 매장이 보입니다.": "继续前行会到达厚岩市场。经过市场后过马路，就能看到 LG U+ 门店。",
+          "LG U+ 매장 옆 골목으로 들어와 오르막길을 따라 올라오면 HUHU House에 도착합니다.": "进入 LG U+ 门店旁的小巷，沿上坡路走即可到达 HUHU House。",
+          "도보 이동 팁:": "步行提示：",
+          " 한국에서는 Google Maps의 도보 길찾기가 부정확할 때가 있습니다. 영어를 지원하는 ": " 在韩国，Google Maps 的步行路线有时不准确。建议下载支持英文的 ",
+          " 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.": "，并搜索以下韩文地址。",
+          "서울특별시 용산구 후암로30길 22": "首尔特别市龙山区厚岩路30街22",
+          "숙대입구역에서 어떻게 오나요?": "从淑大入口站怎么来？",
+          "숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.": "从淑大入口站 5 号出口出来，在前方车站乘坐龙山02社区巴士。",
+          "4정거장 뒤 후암시장 정류장에서 하차합니다.": "4 站后在厚岩市场站下车。",
+          "가까운 지하철과 버스는 무엇인가요?": "附近有哪些地铁和公交？",
+          "지하철:": "地铁：",
+          " 서울역 1호선/4호선, 숙대입구역 4호선": " 首尔站 1号线/4号线，淑大入口站 4号线",
+          "버스:": "公交：",
+          " 400, 605, 202, 용산02": " 400、605、202、龙山02",
+          "주차는 어디에 하면 되나요?": "在哪里停车？",
+          "숙소에서 약 260m 떨어진 ": "请使用距离住宿约 260 米的",
+          "후암재래시장 공영주차장": "厚岩传统市场公共停车场",
+          "을 이용해 주세요.": "。",
+          "계단이나 짐 이동 시 주의할 점이 있나요?": "楼梯或搬运行李有什么注意事项？",
+          "해당 숙소는 2.5층 높이의 계단을 올라야 합니다. 체크인과 짐 이동 시 참고해 주세요.": "本住宿需要爬约 2.5 层楼高的楼梯。入住和搬运行李时请提前留意。",
+          "가끔 1층 할머니가 1층 문을 열어둘 때가 있습니다. 조용히 살짝 지나가시면 됩니다.": "有时一楼的奶奶会把一楼门开着，请安静地轻轻经过即可。",
+          "소음 관련 주의사항이 있나요?": "有噪音相关注意事项吗？",
+          "오래된 주택이라 방음이 완벽하지 않습니다. 특히 밤늦은 시간에는 이웃을 위해 목소리, 통화 소리, 음악 소리를 낮춰 주세요.": "这是老房子，隔音并不完美。尤其夜间请为邻居降低说话、通话和音乐音量。",
+          "밤 10시 이후에는 큰 음악이나 큰 대화를 삼가 주세요.": "晚上 10 点后请避免大声播放音乐或大声交谈。",
+          "욕실 사용 시 주의할 점이 있나요?": "使用浴室有什么注意事项？",
+          "샤워 후에는 바닥 물기가 잘 마를 수 있도록 욕실 문을 열어두는 것을 추천드립니다.": "淋浴后建议打开浴室门，方便地面水分晾干。",
+          "변기 사용 시 주의할 점이 있나요?": "使用马桶有什么注意事项？",
+          "변기에는 비치된 화장실 휴지만 넣어 주세요.": "马桶内只能投入提供的卫生纸。",
+          "물티슈, 여성용품 등은 변기에 넣지 말고 쓰레기통에 버려 주세요.": "湿巾、女性用品等请勿投入马桶，请丢入垃圾桶。",
+          "물에 녹는 물티슈도 오래된 배관을 막을 수 있어 사용 금지입니다.": "即使是可冲散湿巾，也可能堵塞老旧管道，因此禁止使用。",
+          "금연 관련 규칙이 있나요?": "禁烟规则是什么？",
+          "숙소 내부에서는 절대 금연입니다.": "住宿室内绝对禁烟。",
+          "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "如在室外吸烟，请将烟蒂带回并丢弃，谢谢。",
+          "Wi-Fi는 어떻게 연결하나요?": "如何连接 Wi-Fi？",
+          "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "请扫描绿色沙发旁访客手册第一页上的二维码。",
+          "직접 입력할 경우 Wi-Fi 이름은 ": "如手动输入，Wi-Fi 名称为 ",
+          ", 비밀번호는 ": "，密码为 ",
+          "입니다.": "。",
+          "커피 캡슐과 인센스는 사용해도 되나요?": "可以使用咖啡胶囊和线香吗？",
+          "준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.": "准备好的咖啡胶囊和线香可自由使用。",
+          "사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.": "使用后的胶囊和香灰请按类别妥善丢弃。",
+          "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "室内垃圾桶在哪里，如何分类？",
+          "쓰레기통은 부엌 옆 창고에 있습니다.": "垃圾桶在厨房旁的储物间。",
+          "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "三层垃圾桶分为一般垃圾、易拉罐、玻璃瓶，旁边还有硬塑料专用垃圾桶。",
+          "각 쓰레기통 옆에 걸어둔 비닐은 해당 종류의 쓰레기만 담아달라는 뜻입니다. 세부 분류는 쓰레기통에 붙은 안내를 확인해 주세요.": "各垃圾桶旁挂着的袋子只用于对应类别。详细分类请查看垃圾桶上的标签。",
+          "일반 쓰레기는 어떻게 버리나요?": "一般垃圾怎么丢？",
+          "일반 쓰레기는 일반 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "一般垃圾请使用挂在一般垃圾桶旁的袋子。额外袋子可在便利店或超市购买。",
+          "휴지, 비닐, 오염된 포장재, 작은 생활 쓰레기처럼 재활용이나 음식물로 분리하기 어려운 것은 일반 쓰레기에 넣어 주세요.": "纸巾、塑料膜、被污染的包装、小型生活垃圾等难以归为回收或厨余的物品，请丢入一般垃圾。",
+          "어디에 넣어야 할지 모르겠는 쓰레기는 호스트에게 문의하시거나 일반 쓰레기로 버려 주세요.": "不确定该放哪里时，请询问房东或作为一般垃圾处理。",
+          "음식물 쓰레기는 어떻게 버리나요?": "厨余垃圾怎么丢？",
+          "음식물 쓰레기는 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.": "厨余垃圾请使用厨房最左侧抽屉里的小黄色袋子。",
+          "음식물 쓰레기도 공식 봉투에 담아 배출해야 하며, 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "厨余垃圾也必须装入官方垃圾袋。额外袋子可在便利店或超市购买。",
+          "동물 뼈, 생선 뼈, 달걀 껍데기처럼 딱딱하거나 분해가 어려운 것은 음식물 쓰레기가 아니므로 일반 쓰레기로 버려 주세요.": "动物骨头、鱼骨、蛋壳等坚硬或难分解物品不属于厨余垃圾，请作为一般垃圾处理。",
+          "재활용은 어떻게 분리하나요?": "回收垃圾怎么分类？",
+          "재활용은 쓰레기통 옆에 걸린 반투명 봉투를 사용해 주세요.": "回收垃圾请使用垃圾桶旁挂着的半透明袋子。",
+          "각 쓰레기통에 부착된 종류를 기준으로 플라스틱, 캔, 유리 등을 구별해 넣어 주세요.": "请按照各垃圾桶上贴的类别区分塑料、易拉罐、玻璃等。",
+          "배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.": "投放前请清空内容物并冲洗干净。",
+          "봉투가 가득 차면 잘 묶어서 밖에 내놓아 주세요.": "袋子装满后请扎紧并放到外面。",
+          "쓰레기는 어디에 내놓나요?": "垃圾放在哪里？",
+          "집 앞 전봇대와 음식물 쓰레기통 배출 위치": "屋前电线杆和厨余垃圾桶位置",
+          "전봇대 앞에 봉투를 가지런히 놓고, 음식물 쓰레기는 주황색 뚜껑의 검정색 통에 넣어 주세요.": "请将垃圾袋整齐放在电线杆前，厨余垃圾放入橙色盖子的黑色桶中。",
+          "모든 봉투는 새지 않도록 단단히 묶어 주세요.": "所有袋子请扎紧，避免渗漏。",
+          "집 앞 전봇대 근처에 넘어지지 않게 가지런히 놓아 주세요.": "请整齐放在屋前电线杆附近，避免倒下。",
+          "음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.": "厨余垃圾请放入屋前橙色盖子的黑色桶中。",
+          "쓰레기는 밤에 수거됩니다.": "垃圾会在夜间收走。",
+          "공유자전거는 어떻게 이용하나요?": "共享单车怎么使用？",
+          "서울 공공자전거 따릉이를 이용하실 수 있습니다.": "可以使用首尔公共自行车 “Ddareungi”。",
+          "이용 순서:": "使用步骤：",
+          " 따릉이 앱 열기 → 외국인 선택 → 이용권 구매 → 이용권 사용": " 打开 Ddareungi 应用 → 选择外国人 → 购买使用券 → 使用使用券",
+          "현지 가이드 추천 스팟": "本地推荐地点",
+          "호스트가 직접 고른 도보권 맛집, 카페, 저녁 코스를 모았습니다.": "房东精选的步行范围内餐厅、咖啡馆和夜间去处。",
+          "장소 카테고리": "地点分类",
+          "전체보기": "全部",
+          "맛집": "餐厅",
+          "카페": "咖啡馆",
+          "액티비티": "活动",
+          "정담 소미엔": "Jeongdam Somien",
+          "전통 한식을 현대적으로 재해석한 조용한 저녁 식사 장소입니다.": "一家安静的晚餐地点，以现代方式重新诠释传统韩餐。",
+          "\"트러플 들기름 국수는 꼭 드셔보세요. 예약은 하루 전 추천해요.\"": "“一定要试试松露紫苏油面。建议提前一天预约。”",
+          "아카이브 커피룸": "Archive Coffee Room",
+          "큰 창과 조용한 좌석이 있어 오전 산책 후 들르기 좋습니다.": "有大窗和安静座位，适合早晨散步后顺路前往。",
+          "\"오전 10시쯤 가면 갓 구운 휘낭시에가 나옵니다.\"": "“上午 10 点左右会有刚出炉的费南雪。”",
+          "블루 노트 라이브": "Blue Note Live",
+          "저녁 산책 후 가볍게 즐기기 좋은 라이브 라운지입니다.": "适合晚间散步后轻松前往的现场音乐酒廊。",
+          "\"금요일 공연은 좌석이 빨리 마감돼서 미리 예약하는 편이 좋아요.\"": "“周五演出座位很快订满，建议提前预约。”",
+          "Home": "首页",
+          "Map Q&A": "地图问答",
+          "FAQ": "常见问题",
+          "Guide": "指南",
+          "Wi-Fi 비밀번호가 복사되었습니다.": "Wi-Fi 密码已复制。",
+        },
+        ja: {
+          "언어 변경": "言語を変更",
+          "홈": "ホーム",
+          "지도 Q&A": "マップQ&A",
+          "현지 가이드": "ローカルガイド",
+          "복사되었습니다.": "コピーしました。",
+          "Welcome": "ようこそ",
+          "HUHU 하우스에 오신 것을 환영합니다": "HUHU Houseへようこそ",
+          "체크인부터 주변 추천까지, 머무는 동안 필요한 안내를 한곳에 모았습니다.": "チェックインから周辺のおすすめまで、滞在中に必要な案内をまとめました。",
+          "빠른 정보": "クイック情報",
+          "이름": "名前",
+          "비밀번호": "パスワード",
+          "Wi-Fi 비밀번호 복사": "Wi-Fiパスワードをコピー",
+          "체크아웃": "チェックアウト",
+          "오전 11:00": "午前11:00",
+          "주요 안내": "主な案内",
+          "주요 안내 사항": "主な案内",
+          "자주 확인하는 내용을 빠르게 열어보세요.": "よく確認する内容をすぐに開けます。",
+          "숙소 이용 규칙": "ハウスルール",
+          "소음, 금연, 반려동물 안내": "騒音・禁煙・ペットに関する案内",
+          "실내 안내 지도": "室内案内マップ",
+          "기기별 위치와 사용법": "設備の場所と使い方",
+          "주변 맛집": "周辺スポット",
+          "호스트가 고른 동네 스팟": "ホストおすすめの近隣スポット",
+          "쓰레기 분리 배출": "ごみの分別",
+          "일반 쓰레기와 재활용 안내": "一般ごみとリサイクル案内",
+          "숙소 안내 지도": "宿泊先案内マップ",
+          "아이콘을 누르면 위치별 요약, 사용법, 주의점이 표시됩니다.": "アイコンを押すと、場所ごとの概要・使い方・注意点が表示されます。",
+          "쓰레기통": "ごみ箱",
+          "전구 스위치": "照明スイッチ",
+          "음식물 쓰레기 봉투": "生ごみ袋",
+          "변기 사용 안내": "トイレ使用案内",
+          "블라인드 고정": "ブラインド固定",
+          "커피 머신": "コーヒー器具",
+          "문 잠금": "ドアロック",
+          "온수 보일러": "給湯ボイラー",
+          "안내 닫기": "案内を閉じる",
+          "자주 묻는 질문": "よくある質問",
+          "체크인/아웃, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.": "チェックイン/アウト、駐車、ハウスルール、ごみ出し案内を検索、またはカテゴリから選べます。",
+          "궁금한 내용을 검색해보세요": "知りたい内容を検索",
+          "FAQ 카테고리": "FAQカテゴリ",
+          "전체": "すべて",
+          "체크인/아웃": "チェックイン/アウト",
+          "숙소 규칙": "ハウスルール",
+          "쓰레기 배출": "ごみ出し",
+          "편의": "設備",
+          "기타": "その他",
+          "체크인과 체크아웃 시간은 언제인가요?": "チェックインとチェックアウトの時間は？",
+          "Check-in:": "チェックイン：",
+          " 오후 3시부터 셀프 체크인 가능합니다.": " 午後3時からセルフチェックインできます。",
+          "Check-out:": "チェックアウト：",
+          " 오전 11시까지입니다.": " 午前11時までです。",
+          "얼리 체크인이나 레이트 체크아웃이 필요하시면 미리 문의해 주세요. 가능한 경우 최대한 도와드리겠습니다.": "アーリーチェックインやレイトチェックアウトが必要な場合は、事前にお問い合わせください。可能な場合はできる限り対応します。",
+          "체크인은 어떻게 하나요?": "チェックイン方法は？",
+          "숙소 건물 외관과 입구 위치": "建物外観と入口の位置",
+          "현관문 왼쪽에 있는 키박스": "玄関ドア左側のキーボックス",
+          "현관문 왼쪽 벽면에 키박스가 있습니다.": "キーボックスは玄関ドア左側の壁にあります。",
+          "숙소는 해당 건물의 가장 윗층입니다. 계단을 따라 가장 위까지 올라와 주세요.": "宿泊先はこの建物の最上階です。階段を一番上までお上がりください。",
+          "현관문 왼쪽에 키박스가 있습니다. 키박스 비밀번호는 예약자분의 연락처 뒷 4자리입니다.": "玄関ドアの左側にキーボックスがあります。暗証番号は予約者様の電話番号の下4桁です。",
+          "열쇠를 분실하지 않도록 주의해 주세요. 분실 시 교체 비용 8,000원이 발생합니다.": "鍵を紛失しないようご注意ください。紛失時は交換費用8,000ウォンが発生します。",
+          "숙소 주소는 어디인가요?": "住所はどこですか？",
+          "English:": "英語：",
+          "국문:": "日本語：",
+          " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 韓国 ソウル特別市 龍山区 厚岩路30ギル 22 2階（最上階）",
+          "서울역에서 어떻게 오나요?": "ソウル駅からの行き方は？",
+          "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "ソウル駅11番出口を出て、約90m直進してください。",
+          "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "400番または605番バスに乗り、2停留所後に下車します。",
+          "길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.": "道を渡り、LG U+携帯ショップ横の路地に入ってください。",
+          "골목 안으로 약 90m 걸으면 숙소가 있습니다.": "路地を約90m進むと宿泊先があります。",
+          "서울역에서 걸어오고 싶어요": "ソウル駅から歩いて行きたいです",
+          "서울역에서 숙소까지 도보로 약 10~12분 정도 걸립니다. 서울역에 도착하시면 11번 또는 12번 출구 이용을 추천드립니다.": "ソウル駅から宿泊先までは徒歩約10〜12分です。ソウル駅に到着したら11番または12番出口の利用をおすすめします。",
+          "출구에서 나와 남쪽 방향으로 걸어가 주세요.": "出口を出て南方向へ歩いてください。",
+          "이라는 큰 건물이 보이면, 건물 앞에서 왼쪽으로 꺾어 길을 따라 직진해 주세요.": " という大きな建物が見えたら、建物の前で左に曲がり、そのまま道なりに直進してください。",
+          "계속 걷다 보면 후암시장이 나옵니다. 시장을 지나 길을 건너면 LG U+ 매장이 보입니다.": "しばらく歩くと厚岩市場に着きます。市場を過ぎて道を渡るとLG U+の店舗が見えます。",
+          "LG U+ 매장 옆 골목으로 들어와 오르막길을 따라 올라오면 HUHU House에 도착합니다.": "LG U+店舗横の路地に入り、坂道を上がるとHUHU Houseに到着します。",
+          "도보 이동 팁:": "徒歩移動のヒント：",
+          " 한국에서는 Google Maps의 도보 길찾기가 부정확할 때가 있습니다. 영어를 지원하는 ": " 韓国ではGoogle Mapsの徒歩ルートが不正確な場合があります。英語対応の",
+          " 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.": "アプリをダウンロードし、下記の韓国語住所で検索することをおすすめします。",
+          "서울특별시 용산구 후암로30길 22": "ソウル特別市 龍山区 厚岩路30ギル 22",
+          "숙대입구역에서 어떻게 오나요?": "淑大入口駅からの行き方は？",
+          "숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.": "淑大入口駅5番出口を出て、前の停留所から龍山02マウルバスに乗ってください。",
+          "4정거장 뒤 후암시장 정류장에서 하차합니다.": "4停留所後、厚岩市場停留所で下車します。",
+          "가까운 지하철과 버스는 무엇인가요?": "近くの地下鉄とバスは？",
+          "지하철:": "地下鉄：",
+          " 서울역 1호선/4호선, 숙대입구역 4호선": " ソウル駅1号線/4号線、淑大入口駅4号線",
+          "버스:": "バス：",
+          " 400, 605, 202, 용산02": " 400、605、202、龍山02",
+          "주차는 어디에 하면 되나요?": "駐車はどこにすればいいですか？",
+          "숙소에서 약 260m 떨어진 ": "宿泊先から約260m離れた",
+          "후암재래시장 공영주차장": "厚岩在来市場 公営駐車場",
+          "을 이용해 주세요.": "をご利用ください。",
+          "계단이나 짐 이동 시 주의할 점이 있나요?": "階段や荷物移動の注意点は？",
+          "해당 숙소는 2.5층 높이의 계단을 올라야 합니다. 체크인과 짐 이동 시 참고해 주세요.": "この宿泊先は約2.5階分の階段を上がる必要があります。チェックインや荷物移動の際にご留意ください。",
+          "가끔 1층 할머니가 1층 문을 열어둘 때가 있습니다. 조용히 살짝 지나가시면 됩니다.": "時々1階のおばあさんが1階のドアを開けていることがあります。静かに通り過ぎていただければ大丈夫です。",
+          "소음 관련 주의사항이 있나요?": "騒音に関する注意事項は？",
+          "오래된 주택이라 방음이 완벽하지 않습니다. 특히 밤늦은 시간에는 이웃을 위해 목소리, 통화 소리, 음악 소리를 낮춰 주세요.": "古い住宅のため、防音は完全ではありません。特に夜遅い時間は、近隣のために声・通話・音楽の音量を下げてください。",
+          "밤 10시 이후에는 큰 음악이나 큰 대화를 삼가 주세요.": "夜10時以降は大きな音楽や大声での会話をお控えください。",
+          "욕실 사용 시 주의할 점이 있나요?": "浴室使用時の注意点は？",
+          "샤워 후에는 바닥 물기가 잘 마를 수 있도록 욕실 문을 열어두는 것을 추천드립니다.": "シャワー後は床の水気が乾きやすいよう、浴室のドアを開けておくことをおすすめします。",
+          "변기 사용 시 주의할 점이 있나요?": "トイレ使用時の注意点は？",
+          "변기에는 비치된 화장실 휴지만 넣어 주세요.": "トイレには備え付けのトイレットペーパーのみ流してください。",
+          "물티슈, 여성용품 등은 변기에 넣지 말고 쓰레기통에 버려 주세요.": "ウェットティッシュや生理用品などは流さず、ごみ箱に捨ててください。",
+          "물에 녹는 물티슈도 오래된 배관을 막을 수 있어 사용 금지입니다.": "水に流せるウェットティッシュも古い配管を詰まらせる可能性があるため使用禁止です。",
+          "금연 관련 규칙이 있나요?": "禁煙ルールは？",
+          "숙소 내부에서는 절대 금연입니다.": "室内は完全禁煙です。",
+          "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "屋外で喫煙される場合、吸い殻は宿泊先まで持ち帰って捨てていただけると助かります。",
+          "Wi-Fi는 어떻게 연결하나요?": "Wi-Fiの接続方法は？",
+          "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "緑のソファ横にあるゲストブックの最初のページのQRコードをスキャンしてください。",
+          "직접 입력할 경우 Wi-Fi 이름은 ": "手入力する場合、Wi-Fi名は",
+          ", 비밀번호는 ": "、パスワードは",
+          "입니다.": "です。",
+          "커피 캡슐과 인센스는 사용해도 되나요?": "コーヒーカプセルとお香は使えますか？",
+          "준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.": "用意されているコーヒーカプセルとお香は自由にお使いいただけます。",
+          "사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.": "使用済みカプセルとお香の灰は種類に合わせて捨ててください。",
+          "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "室内のごみ箱はどこにあり、どう分別しますか？",
+          "쓰레기통은 부엌 옆 창고에 있습니다.": "ごみ箱はキッチン横の収納スペースにあります。",
+          "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "3段のごみ箱は一般ごみ・缶・びんに分かれており、横に硬質プラスチック専用のごみ箱があります。",
+          "각 쓰레기통 옆에 걸어둔 비닐은 해당 종류의 쓰레기만 담아달라는 뜻입니다. 세부 분류는 쓰레기통에 붙은 안내를 확인해 주세요.": "各ごみ箱の横に掛けてある袋は、その種類のごみ専用です。詳細はごみ箱に貼ってある案内をご確認ください。",
+          "일반 쓰레기는 어떻게 버리나요?": "一般ごみはどう捨てますか？",
+          "일반 쓰레기는 일반 쓰레기통 옆에 걸린 봉투를 사용해 주세요. 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "一般ごみは一般ごみ箱の横に掛かっている袋をご使用ください。追加の袋はコンビニやスーパーで購入できます。",
+          "휴지, 비닐, 오염된 포장재, 작은 생활 쓰레기처럼 재활용이나 음식물로 분리하기 어려운 것은 일반 쓰레기에 넣어 주세요.": "ティッシュ、ビニール、汚れた包装材、小さな生活ごみなど、リサイクルや生ごみに分けにくいものは一般ごみに入れてください。",
+          "어디에 넣어야 할지 모르겠는 쓰레기는 호스트에게 문의하시거나 일반 쓰레기로 버려 주세요.": "どこに入れるかわからないごみは、ホストに確認するか一般ごみとして捨ててください。",
+          "음식물 쓰레기는 어떻게 버리나요?": "生ごみはどう捨てますか？",
+          "음식물 쓰레기는 주방 가장 왼쪽 서랍에 있는 작은 노란색 봉투를 사용해 주세요.": "生ごみはキッチンの一番左の引き出しにある小さな黄色い袋をご使用ください。",
+          "음식물 쓰레기도 공식 봉투에 담아 배출해야 하며, 추가 봉투는 편의점이나 마트에서 구매할 수 있습니다.": "生ごみも指定袋に入れて出す必要があります。追加の袋はコンビニやスーパーで購入できます。",
+          "동물 뼈, 생선 뼈, 달걀 껍데기처럼 딱딱하거나 분해가 어려운 것은 음식물 쓰레기가 아니므로 일반 쓰레기로 버려 주세요.": "動物の骨、魚の骨、卵の殻など硬いものや分解しにくいものは生ごみではないため、一般ごみとして捨ててください。",
+          "재활용은 어떻게 분리하나요?": "リサイクルはどう分別しますか？",
+          "재활용은 쓰레기통 옆에 걸린 반투명 봉투를 사용해 주세요.": "リサイクルはごみ箱横に掛かっている半透明の袋をご使用ください。",
+          "각 쓰레기통에 부착된 종류를 기준으로 플라스틱, 캔, 유리 등을 구별해 넣어 주세요.": "各ごみ箱に貼られた種類を基準に、プラスチック・缶・ガラスなどを分けて入れてください。",
+          "배출 전 내용물을 비우고 깨끗하게 헹궈 주세요.": "出す前に中身を空にし、きれいにすすいでください。",
+          "봉투가 가득 차면 잘 묶어서 밖에 내놓아 주세요.": "袋がいっぱいになったらしっかり結んで外に出してください。",
+          "쓰레기는 어디에 내놓나요?": "ごみはどこに出しますか？",
+          "집 앞 전봇대와 음식물 쓰레기통 배출 위치": "家の前の電柱と生ごみ用ごみ箱の位置",
+          "전봇대 앞에 봉투를 가지런히 놓고, 음식물 쓰레기는 주황색 뚜껑의 검정색 통에 넣어 주세요.": "袋は電柱の前に整えて置き、生ごみはオレンジ色のふたの黒い容器に入れてください。",
+          "모든 봉투는 새지 않도록 단단히 묶어 주세요.": "すべての袋は漏れないようしっかり結んでください。",
+          "집 앞 전봇대 근처에 넘어지지 않게 가지런히 놓아 주세요.": "家の前の電柱付近に倒れないよう整えて置いてください。",
+          "음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.": "生ごみは家の前のオレンジ色のふたの黒い容器に入れてください。",
+          "쓰레기는 밤에 수거됩니다.": "ごみは夜に回収されます。",
+          "공유자전거는 어떻게 이용하나요?": "シェアサイクルの使い方は？",
+          "서울 공공자전거 따릉이를 이용하실 수 있습니다.": "ソウル公共自転車「タルンイ」を利用できます。",
+          "이용 순서:": "利用手順：",
+          " 따릉이 앱 열기 → 외국인 선택 → 이용권 구매 → 이용권 사용": " タルンイアプリを開く → 外国人を選択 → 利用券を購入 → 利用券を使用",
+          "현지 가이드 추천 스팟": "ローカルおすすめスポット",
+          "호스트가 직접 고른 도보권 맛집, 카페, 저녁 코스를 모았습니다.": "ホストが選んだ徒歩圏内のレストラン、カフェ、夜のスポットをまとめました。",
+          "장소 카테고리": "場所カテゴリ",
+          "전체보기": "すべて",
+          "맛집": "レストラン",
+          "카페": "カフェ",
+          "액티비티": "アクティビティ",
+          "정담 소미엔": "Jeongdam Somien",
+          "전통 한식을 현대적으로 재해석한 조용한 저녁 식사 장소입니다.": "伝統的な韓国料理を現代的に再解釈した、静かな夕食スポットです。",
+          "\"트러플 들기름 국수는 꼭 드셔보세요. 예약은 하루 전 추천해요.\"": "「トリュフえごま油麺はぜひ試してみてください。予約は前日がおすすめです。」",
+          "아카이브 커피룸": "Archive Coffee Room",
+          "큰 창과 조용한 좌석이 있어 오전 산책 후 들르기 좋습니다.": "大きな窓と静かな席があり、朝の散歩後に立ち寄りやすいです。",
+          "\"오전 10시쯤 가면 갓 구운 휘낭시에가 나옵니다.\"": "「午前10時ごろに行くと焼きたてのフィナンシェが出ます。」",
+          "블루 노트 라이브": "Blue Note Live",
+          "저녁 산책 후 가볍게 즐기기 좋은 라이브 라운지입니다.": "夕方の散歩後に気軽に楽しめるライブラウンジです。",
+          "\"금요일 공연은 좌석이 빨리 마감돼서 미리 예약하는 편이 좋아요.\"": "「金曜公演は席が早く埋まるので、事前予約がおすすめです。」",
+          "Home": "ホーム",
+          "Map Q&A": "マップQ&A",
+          "FAQ": "FAQ",
+          "Guide": "ガイド",
+          "Wi-Fi 비밀번호가 복사되었습니다.": "Wi-Fiパスワードをコピーしました。",
+        },
+      };
+
       const views = {
         home: document.getElementById("home-view"),
         map: document.getElementById("map-view"),
@@ -1577,9 +2195,108 @@
       const navItems = [...document.querySelectorAll("[data-nav]")];
       const bottomNavItems = [...document.querySelectorAll(".bottom-nav [data-nav]")];
       const toast = document.getElementById("toast");
+      const languageToggle = document.getElementById("language-toggle");
+      const languageMenu = document.getElementById("language-menu");
+      const languageOptions = [...document.querySelectorAll("[data-lang]")];
+      const textNodes = [];
+      const translatableAttrs = ["aria-label", "aria-live", "alt", "placeholder", "content"];
+      function getSavedLanguage() {
+        try {
+          return localStorage.getItem("huhu-language") || "ko";
+        } catch {
+          return "ko";
+        }
+      }
+
+      function saveLanguage(lang) {
+        try {
+          localStorage.setItem("huhu-language", lang);
+        } catch {
+          /* Ignore storage failures in local file previews. */
+        }
+      }
+
+      let currentLang = getSavedLanguage();
+      let activePinKey = null;
+
+      function preserveSpacing(original, translated) {
+        const leading = original.match(/^\s*/)[0];
+        const trailing = original.match(/\s*$/)[0];
+        return `${leading}${translated}${trailing}`;
+      }
+
+      function translateText(value, lang = currentLang) {
+        const key = value.trim();
+        if (!key || lang === "ko") return value;
+        return textTranslations[lang]?.[key] ? preserveSpacing(value, textTranslations[lang][key]) : value;
+      }
+
+      function translatedMessage(message) {
+        return currentLang === "ko" ? message : textTranslations[currentLang]?.[message] || message;
+      }
+
+      function collectTextNodes() {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+            if (["SCRIPT", "STYLE"].includes(node.parentElement?.tagName)) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          },
+        });
+
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          node.originalText = node.nodeValue;
+          textNodes.push(node);
+        }
+
+        document.querySelectorAll("*").forEach((element) => {
+          translatableAttrs.forEach((attr) => {
+            if (element.hasAttribute(attr)) {
+              element.dataset[`original${attr.replace(/-([a-z])/g, (_, char) => char.toUpperCase())}`] = element.getAttribute(attr);
+            }
+          });
+        });
+      }
+
+      function applyLanguage(lang) {
+        if (!languageNames[lang]) lang = "ko";
+        currentLang = lang;
+        saveLanguage(lang);
+        document.documentElement.lang = lang;
+
+        textNodes.forEach((node) => {
+          node.nodeValue = translateText(node.originalText, lang);
+        });
+
+        document.querySelectorAll("*").forEach((element) => {
+          translatableAttrs.forEach((attr) => {
+            const key = `original${attr.replace(/-([a-z])/g, (_, char) => char.toUpperCase())}`;
+            if (element.dataset[key]) {
+              element.setAttribute(attr, translateText(element.dataset[key], lang));
+            }
+          });
+        });
+
+        languageToggle.setAttribute("aria-label", translatedMessage("언어 변경"));
+        languageToggle.setAttribute("aria-expanded", "false");
+        languageOptions.forEach((option) => {
+          const isActive = option.dataset.lang === lang;
+          option.classList.toggle("active", isActive);
+          option.setAttribute("aria-checked", String(isActive));
+        });
+        languageMenu.hidden = true;
+
+        const activeFilter = document.querySelector("[data-faq-filter].active")?.dataset.faqFilter || "all";
+        setFaqFilter(activeFilter);
+
+        if (activePinKey && mapSheet.classList.contains("visible")) {
+          openMapSheet(getPinData(activePinKey));
+        }
+      }
 
       function showToast(message) {
-        toast.textContent = message;
+        toast.textContent = translatedMessage(message);
         toast.classList.add("visible");
         window.clearTimeout(showToast.timer);
         showToast.timer = window.setTimeout(() => toast.classList.remove("visible"), 1800);
@@ -1761,6 +2478,305 @@
         },
       };
 
+      const sheetLabels = {
+        ko: { summary: "요약", usage: "사용법", cautions: "주의점" },
+        en: { summary: "Summary", usage: "How to use", cautions: "Cautions" },
+        zh: { summary: "概要", usage: "使用方法", cautions: "注意事项" },
+        ja: { summary: "概要", usage: "使い方", cautions: "注意点" },
+      };
+
+      const pinTranslations = {
+        en: {
+          trash: {
+            title: "Trash Bins",
+            summary: "Sort trash by the labeled category and use only the designated bags.",
+            usage: [
+              "Put only the matching trash category in each labeled bin.",
+              "Use only the dedicated bag hanging next to each bin.",
+              "If you are not sure how to sort something, ask the host or put it in general trash.",
+              "Tie all bags securely so nothing leaks.",
+              "Place tied bags neatly in front of the utility pole outside the house.",
+              "Put food waste in the black bin with the orange lid in front of the house.",
+              "Trash is collected at night.",
+            ],
+          },
+          switch: {
+            title: "Light Switch",
+            summary: "The kitchen light is controlled by the lower-right switch.",
+            usage: [
+              "The lower-right button controls the kitchen light.",
+              "The lower-left button controls the entrance light.",
+              "When you need the kitchen light, please use only the lower-right switch.",
+            ],
+            cautions: [
+              "Please avoid using switches other than the kitchen light switch.",
+              "If you need another light or are unsure, please contact the host.",
+            ],
+          },
+          foodWaste: {
+            title: "Food Waste Bags",
+            summary: "Food waste bags are provided in the kitchen.",
+            usage: [
+              "Put food waste into the designated bag.",
+              "Tie the bag tightly.",
+              "Place it in the black bin with the orange lid in front of the house.",
+            ],
+            cautions: [
+              "Food waste must be placed in the designated bag.",
+              "Tie the bag tightly so odors do not leak.",
+            ],
+          },
+          toilet: {
+            title: "Toilet Guide",
+            summary: "To protect the old pipes, please flush only toilet paper.",
+            usage: [
+              "Please put only the provided toilet paper in the toilet.",
+              "Do not flush wet wipes, feminine products, or kitchen towels. Put them in the trash bin.",
+            ],
+            cautions: [
+              "Even flushable wipes can block the old pipes, so they are not allowed.",
+              "Repair costs may be charged if anything other than toilet paper causes a clog.",
+              "If water does not flush properly, stop using it repeatedly and contact the host.",
+            ],
+          },
+          blind: {
+            title: "Blind Cord",
+            summary: "Adjust the cord direction to fix the blind at the desired height.",
+            usage: [
+              "Set the blind height, then point the control cord toward the 4 o'clock direction.",
+              "Let go in that position to lock the blind.",
+            ],
+          },
+          coffee: {
+            title: "Coffee Tools",
+            summary: "The kitchen has a moka pot, espresso machine, brewing tools, and capsule coffee.",
+            usage: [
+              "Feel free to use whichever coffee tool you prefer.",
+              "For capsule coffee, insert a capsule, place a mug, and choose your menu.",
+              "If it is difficult to operate or an error occurs, please contact the host.",
+            ],
+            cautions: [
+              "Please enjoy them freely, but clean up water, coffee stains, and used tools afterward.",
+            ],
+          },
+          lock: {
+            title: "Door Lock",
+            summary: "Please close and lock the door after entering or leaving for safety and to keep insects out.",
+            usage: [
+              "Check that the door is fully closed after entering or leaving.",
+              "Please also check that it is locked when you are inside or going out.",
+            ],
+            cautions: [
+              "If the wind opens the door, insects can come in.",
+              "The inner door closes if you push it with a little force.",
+            ],
+          },
+          boiler: {
+            title: "Hot Water Boiler",
+            summary: "Hot water can be checked on the boiler controller near the entrance of the large bedroom.",
+            usage: [
+              "Check that the hot water indicator is on.",
+              "If the indicator is off or the controls are confusing, please contact the host.",
+            ],
+          },
+        },
+        zh: {
+          trash: {
+            title: "垃圾桶",
+            summary: "请按照标注类别分类垃圾，并只使用指定袋子。",
+            usage: [
+              "每个垃圾桶只投入其标注类别的垃圾。",
+              "只使用各垃圾桶旁挂着的专用袋子。",
+              "分类不确定时，请询问房东或作为一般垃圾处理。",
+              "所有袋子请扎紧，避免渗漏。",
+              "扎好的袋子请整齐放在屋前电线杆前。",
+              "厨余垃圾请放入屋前橙色盖子的黑色桶中。",
+              "垃圾会在夜间收走。",
+            ],
+          },
+          switch: {
+            title: "电灯开关",
+            summary: "厨房灯由开关右下方按钮控制。",
+            usage: [
+              "开关右下方按钮是厨房灯。",
+              "左下方按钮是玄关灯。",
+              "需要厨房灯时，请只按右下方开关。",
+            ],
+            cautions: [
+              "除厨房灯以外的开关请尽量不要使用。",
+              "如需其他照明或不确定操作方式，请联系房东。",
+            ],
+          },
+          foodWaste: {
+            title: "厨余垃圾袋",
+            summary: "厨余垃圾专用袋放在厨房。",
+            usage: [
+              "将厨余垃圾放入专用袋。",
+              "把袋口扎紧。",
+              "放入屋前橙色盖子的黑色桶中。",
+            ],
+            cautions: [
+              "厨余垃圾必须放入专用袋。",
+              "请扎紧袋口，避免异味散出。",
+            ],
+          },
+          toilet: {
+            title: "马桶使用说明",
+            summary: "为保护老旧管道，马桶内只能投入卫生纸。",
+            usage: [
+              "马桶内只能投入提供的卫生纸。",
+              "湿巾、女性用品、厨房纸等请勿投入马桶，请丢入垃圾桶。",
+            ],
+            cautions: [
+              "即使是可冲散湿巾，也可能堵塞老旧管道，因此禁止使用。",
+              "若因卫生纸以外的物品造成堵塞，可能会收取维修费用。",
+              "如果冲水不顺，请不要反复强行使用，并联系房东。",
+            ],
+          },
+          blind: {
+            title: "百叶窗固定",
+            summary: "调整拉绳方向即可将百叶窗固定在想要的高度。",
+            usage: [
+              "调整好百叶窗高度后，让控制绳朝向 4 点钟方向。",
+              "保持该方向松手，百叶窗就会固定。",
+            ],
+          },
+          coffee: {
+            title: "咖啡器具",
+            summary: "厨房备有摩卡壶、意式咖啡机、手冲工具和胶囊咖啡。",
+            usage: [
+              "可自由使用喜欢的咖啡器具。",
+              "使用胶囊咖啡时，放入胶囊、放好杯子后选择菜单。",
+              "如操作困难或出现错误，请联系房东。",
+            ],
+            cautions: [
+              "可自由使用，但使用后请清理水渍、咖啡痕迹和用过的器具。",
+            ],
+          },
+          lock: {
+            title: "门锁",
+            summary: "为安全和防虫，进出后请务必关门并上锁。",
+            usage: [
+              "进出后请确认门已完全关闭。",
+              "外出或在室内时，也请确认门是否锁好。",
+            ],
+            cautions: [
+              "风把门吹开时，虫子可能会进入。",
+              "中门稍微用力推一下就能关上。",
+            ],
+          },
+          boiler: {
+            title: "热水锅炉",
+            summary: "热水可在大卧室入口处的锅炉控制器确认。",
+            usage: [
+              "确认控制器上的热水指示灯是否亮起。",
+              "如果指示灯关闭或不清楚如何操作，请联系房东。",
+            ],
+          },
+        },
+        ja: {
+          trash: {
+            title: "ごみ箱",
+            summary: "表示されたカテゴリに合わせて分別し、指定の袋だけを使用してください。",
+            usage: [
+              "各ごみ箱に貼られたカテゴリのごみだけを入れてください。",
+              "袋は各ごみ箱の横に掛かっている専用袋だけを使用してください。",
+              "分類が曖昧なごみはホストに確認するか、一般ごみとして出してください。",
+              "すべての袋は漏れないようしっかり結んでください。",
+              "結んだ袋は家の前の電柱前に整えて置いてください。",
+              "生ごみは家の前のオレンジ色のふたの黒い容器に入れてください。",
+              "ごみは夜に回収されます。",
+            ],
+          },
+          switch: {
+            title: "照明スイッチ",
+            summary: "キッチンライトはスイッチ右下のボタンで操作します。",
+            usage: [
+              "スイッチ右下のボタンがキッチンライトです。",
+              "左下のボタンは玄関ライトです。",
+              "キッチンライトが必要な時は右下のスイッチだけ押してください。",
+            ],
+            cautions: [
+              "キッチンライト以外のスイッチはできるだけ使用しないでください。",
+              "他の照明が必要な場合や操作がわからない場合は、ホストにお問い合わせください。",
+            ],
+          },
+          foodWaste: {
+            title: "生ごみ袋",
+            summary: "生ごみ専用袋はキッチンに用意されています。",
+            usage: [
+              "生ごみを専用袋に入れます。",
+              "袋の口をしっかり結びます。",
+              "家の前のオレンジ色のふたの黒い容器に入れてください。",
+            ],
+            cautions: [
+              "生ごみは必ず専用袋に入れてください。",
+              "臭いが漏れないよう、袋はしっかり結んでください。",
+            ],
+          },
+          toilet: {
+            title: "トイレ使用案内",
+            summary: "古い配管を守るため、トイレにはトイレットペーパーだけを流してください。",
+            usage: [
+              "トイレには備え付けのトイレットペーパーのみ流してください。",
+              "ウェットティッシュ、生理用品、キッチンペーパーなどは流さず、ごみ箱に捨ててください。",
+            ],
+            cautions: [
+              "水に流せるウェットティッシュも古い配管を詰まらせる可能性があるため使用禁止です。",
+              "トイレットペーパー以外で詰まりが発生した場合、修理費が請求されることがあります。",
+              "水が流れにくい場合は無理に繰り返し使用せず、ホストにお知らせください。",
+            ],
+          },
+          blind: {
+            title: "ブラインド固定",
+            summary: "ひもの向きを調整すると、希望の高さで固定できます。",
+            usage: [
+              "ブラインドの高さを合わせた後、調整用のひもを4時方向に向けてください。",
+              "その状態で手を離すとブラインドが固定されます。",
+            ],
+          },
+          coffee: {
+            title: "コーヒー器具",
+            summary: "キッチンにはモカポット、エスプレッソマシン、抽出器具、カプセルコーヒーがあります。",
+            usage: [
+              "お好きなコーヒー器具を自由にお使いください。",
+              "カプセルコーヒーはカプセルを入れ、マグカップを置いてメニューを選んでください。",
+              "操作が難しい場合やエラーが出た場合は、ホストにお問い合わせください。",
+            ],
+            cautions: [
+              "自由にお使いいただけますが、使用後は水気、コーヒー跡、使用済み器具をきれいに片付けてください。",
+            ],
+          },
+          lock: {
+            title: "ドアロック",
+            summary: "虫の侵入防止と安全のため、出入り後は必ずドアを閉めて施錠してください。",
+            usage: [
+              "出入り後、ドアが完全に閉まっているか確認してください。",
+              "外出時や室内にいる時も、きちんと施錠されているか確認してください。",
+            ],
+            cautions: [
+              "風でドアが開くと虫が入ることがあります。",
+              "中門は少し力を入れると閉まります。",
+            ],
+          },
+          boiler: {
+            title: "給湯ボイラー",
+            summary: "お湯は大きな寝室入口側のボイラーコントローラーで確認できます。",
+            usage: [
+              "コントローラーでお湯のランプが点灯しているか確認します。",
+              "ランプが消えている、または操作が難しい場合はホストにお問い合わせください。",
+            ],
+          },
+        },
+      };
+
+      function getPinData(key) {
+        return {
+          ...pinData[key],
+          ...(pinTranslations[currentLang]?.[key] || {}),
+        };
+      }
+
       const mapSheet = document.getElementById("map-sheet");
       const sheetIconWrap = document.getElementById("sheet-icon-wrap");
       const sheetIcon = document.getElementById("sheet-icon");
@@ -1781,10 +2797,11 @@
 
       function openMapSheet(data) {
         sheetTitle.textContent = data.title;
+        const labels = sheetLabels[currentLang] || sheetLabels.ko;
         sheetCopy.innerHTML = `
-          ${renderSheetSection("요약", [data.summary])}
-          ${renderSheetSection("사용법", data.usage)}
-          ${data.cautions ? renderSheetSection("주의점", data.cautions) : ""}
+          ${renderSheetSection(labels.summary, [data.summary])}
+          ${renderSheetSection(labels.usage, data.usage)}
+          ${data.cautions ? renderSheetSection(labels.cautions, data.cautions) : ""}
         `;
         sheetIcon.textContent = data.icon;
         sheetIconWrap.style.background = data.color;
@@ -1800,8 +2817,8 @@
 
       document.querySelectorAll("[data-pin]").forEach((pin) => {
         pin.addEventListener("click", () => {
-          const data = pinData[pin.dataset.pin];
-          openMapSheet(data);
+          activePinKey = pin.dataset.pin;
+          openMapSheet(getPinData(activePinKey));
         });
       });
 
@@ -1835,6 +2852,29 @@
           mapSheet.style.transform = "";
         }
       });
+
+      languageToggle.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const willOpen = languageMenu.hidden;
+        languageMenu.hidden = !willOpen;
+        languageToggle.setAttribute("aria-expanded", String(willOpen));
+      });
+
+      languageOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          applyLanguage(option.dataset.lang);
+        });
+      });
+
+      document.addEventListener("click", (event) => {
+        if (!event.target.closest(".language-picker")) {
+          languageMenu.hidden = true;
+          languageToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      collectTextNodes();
+      applyLanguage(currentLang);
     </script>
   </body>
 </html>
