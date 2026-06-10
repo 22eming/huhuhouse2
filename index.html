@@ -663,220 +663,31 @@
 
       .floor-map {
         position: relative;
-        min-height: 560px;
+        aspect-ratio: 921 / 868;
         margin: 0 24px;
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 8px;
-        background:
-          linear-gradient(90deg, rgba(130, 111, 106, 0.16) 1px, transparent 1px),
-          linear-gradient(rgba(130, 111, 106, 0.16) 1px, transparent 1px),
-          #eee9e5;
-        background-size: 38px 38px;
+        background: var(--surface-soft) url("images/huhu-floor-plan.png") center / contain no-repeat;
         box-shadow: var(--soft-shadow);
-      }
-
-      .room {
-        position: absolute;
-        display: grid;
-        place-items: center;
-        border: 3px solid #463f3c;
-        background: rgba(255, 255, 255, 0.42);
-        color: var(--text);
-        font-size: 18px;
-        font-weight: 800;
-        line-height: 1;
-      }
-
-      .room span {
-        padding: 6px 8px;
-        background: rgba(238, 233, 229, 0.76);
-        border-radius: 6px;
-      }
-
-      .room.kitchen {
-        left: 25%;
-        top: 13%;
-        width: 44%;
-        height: 42%;
-      }
-
-      .room.living {
-        left: 33%;
-        top: 56%;
-        width: 30%;
-        height: 32%;
-      }
-
-      .room.bath {
-        left: 69%;
-        top: 37%;
-        width: 25%;
-        height: 18%;
-      }
-
-      .room.bed {
-        left: 68%;
-        top: 57%;
-        width: 28%;
-        height: 31%;
-      }
-
-      .room.bed-main {
-        left: 68%;
-        top: 5%;
-        width: 28%;
-        height: 31%;
-      }
-
-      .stairs,
-      .entry-zone {
-        position: absolute;
-        border: 3px solid #463f3c;
-        background: rgba(255, 255, 255, 0.32);
-      }
-
-      .stairs {
-        left: 7%;
-        top: 40%;
-        width: 18%;
-        height: 34%;
-        display: grid;
-        grid-template-rows: repeat(8, 1fr);
-      }
-
-      .stairs::before {
-        content: "계단";
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        padding: 4px 6px;
-        border-radius: 6px;
-        background: rgba(238, 233, 229, 0.76);
-        color: var(--text);
-        font-size: 13px;
-        font-weight: 800;
-        transform: translate(-50%, -50%) rotate(-90deg);
-      }
-
-      .stairs span {
-        border-bottom: 2px solid rgba(70, 63, 60, 0.62);
-      }
-
-      .entry-zone {
-        left: 7%;
-        top: 74%;
-        width: 26%;
-        height: 15%;
-      }
-
-      .entry-zone::after {
-        content: "";
-        position: absolute;
-        left: -3px;
-        bottom: -3px;
-        width: 52%;
-        height: 52%;
-        border-right: 3px solid #463f3c;
-        transform: skewY(-32deg);
-        transform-origin: bottom left;
-      }
-
-      .door {
-        position: absolute;
-        width: 70px;
-        height: 70px;
-        border: 4px solid #e74b3c;
-        border-top: 0;
-        border-left: 0;
-        border-radius: 0 0 100% 0;
-        opacity: 0.96;
-      }
-
-      .door.entry {
-        left: 25%;
-        top: 67%;
-        transform: rotate(90deg);
-      }
-
-      .door.entry-small {
-        left: 18%;
-        top: 79%;
-        width: 56px;
-        height: 56px;
-        transform: rotate(0deg);
-      }
-
-      .door.kitchen-living {
-        left: 46%;
-        top: 50%;
-        width: 64px;
-        height: 64px;
-        transform: rotate(180deg);
-      }
-
-      .door.bed-main,
-      .door.bath,
-      .door.bed {
-        border-color: #463f3c;
-        border-width: 3px;
-      }
-
-      .door.bed-main {
-        left: 64%;
-        top: 25%;
-        width: 58px;
-        height: 58px;
-        transform: rotate(270deg);
-      }
-
-      .door.bath {
-        left: 68%;
-        top: 43%;
-        width: 50px;
-        height: 50px;
-        transform: rotate(270deg);
-      }
-
-      .door.bed {
-        left: 64%;
-        top: 50%;
-        width: 58px;
-        height: 58px;
-        transform: rotate(0deg);
-      }
-
-      .fixture {
-        position: absolute;
-        border: 3px solid #463f3c;
-        background: rgba(255, 255, 255, 0.52);
-      }
-
-      .fixture.toilet {
-        left: 79%;
-        top: 42%;
-        width: 8%;
-        height: 10%;
-        border-radius: 50% 50% 45% 45%;
-      }
-
-      .fixture.sink {
-        left: 87%;
-        top: 39%;
-        width: 7%;
-        height: 7%;
-        border-radius: 7px;
       }
 
       .pin {
         position: absolute;
-        display: grid;
-        place-items: center;
-        width: 52px;
-        height: 52px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border: 2px solid white;
         border-radius: 50%;
+        background: var(--brand);
         color: white;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1;
         box-shadow: var(--shadow);
+        transform: translate(-50%, -50%);
       }
 
       .pin::before {
@@ -893,28 +704,52 @@
         position: relative;
       }
 
-      .pin.kitchen {
-        top: 29%;
-        left: 43%;
-        background: var(--brand);
+      .pin.trash {
+        top: 72%;
+        left: 95%;
+        background: var(--text);
       }
 
-      .pin.living {
-        top: 68%;
-        left: 45%;
+      .pin.switch {
+        top: 51%;
+        left: 46%;
         background: var(--teal);
       }
 
-      .pin.bath {
-        top: 40%;
-        left: 80%;
+      .pin.food-waste {
+        top: 74%;
+        left: 82%;
         background: var(--green);
       }
 
-      .pin.entrance {
-        top: 79%;
+      .pin.toilet {
+        top: 58%;
+        left: 23%;
+        background: #7d3c98;
+      }
+
+      .pin.blind {
+        top: 92%;
         left: 13%;
-        background: var(--text);
+        background: #9a5b24;
+      }
+
+      .pin.coffee {
+        top: 78%;
+        left: 53%;
+        background: var(--brand);
+      }
+
+      .pin.lock {
+        top: 18%;
+        left: 86%;
+        background: #3f51b5;
+      }
+
+      .pin.boiler {
+        top: 58%;
+        left: 15%;
+        background: #d84315;
       }
 
       @keyframes pulse {
@@ -965,11 +800,29 @@
         line-height: 22px;
       }
 
-      .map-sheet p {
+      .map-sheet p,
+      .map-sheet ul {
         margin-top: 4px;
         color: var(--muted);
         font-size: 13px;
         line-height: 19px;
+      }
+
+      .map-sheet ul {
+        display: grid;
+        gap: 5px;
+        padding-left: 18px;
+      }
+
+      .sheet-section {
+        margin-top: 8px;
+      }
+
+      .sheet-section strong {
+        display: block;
+        color: var(--text);
+        font-size: 13px;
+        line-height: 18px;
       }
 
       .close-sheet {
@@ -1280,41 +1133,21 @@
             <p>아이콘을 누르면 위치별 사용법과 체크 포인트가 표시됩니다.</p>
           </div>
           <div class="floor-map">
-            <div class="stairs" aria-label="계단" role="img">
-              <span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span>
-            </div>
-            <div class="entry-zone" aria-label="현관"></div>
-            <div class="room kitchen"><span>주방</span></div>
-            <div class="room living"><span>거실</span></div>
-            <div class="room bath"><span>욕실</span></div>
-            <div class="room bed-main"><span>침실</span></div>
-            <div class="room bed"><span>침실</span></div>
-            <span class="door entry" aria-hidden="true"></span>
-            <span class="door entry-small" aria-hidden="true"></span>
-            <span class="door kitchen-living" aria-hidden="true"></span>
-            <span class="door bed-main" aria-hidden="true"></span>
-            <span class="door bath" aria-hidden="true"></span>
-            <span class="door bed" aria-hidden="true"></span>
-            <span class="fixture toilet" aria-hidden="true"></span>
-            <span class="fixture sink" aria-hidden="true"></span>
-            <button class="pin kitchen" type="button" data-pin="kitchen" aria-label="주방 커피 머신">
-              <span class="icon">coffee_maker</span>
-            </button>
-            <button class="pin living" type="button" data-pin="living" aria-label="거실 프로젝터">
-              <span class="icon">tv</span>
-            </button>
-            <button class="pin bath" type="button" data-pin="bath" aria-label="욕실 온수">
-              <span class="icon">hot_tub</span>
-            </button>
-            <button class="pin entrance" type="button" data-pin="entrance" aria-label="현관 쓰레기 배출">
-              <span class="icon">delete</span>
-            </button>
+            <button class="pin trash" type="button" data-pin="trash" aria-label="1 쓰레기통">1</button>
+            <button class="pin switch" type="button" data-pin="switch" aria-label="2 전구 스위치">2</button>
+            <button class="pin food-waste" type="button" data-pin="foodWaste" aria-label="3 음식물 쓰레기 봉투">3</button>
+            <button class="pin toilet" type="button" data-pin="toilet" aria-label="4 변기 사용 안내">4</button>
+            <button class="pin blind" type="button" data-pin="blind" aria-label="5 블라인드 고정">5</button>
+            <button class="pin coffee" type="button" data-pin="coffee" aria-label="6 커피 머신">6</button>
+            <button class="pin lock" type="button" data-pin="lock" aria-label="7 문 잠금">7</button>
+            <button class="pin boiler" type="button" data-pin="boiler" aria-label="8 온수 보일러">8</button>
             <article class="map-sheet" id="map-sheet" aria-live="polite">
-              <div class="sheet-icon" id="sheet-icon-wrap"><span class="icon" id="sheet-icon">coffee_maker</span></div>
+              <div class="sheet-icon" id="sheet-icon-wrap"><span class="icon" id="sheet-icon">delete</span></div>
               <div>
-                <h3 id="sheet-title">주방 커피 머신</h3>
-                <p id="sheet-copy">캡슐을 넣고 오른쪽 상단 버튼을 눌러주세요.</p>
+                <h3 id="sheet-title">쓰레기통</h3>
+                <div id="sheet-copy">
+                  <p>번호를 누르면 위치별 체크포인트와 사용법이 표시됩니다.</p>
+                </div>
               </div>
               <button class="close-sheet" type="button" aria-label="안내 닫기" id="close-sheet">
                 <span class="icon">close</span>
@@ -1715,29 +1548,124 @@
       });
 
       const pinData = {
-        kitchen: {
-          title: "주방 커피 머신",
-          copy: "캡슐을 넣고 오른쪽 상단 버튼을 눌러주세요. 물통은 뒤쪽에 있습니다.",
-          icon: "coffee_maker",
-          color: "#ff385c",
-        },
-        living: {
-          title: "거실 프로젝터",
-          copy: "검은색 리모컨의 전원 버튼을 3초간 누르면 켜집니다. 커튼을 닫으면 더 선명합니다.",
-          icon: "tv",
-          color: "#007a7c",
-        },
-        bath: {
-          title: "욕실 온수",
-          copy: "수전 손잡이를 왼쪽으로 완전히 돌리고 약 30초 기다리면 온수가 나옵니다.",
-          icon: "hot_tub",
-          color: "#08734d",
-        },
-        entrance: {
-          title: "현관 분리배출",
-          copy: "일반 쓰레기는 회색 통, 재활용품은 흰색 바구니에 넣어주세요.",
+        trash: {
+          title: "쓰레기통",
+          intro: "쓰레기는 표시된 카테고리에 맞춰 분리해 주세요.",
           icon: "delete",
           color: "#1f1f1f",
+          checkpoints: [
+            "각 쓰레기통에 부착된 카테고리의 쓰레기만 넣어 주세요.",
+            "봉투는 각 쓰레기통 옆에 걸려 있는 전용 봉투만 사용해 주세요.",
+            "분류가 애매한 쓰레기는 호스트에게 문의하시거나 일반 쓰레기로 배출해 주세요.",
+          ],
+          usage: [
+            "모든 봉투는 새지 않도록 단단히 묶어 주세요.",
+            "묶은 봉투는 집 앞 전봇대 앞에 가지런히 놓아 주세요.",
+            "음식물 쓰레기는 집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.",
+            "쓰레기는 밤에 수거됩니다.",
+          ],
+        },
+        switch: {
+          title: "전구 스위치",
+          intro: "필요한 조명만 켜고 끌 수 있도록 안내드립니다.",
+          icon: "light",
+          color: "#007a7c",
+          checkpoints: [
+            "스위치의 우측 하단 버튼이 주방등입니다.",
+            "좌측 하단 버튼은 현관등입니다.",
+            "주방등을 제외한 다른 스위치는 가급적 사용하지 말아 주세요.",
+          ],
+          usage: [
+            "주방등이 필요할 때는 우측 하단 스위치만 눌러 주세요.",
+            "다른 조명이 필요하거나 작동이 헷갈리면 호스트에게 문의해 주세요.",
+          ],
+        },
+        foodWaste: {
+          title: "음식물 쓰레기 봉투",
+          intro: "음식물 쓰레기 전용 봉투는 주방에 비치되어 있습니다.",
+          icon: "compost",
+          color: "#08734d",
+          checkpoints: [
+            "음식물 쓰레기는 반드시 전용 봉투에 넣어 주세요.",
+            "봉투는 냄새가 새지 않도록 단단히 묶어 주세요.",
+          ],
+          usage: [
+            "음식물 쓰레기를 전용 봉투에 담습니다.",
+            "봉투 입구를 단단히 묶습니다.",
+            "집 앞 주황색 뚜껑의 검정색 통에 넣어 주세요.",
+          ],
+        },
+        toilet: {
+          title: "변기 사용 안내",
+          intro: "오래된 배관 보호를 위해 꼭 지켜 주세요.",
+          icon: "wc",
+          color: "#7d3c98",
+          checkpoints: [
+            "변기에는 비치된 화장실 휴지만 넣어 주세요.",
+            "물에 녹는 물티슈도 배관을 막을 수 있어 사용을 피해주세요.",
+            "화장실 휴지 외 제품으로 막힘이 발생하면 수리비가 청구될 수 있습니다.",
+          ],
+          usage: [
+            "물티슈, 여성용품, 키친타월 등은 변기에 넣지 말고 쓰레기통에 버려 주세요.",
+            "물이 잘 내려가지 않으면 무리해서 반복 사용하지 말고 호스트에게 알려 주세요.",
+          ],
+        },
+        blind: {
+          title: "블라인드 고정",
+          intro: "블라인드를 원하는 높이에 고정할 때 사용하는 위치입니다.",
+          icon: "blinds",
+          color: "#9a5b24",
+          checkpoints: [
+            "블라인드 끈을 세게 잡아당기지 말아 주세요.",
+            "고정이 필요할 때만 조절용 끈을 사용해 주세요.",
+          ],
+          usage: [
+            "블라인드 높이를 맞춘 뒤 조절용 끈이 4시 방향을 향하게 해 주세요.",
+            "그 상태에서 손을 놓으면 블라인드가 고정됩니다.",
+          ],
+        },
+        coffee: {
+          title: "커피 머신",
+          intro: "주방에서 여러 가지 커피를 만들 수 있습니다.",
+          icon: "coffee_maker",
+          color: "#ff385c",
+          checkpoints: [
+            "사용 전 물이 충분한지 확인해 주세요.",
+            "사용 후 주변에 물이나 커피가 흘렀다면 가볍게 닦아 주세요.",
+          ],
+          usage: [
+            "원하는 캡슐이나 커피 재료를 넣어 주세요.",
+            "머그컵을 올린 뒤 원하는 메뉴를 선택해 주세요.",
+            "작동이 어렵거나 오류가 나면 호스트에게 문의해 주세요.",
+          ],
+        },
+        lock: {
+          title: "문 잠금",
+          intro: "벌레 유입과 안전을 위해 문은 꼭 잠가 주세요.",
+          icon: "lock",
+          color: "#3f51b5",
+          checkpoints: [
+            "출입 후 문이 완전히 닫혔는지 확인해 주세요.",
+            "바람에 문이 열리면 벌레가 들어올 수 있습니다.",
+          ],
+          usage: [
+            "외출하거나 실내에 있을 때도 문이 제대로 잠겼는지 확인해 주세요.",
+            "문이 잘 닫히지 않으면 억지로 밀지 말고 다시 천천히 닫아 주세요.",
+          ],
+        },
+        boiler: {
+          title: "온수 보일러",
+          intro: "온수는 큰방 입구 쪽 보일러 컨트롤러에서 확인할 수 있습니다.",
+          icon: "water_heater",
+          color: "#d84315",
+          checkpoints: [
+            "온수가 나오지 않으면 컨트롤러의 온수 표시등을 먼저 확인해 주세요.",
+            "컨트롤러는 큰방 입구 쪽에 있습니다.",
+          ],
+          usage: [
+            "컨트롤러에서 온수에 불이 들어와 있는지 확인합니다.",
+            "표시등이 꺼져 있거나 조작이 어렵다면 호스트에게 문의해 주세요.",
+          ],
         },
       };
 
@@ -1747,11 +1675,24 @@
       const sheetTitle = document.getElementById("sheet-title");
       const sheetCopy = document.getElementById("sheet-copy");
 
+      function renderSheetSection(title, items) {
+        return `
+          <div class="sheet-section">
+            <strong>${title}</strong>
+            <ul>${items.map((item) => `<li>${item}</li>`).join("")}</ul>
+          </div>
+        `;
+      }
+
       document.querySelectorAll("[data-pin]").forEach((pin) => {
         pin.addEventListener("click", () => {
           const data = pinData[pin.dataset.pin];
           sheetTitle.textContent = data.title;
-          sheetCopy.textContent = data.copy;
+          sheetCopy.innerHTML = `
+            <p>${data.intro}</p>
+            ${renderSheetSection("체크포인트", data.checkpoints)}
+            ${renderSheetSection("사용법", data.usage)}
+          `;
           sheetIcon.textContent = data.icon;
           sheetIconWrap.style.background = data.color;
           mapSheet.classList.add("visible");
