@@ -653,6 +653,35 @@
         font-weight: 800;
       }
 
+      .faq-photos {
+        display: grid;
+        gap: 10px;
+        padding: 0 16px 14px;
+      }
+
+      .faq-photos figure {
+        margin: 0;
+      }
+
+      .faq-photos img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface-soft);
+        object-fit: cover;
+        box-shadow: var(--soft-shadow);
+      }
+
+      .faq-photos figcaption {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 17px;
+      }
+
       .faq-card.open .faq-answer {
         grid-template-rows: 1fr;
       }
@@ -1146,16 +1175,6 @@
               </button>
             </div>
           </section>
-
-          <section class="section" aria-label="주변 지도">
-            <button class="map-teaser" type="button" data-nav="spots">
-              <div class="map-teaser-content">
-                <span class="icon" aria-hidden="true">location_on</span>
-                <h3>주변 탐색하기</h3>
-                <p>도보권 편의점, 카페, 저녁 식사 장소를 확인하세요.</p>
-              </div>
-            </button>
-          </section>
         </section>
 
         <section class="view" id="map-view" aria-label="지도 Q&A">
@@ -1201,7 +1220,7 @@
               </button>
             </div>
             <div class="sheet-body" id="sheet-copy">
-              <p>아이콘을 누르면 위치별 체크포인트와 사용법이 표시됩니다.</p>
+              <p>아이콘을 누르면 위치별 요약, 사용법, 주의점이 표시됩니다.</p>
             </div>
           </article>
         </section>
@@ -1209,7 +1228,7 @@
         <section class="view" id="faq-view" aria-label="FAQ">
           <div class="page-intro">
             <h1>자주 묻는 질문</h1>
-            <p>체크인, 오시는 길, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.</p>
+            <p>체크인/아웃, 주차, 숙소 이용, 쓰레기 배출 안내를 검색하거나 카테고리로 골라보세요.</p>
           </div>
           <label class="search-box">
             <span class="icon">search</span>
@@ -1218,7 +1237,6 @@
           <nav class="chips" aria-label="FAQ 카테고리">
             <button class="chip active" type="button" data-faq-filter="all">전체</button>
             <button class="chip" type="button" data-faq-filter="check">체크인/아웃</button>
-            <button class="chip" type="button" data-faq-filter="access">오시는 길</button>
             <button class="chip" type="button" data-faq-filter="parking">주차</button>
             <button class="chip" type="button" data-faq-filter="house">숙소 규칙</button>
             <button class="chip" type="button" data-faq-filter="amenity">어메니티</button>
@@ -1245,13 +1263,23 @@
               </button>
               <div class="faq-answer">
                 <div>
-                  <p>대문은 키박스에 있는 열쇠로 열어주세요. 키박스는 현관문 왼쪽에 있습니다.</p>
-                  <p>키박스 비밀번호는 체크인 하루 전에 안내드립니다.</p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/checkin-building.jpg" alt="숙소 건물 외관과 입구 위치" />
+                      <figcaption>사진의 화살표 방향으로 올라와 해당 건물의 가장 윗층으로 오시면 됩니다.</figcaption>
+                    </figure>
+                    <figure>
+                      <img src="images/checkin-keybox.jpg" alt="현관문 왼쪽에 있는 키박스" />
+                      <figcaption>현관문 왼쪽 벽면에 키박스가 있습니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p>숙소는 해당 건물의 가장 윗층입니다. 계단을 따라 가장 위까지 올라와 주세요.</p>
+                  <p>현관문 왼쪽에 키박스가 있습니다. 키박스 비밀번호는 예약자분의 연락처 뒷 4자리입니다.</p>
                   <p>열쇠를 분실하지 않도록 주의해 주세요. 분실 시 교체 비용 8,000원이 발생합니다.</p>
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="access">
+            <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
                 <span>숙소 주소는 어디인가요?</span>
                 <span class="icon">expand_more</span>
@@ -1263,7 +1291,7 @@
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="access">
+            <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
                 <span>서울역에서 어떻게 오나요?</span>
                 <span class="icon">expand_more</span>
@@ -1279,7 +1307,7 @@
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="access">
+            <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
                 <span>숙대입구역에서 어떻게 오나요?</span>
                 <span class="icon">expand_more</span>
@@ -1295,7 +1323,7 @@
                 </div>
               </div>
             </article>
-            <article class="faq-card" data-category="access">
+            <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
                 <span>가까운 지하철과 버스는 무엇인가요?</span>
                 <span class="icon">expand_more</span>
