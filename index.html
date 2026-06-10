@@ -663,39 +663,209 @@
 
       .floor-map {
         position: relative;
-        min-height: 520px;
+        min-height: 560px;
         margin: 0 24px;
         overflow: hidden;
         border: 1px solid var(--line);
         border-radius: 8px;
         background:
-          linear-gradient(90deg, rgba(255, 255, 255, 0.58) 1px, transparent 1px),
-          linear-gradient(rgba(255, 255, 255, 0.58) 1px, transparent 1px),
-          #ddd5d1;
-        background-size: 34px 34px;
+          linear-gradient(90deg, rgba(130, 111, 106, 0.16) 1px, transparent 1px),
+          linear-gradient(rgba(130, 111, 106, 0.16) 1px, transparent 1px),
+          #eee9e5;
+        background-size: 38px 38px;
         box-shadow: var(--soft-shadow);
       }
 
       .room {
         position: absolute;
-        border: 4px solid rgba(255, 255, 255, 0.78);
-        background: rgba(255, 255, 255, 0.18);
+        display: grid;
+        place-items: center;
+        border: 3px solid #463f3c;
+        background: rgba(255, 255, 255, 0.42);
+        color: var(--text);
+        font-size: 18px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .room span {
+        padding: 6px 8px;
+        background: rgba(238, 233, 229, 0.76);
+        border-radius: 6px;
       }
 
       .room.kitchen {
-        inset: 8% 52% 54% 8%;
+        left: 25%;
+        top: 13%;
+        width: 44%;
+        height: 42%;
       }
 
       .room.living {
-        inset: 8% 8% 35% 48%;
+        left: 33%;
+        top: 56%;
+        width: 30%;
+        height: 32%;
       }
 
       .room.bath {
-        inset: 50% 56% 10% 8%;
+        left: 69%;
+        top: 37%;
+        width: 25%;
+        height: 18%;
       }
 
       .room.bed {
-        inset: 66% 8% 10% 46%;
+        left: 68%;
+        top: 57%;
+        width: 28%;
+        height: 31%;
+      }
+
+      .room.bed-main {
+        left: 68%;
+        top: 5%;
+        width: 28%;
+        height: 31%;
+      }
+
+      .stairs,
+      .entry-zone {
+        position: absolute;
+        border: 3px solid #463f3c;
+        background: rgba(255, 255, 255, 0.32);
+      }
+
+      .stairs {
+        left: 7%;
+        top: 40%;
+        width: 18%;
+        height: 34%;
+        display: grid;
+        grid-template-rows: repeat(8, 1fr);
+      }
+
+      .stairs::before {
+        content: "계단";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        padding: 4px 6px;
+        border-radius: 6px;
+        background: rgba(238, 233, 229, 0.76);
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 800;
+        transform: translate(-50%, -50%) rotate(-90deg);
+      }
+
+      .stairs span {
+        border-bottom: 2px solid rgba(70, 63, 60, 0.62);
+      }
+
+      .entry-zone {
+        left: 7%;
+        top: 74%;
+        width: 26%;
+        height: 15%;
+      }
+
+      .entry-zone::after {
+        content: "";
+        position: absolute;
+        left: -3px;
+        bottom: -3px;
+        width: 52%;
+        height: 52%;
+        border-right: 3px solid #463f3c;
+        transform: skewY(-32deg);
+        transform-origin: bottom left;
+      }
+
+      .door {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        border: 4px solid #e74b3c;
+        border-top: 0;
+        border-left: 0;
+        border-radius: 0 0 100% 0;
+        opacity: 0.96;
+      }
+
+      .door.entry {
+        left: 25%;
+        top: 67%;
+        transform: rotate(90deg);
+      }
+
+      .door.entry-small {
+        left: 18%;
+        top: 79%;
+        width: 56px;
+        height: 56px;
+        transform: rotate(0deg);
+      }
+
+      .door.kitchen-living {
+        left: 46%;
+        top: 50%;
+        width: 64px;
+        height: 64px;
+        transform: rotate(180deg);
+      }
+
+      .door.bed-main,
+      .door.bath,
+      .door.bed {
+        border-color: #463f3c;
+        border-width: 3px;
+      }
+
+      .door.bed-main {
+        left: 64%;
+        top: 25%;
+        width: 58px;
+        height: 58px;
+        transform: rotate(270deg);
+      }
+
+      .door.bath {
+        left: 68%;
+        top: 43%;
+        width: 50px;
+        height: 50px;
+        transform: rotate(270deg);
+      }
+
+      .door.bed {
+        left: 64%;
+        top: 50%;
+        width: 58px;
+        height: 58px;
+        transform: rotate(0deg);
+      }
+
+      .fixture {
+        position: absolute;
+        border: 3px solid #463f3c;
+        background: rgba(255, 255, 255, 0.52);
+      }
+
+      .fixture.toilet {
+        left: 79%;
+        top: 42%;
+        width: 8%;
+        height: 10%;
+        border-radius: 50% 50% 45% 45%;
+      }
+
+      .fixture.sink {
+        left: 87%;
+        top: 39%;
+        width: 7%;
+        height: 7%;
+        border-radius: 7px;
       }
 
       .pin {
@@ -724,26 +894,26 @@
       }
 
       .pin.kitchen {
-        top: 19%;
-        left: 24%;
+        top: 29%;
+        left: 43%;
         background: var(--brand);
       }
 
       .pin.living {
-        top: 38%;
-        left: 68%;
+        top: 68%;
+        left: 45%;
         background: var(--teal);
       }
 
       .pin.bath {
-        top: 67%;
-        left: 25%;
+        top: 40%;
+        left: 80%;
         background: var(--green);
       }
 
       .pin.entrance {
-        top: 78%;
-        left: 73%;
+        top: 79%;
+        left: 13%;
         background: var(--text);
       }
 
@@ -1110,10 +1280,24 @@
             <p>아이콘을 누르면 위치별 사용법과 체크 포인트가 표시됩니다.</p>
           </div>
           <div class="floor-map">
-            <div class="room kitchen"></div>
-            <div class="room living"></div>
-            <div class="room bath"></div>
-            <div class="room bed"></div>
+            <div class="stairs" aria-label="계단" role="img">
+              <span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span>
+            </div>
+            <div class="entry-zone" aria-label="현관"></div>
+            <div class="room kitchen"><span>주방</span></div>
+            <div class="room living"><span>거실</span></div>
+            <div class="room bath"><span>욕실</span></div>
+            <div class="room bed-main"><span>침실</span></div>
+            <div class="room bed"><span>침실</span></div>
+            <span class="door entry" aria-hidden="true"></span>
+            <span class="door entry-small" aria-hidden="true"></span>
+            <span class="door kitchen-living" aria-hidden="true"></span>
+            <span class="door bed-main" aria-hidden="true"></span>
+            <span class="door bath" aria-hidden="true"></span>
+            <span class="door bed" aria-hidden="true"></span>
+            <span class="fixture toilet" aria-hidden="true"></span>
+            <span class="fixture sink" aria-hidden="true"></span>
             <button class="pin kitchen" type="button" data-pin="kitchen" aria-label="주방 커피 머신">
               <span class="icon">coffee_maker</span>
             </button>
