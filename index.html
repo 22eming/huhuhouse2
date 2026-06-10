@@ -677,14 +677,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        width: 38px;
+        height: 38px;
         border: 2px solid white;
         border-radius: 50%;
         background: var(--brand);
         color: white;
-        font-size: 15px;
-        font-weight: 800;
         line-height: 1;
         box-shadow: var(--shadow);
         transform: translate(-50%, -50%);
@@ -702,6 +700,7 @@
 
       .pin .icon {
         position: relative;
+        font-size: 21px;
       }
 
       .pin.trash {
@@ -760,39 +759,71 @@
       }
 
       .map-sheet {
-        position: absolute;
-        left: 14px;
-        right: 14px;
-        bottom: 14px;
-        display: flex;
-        gap: 12px;
-        align-items: start;
-        padding: 15px;
-        border: 1px solid rgba(255, 255, 255, 0.66);
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.88);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(14px);
-        transform: translateY(18px);
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        z-index: 45;
+        display: grid;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        width: 100%;
+        max-width: 480px;
+        max-height: min(62dvh, 560px);
+        padding: 8px 18px calc(18px + env(safe-area-inset-bottom));
+        border: 1px solid rgba(255, 255, 255, 0.72);
+        border-bottom: 0;
+        border-radius: 18px 18px 0 0;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 -16px 42px rgba(31, 31, 31, 0.18);
+        backdrop-filter: blur(18px);
+        transform: translate(-50%, 105%);
         opacity: 0;
         pointer-events: none;
-        transition: 0.22s ease;
+        transition:
+          transform 0.24s ease,
+          opacity 0.2s ease;
       }
 
       .map-sheet.visible {
-        transform: translateY(0);
+        transform: translate(-50%, 0);
         opacity: 1;
         pointer-events: auto;
+      }
+
+      .sheet-handle {
+        justify-self: center;
+        width: 44px;
+        height: 5px;
+        margin-bottom: 10px;
+        border-radius: 999px;
+        background: var(--surface-strong);
+      }
+
+      .sheet-header {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        gap: 12px;
+        align-items: start;
+        min-height: 42px;
       }
 
       .sheet-icon {
         display: grid;
         place-items: center;
         flex: 0 0 42px;
+        width: 42px;
         height: 42px;
         border-radius: 8px;
         background: var(--brand);
         color: white;
+      }
+
+      .sheet-body {
+        min-height: 0;
+        margin-top: 12px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        padding-right: 4px;
+        -webkit-overflow-scrolling: touch;
       }
 
       .map-sheet h3 {
@@ -828,7 +859,7 @@
       .close-sheet {
         display: grid;
         place-items: center;
-        flex: 0 0 32px;
+        width: 32px;
         height: 32px;
         border-radius: 50%;
         background: var(--surface-soft);
@@ -1133,27 +1164,46 @@
             <p>아이콘을 누르면 위치별 사용법과 체크 포인트가 표시됩니다.</p>
           </div>
           <div class="floor-map">
-            <button class="pin trash" type="button" data-pin="trash" aria-label="1 쓰레기통">1</button>
-            <button class="pin switch" type="button" data-pin="switch" aria-label="2 전구 스위치">2</button>
-            <button class="pin food-waste" type="button" data-pin="foodWaste" aria-label="3 음식물 쓰레기 봉투">3</button>
-            <button class="pin toilet" type="button" data-pin="toilet" aria-label="4 변기 사용 안내">4</button>
-            <button class="pin blind" type="button" data-pin="blind" aria-label="5 블라인드 고정">5</button>
-            <button class="pin coffee" type="button" data-pin="coffee" aria-label="6 커피 머신">6</button>
-            <button class="pin lock" type="button" data-pin="lock" aria-label="7 문 잠금">7</button>
-            <button class="pin boiler" type="button" data-pin="boiler" aria-label="8 온수 보일러">8</button>
-            <article class="map-sheet" id="map-sheet" aria-live="polite">
+            <button class="pin trash" type="button" data-pin="trash" aria-label="쓰레기통">
+              <span class="icon">delete</span>
+            </button>
+            <button class="pin switch" type="button" data-pin="switch" aria-label="전구 스위치">
+              <span class="icon">lightbulb</span>
+            </button>
+            <button class="pin food-waste" type="button" data-pin="foodWaste" aria-label="음식물 쓰레기 봉투">
+              <span class="icon">compost</span>
+            </button>
+            <button class="pin toilet" type="button" data-pin="toilet" aria-label="변기 사용 안내">
+              <span class="icon">wc</span>
+            </button>
+            <button class="pin blind" type="button" data-pin="blind" aria-label="블라인드 고정">
+              <span class="icon">blinds</span>
+            </button>
+            <button class="pin coffee" type="button" data-pin="coffee" aria-label="커피 머신">
+              <span class="icon">coffee_maker</span>
+            </button>
+            <button class="pin lock" type="button" data-pin="lock" aria-label="문 잠금">
+              <span class="icon">lock</span>
+            </button>
+            <button class="pin boiler" type="button" data-pin="boiler" aria-label="온수 보일러">
+              <span class="icon">water_heater</span>
+            </button>
+          </div>
+          <article class="map-sheet" id="map-sheet" aria-live="polite">
+            <div class="sheet-handle" aria-hidden="true"></div>
+            <div class="sheet-header">
               <div class="sheet-icon" id="sheet-icon-wrap"><span class="icon" id="sheet-icon">delete</span></div>
               <div>
                 <h3 id="sheet-title">쓰레기통</h3>
-                <div id="sheet-copy">
-                  <p>번호를 누르면 위치별 체크포인트와 사용법이 표시됩니다.</p>
-                </div>
               </div>
               <button class="close-sheet" type="button" aria-label="안내 닫기" id="close-sheet">
                 <span class="icon">close</span>
               </button>
-            </article>
-          </div>
+            </div>
+            <div class="sheet-body" id="sheet-copy">
+              <p>아이콘을 누르면 위치별 체크포인트와 사용법이 표시됩니다.</p>
+            </div>
+          </article>
         </section>
 
         <section class="view" id="faq-view" aria-label="FAQ">
@@ -1568,7 +1618,7 @@
         switch: {
           title: "전구 스위치",
           intro: "필요한 조명만 켜고 끌 수 있도록 안내드립니다.",
-          icon: "light",
+          icon: "lightbulb",
           color: "#007a7c",
           checkpoints: [
             "스위치의 우측 하단 버튼이 주방등입니다.",
@@ -1674,6 +1724,9 @@
       const sheetIcon = document.getElementById("sheet-icon");
       const sheetTitle = document.getElementById("sheet-title");
       const sheetCopy = document.getElementById("sheet-copy");
+      let sheetStartY = 0;
+      let sheetDragY = 0;
+      let sheetDragging = false;
 
       function renderSheetSection(title, items) {
         return `
@@ -1684,23 +1737,61 @@
         `;
       }
 
+      function openMapSheet(data) {
+        sheetTitle.textContent = data.title;
+        sheetCopy.innerHTML = `
+          <p>${data.intro}</p>
+          ${renderSheetSection("체크포인트", data.checkpoints)}
+          ${renderSheetSection("사용법", data.usage)}
+        `;
+        sheetIcon.textContent = data.icon;
+        sheetIconWrap.style.background = data.color;
+        sheetCopy.scrollTop = 0;
+        mapSheet.style.transform = "";
+        mapSheet.classList.add("visible");
+      }
+
+      function closeMapSheet() {
+        mapSheet.classList.remove("visible");
+        mapSheet.style.transform = "";
+      }
+
       document.querySelectorAll("[data-pin]").forEach((pin) => {
         pin.addEventListener("click", () => {
           const data = pinData[pin.dataset.pin];
-          sheetTitle.textContent = data.title;
-          sheetCopy.innerHTML = `
-            <p>${data.intro}</p>
-            ${renderSheetSection("체크포인트", data.checkpoints)}
-            ${renderSheetSection("사용법", data.usage)}
-          `;
-          sheetIcon.textContent = data.icon;
-          sheetIconWrap.style.background = data.color;
-          mapSheet.classList.add("visible");
+          openMapSheet(data);
         });
       });
 
       document.getElementById("close-sheet").addEventListener("click", () => {
-        mapSheet.classList.remove("visible");
+        closeMapSheet();
+      });
+
+      mapSheet.addEventListener("touchstart", (event) => {
+        if (!mapSheet.classList.contains("visible")) return;
+        sheetStartY = event.touches[0].clientY;
+        sheetDragY = 0;
+        sheetDragging = sheetCopy.scrollTop <= 0;
+      }, { passive: true });
+
+      mapSheet.addEventListener("touchmove", (event) => {
+        if (!sheetDragging) return;
+        sheetDragY = Math.max(0, event.touches[0].clientY - sheetStartY);
+        if (sheetDragY <= 0) return;
+        event.preventDefault();
+        mapSheet.style.transition = "none";
+        mapSheet.style.transform = `translate(-50%, ${sheetDragY}px)`;
+      }, { passive: false });
+
+      mapSheet.addEventListener("touchend", () => {
+        if (!sheetDragging) return;
+        sheetDragging = false;
+        mapSheet.style.transition = "";
+        if (sheetDragY > 80) {
+          closeMapSheet();
+        } else {
+          mapSheet.style.transform = "";
+        }
       });
     </script>
   </body>
