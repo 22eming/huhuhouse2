@@ -491,6 +491,74 @@
         gap: 14px;
       }
 
+      .guide-map-panel {
+        margin: 0 16px 16px;
+        overflow: hidden;
+        background: var(--surface);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .guide-map {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 320px;
+        background: var(--surface-soft);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 19px;
+        text-align: center;
+      }
+
+      .guide-map-status {
+        padding: 14px 16px;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 19px;
+      }
+
+      .guide-place-sheet {
+        display: grid;
+        gap: 10px;
+        margin: -4px 16px 16px;
+        padding: 14px;
+        background: var(--surface);
+        box-shadow: var(--soft-shadow);
+      }
+
+      .guide-place-sheet h2 {
+        font-size: 15px;
+        line-height: 21px;
+      }
+
+      .guide-place-list {
+        display: grid;
+        gap: 8px;
+      }
+
+      .guide-place-item {
+        display: grid;
+        width: 100%;
+        gap: 3px;
+        padding: 11px 12px;
+        border-radius: 8px;
+        background: var(--surface-soft);
+        color: var(--text);
+        text-align: left;
+      }
+
+      .guide-place-item strong {
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .guide-place-item span {
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 17px;
+      }
+
       .spot-card {
         overflow: hidden;
         background: var(--surface);
@@ -512,6 +580,10 @@
 
       .spot-image.music {
         background-image: url("https://images.unsplash.com/photo-1516280440614-37939bbacd81?auto=format&fit=crop&w=900&q=80");
+      }
+
+      .spot-image.custom {
+        background-image: var(--spot-image);
       }
 
       .rating {
@@ -563,6 +635,41 @@
         color: var(--muted);
         font-size: 13px;
         line-height: 19px;
+      }
+
+      .spot-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 11px;
+      }
+
+      .spot-meta span {
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 800;
+      }
+
+      .spot-open {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 13px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: var(--text);
+        color: white;
+        font-size: 12px;
+        line-height: 16px;
+        font-weight: 800;
+      }
+
+      .spot-open .icon {
+        font-size: 17px;
       }
 
       .host-tip {
@@ -1608,49 +1715,18 @@
             <button class="chip" type="button" data-spot-filter="cafe">카페</button>
             <button class="chip" type="button" data-spot-filter="night">액티비티</button>
           </nav>
-          <section class="section spot-list">
-            <article class="spot-card" data-spot="food">
-              <div class="spot-image restaurant"><div class="rating"><span class="icon">star</span>4.9</div></div>
-              <div class="spot-copy">
-                <div class="spot-title">
-                  <h3>정담 소미엔</h3>
-                  <span class="category">맛집</span>
-                </div>
-                <p>전통 한식을 현대적으로 재해석한 조용한 저녁 식사 장소입니다.</p>
-                <div class="host-tip">
-                  <span class="icon">person</span>
-                  <p>"트러플 들기름 국수는 꼭 드셔보세요. 예약은 하루 전 추천해요."</p>
-                </div>
-              </div>
-            </article>
-            <article class="spot-card" data-spot="cafe">
-              <div class="spot-image cafe"><div class="rating"><span class="icon">star</span>4.7</div></div>
-              <div class="spot-copy">
-                <div class="spot-title">
-                  <h3>아카이브 커피룸</h3>
-                  <span class="category">카페</span>
-                </div>
-                <p>큰 창과 조용한 좌석이 있어 오전 산책 후 들르기 좋습니다.</p>
-                <div class="host-tip">
-                  <span class="icon">local_cafe</span>
-                  <p>"오전 10시쯤 가면 갓 구운 휘낭시에가 나옵니다."</p>
-                </div>
-              </div>
-            </article>
-            <article class="spot-card" data-spot="night">
-              <div class="spot-image music"><div class="rating"><span class="icon">star</span>4.8</div></div>
-              <div class="spot-copy">
-                <div class="spot-title">
-                  <h3>블루 노트 라이브</h3>
-                  <span class="category">액티비티</span>
-                </div>
-                <p>저녁 산책 후 가볍게 즐기기 좋은 라이브 라운지입니다.</p>
-                <div class="host-tip">
-                  <span class="icon">lightbulb</span>
-                  <p>"금요일 공연은 좌석이 빨리 마감돼서 미리 예약하는 편이 좋아요."</p>
-                </div>
-              </div>
-            </article>
+          <section class="guide-map-panel" aria-label="추천 스팟 지도">
+            <div class="guide-map" id="guide-map">네이버 지도를 준비하고 있습니다.</div>
+            <p class="guide-map-status" id="guide-map-status">지도 안에 보이는 추천 스팟만 아래에 표시됩니다.</p>
+          </section>
+          <section class="guide-place-sheet" aria-label="현재 지도 안 추천 스팟">
+            <h2>현재 지도 안 추천 스팟</h2>
+            <div class="guide-place-list" id="guide-visible-spots">
+              <p class="empty-state">추천 스팟을 불러오고 있습니다.</p>
+            </div>
+          </section>
+          <section class="section spot-list" id="spot-list" aria-live="polite">
+            <p class="empty-state">추천 스팟을 불러오고 있습니다.</p>
           </section>
         </section>
       </main>
@@ -1682,6 +1758,12 @@
         en: "English",
         zh: "中文",
         ja: "日本語",
+      };
+
+      const naverGuideConfig = {
+        ncpKeyId: "mh7puwwo6a",
+        supabaseAnonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFmcHh3cm95cHhvaWRtcG1jYW5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1OTYxMTMsImV4cCI6MjA3MzE3MjExM30.O7gB3eMkj_di2TOf4UPFmGAdsXa6E9-qVwODBCeotFs",
+        placeLookupUrl: "https://afpxwroypxoidmpmcang.supabase.co/functions/v1/naver-place-lookup",
       };
 
       const textTranslations = {
@@ -2235,6 +2317,321 @@
         return currentLang === "ko" ? message : textTranslations[currentLang]?.[message] || message;
       }
 
+      function escapeHtml(value = "") {
+        return String(value)
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function parseFrontMatter(markdown) {
+        const match = markdown.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+        if (!match) return { data: {}, body: markdown.trim() };
+
+        const data = {};
+        match[1].split("\n").forEach((line) => {
+          const separatorIndex = line.indexOf(":");
+          if (separatorIndex === -1) return;
+          const key = line.slice(0, separatorIndex).trim();
+          const value = line.slice(separatorIndex + 1).trim();
+          data[key] = value.replace(/^["']|["']$/g, "");
+        });
+
+        return { data, body: match[2].trim() };
+      }
+
+      function markdownToSummary(body) {
+        return body
+          .split("\n")
+          .map((line) => line.trim())
+          .find((line) => line && !line.startsWith("#") && !line.startsWith(">"))
+          || "";
+      }
+
+      function getSpotIcon(category) {
+        return {
+          food: "person",
+          cafe: "local_cafe",
+          night: "lightbulb",
+        }[category] || "place";
+      }
+
+      function getNaverPlaceId(spot) {
+        return spot.naverPlaceId || spot.naverId || spot.placeId || "";
+      }
+
+      function getNaverUrl(spot) {
+        const id = getNaverPlaceId(spot);
+        return spot.naverUrl || spot.url || (id ? `https://map.naver.com/p/entry/place/${encodeURIComponent(id)}` : "");
+      }
+
+      function getSpotTitle(spot) {
+        const id = getNaverPlaceId(spot);
+        return spot.title || spot.name || (id ? `네이버 장소 ${id}` : "추천 스팟");
+      }
+
+      function getSpotSummary(spot) {
+        return spot.summary || spot.description || markdownToSummary(spot.body || "") || spot.roadAddress || spot.address || "";
+      }
+
+      function getSpotAddress(spot) {
+        return spot.roadAddress || spot.address || "";
+      }
+
+      function renderSpotCard(spot) {
+        const categoryLabels = { food: "맛집", cafe: "카페", night: "액티비티", spot: "추천" };
+        const imageStyle = spot.image ? ` style="--spot-image: url('${escapeHtml(spot.image)}')"` : "";
+        const imageClass = spot.image ? "custom" : spot.imageClass || spot.category || "restaurant";
+        const category = spot.category || "spot";
+        const summary = getSpotSummary(spot);
+        const naverUrl = getNaverUrl(spot);
+        const meta = [spot.distance, spot.hours, spot.price, getSpotAddress(spot)]
+          .filter(Boolean)
+          .map((item) => `<span>${escapeHtml(item)}</span>`)
+          .join("");
+
+        return `
+          <article class="spot-card" data-spot="${escapeHtml(category)}">
+            <div class="spot-image ${escapeHtml(imageClass)}"${imageStyle}>
+              ${spot.rating ? `<div class="rating"><span class="icon">star</span>${escapeHtml(spot.rating)}</div>` : ""}
+            </div>
+            <div class="spot-copy">
+              <div class="spot-title">
+                <h3>${escapeHtml(getSpotTitle(spot))}</h3>
+                <span class="category">${escapeHtml(categoryLabels[category] || category)}</span>
+              </div>
+              <p>${escapeHtml(summary)}</p>
+              ${meta ? `<div class="spot-meta">${meta}</div>` : ""}
+              ${spot.tip ? `
+                <div class="host-tip">
+                  <span class="icon">${escapeHtml(getSpotIcon(category))}</span>
+                  <p>"${escapeHtml(spot.tip)}"</p>
+                </div>
+              ` : ""}
+              ${naverUrl ? `
+                <button class="spot-open" type="button" data-open-url="${escapeHtml(naverUrl)}">
+                  <span class="icon">map</span>
+                  네이버지도
+                </button>
+              ` : ""}
+            </div>
+          </article>
+        `;
+      }
+
+      async function enrichSpotsWithNaver(spots) {
+        const ids = spots.map(getNaverPlaceId).filter(Boolean);
+        if (!ids.length || !naverGuideConfig.placeLookupUrl || !naverGuideConfig.supabaseAnonKey) return spots;
+
+        try {
+          const response = await fetch(naverGuideConfig.placeLookupUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "apikey": naverGuideConfig.supabaseAnonKey,
+              "Authorization": `Bearer ${naverGuideConfig.supabaseAnonKey}`,
+            },
+            body: JSON.stringify({ ids }),
+          });
+          if (!response.ok) throw new Error("Naver place lookup failed.");
+          const data = await response.json();
+          const byId = new Map((data.places || []).map((place) => [String(place.id), place]));
+
+          return spots.map((spot) => {
+            const id = getNaverPlaceId(spot);
+            const place = byId.get(id) || {};
+            return {
+              ...place,
+              ...spot,
+              title: spot.title || place.name,
+              category: spot.category || "spot",
+              lat: spot.lat || place.lat,
+              lng: spot.lng || place.lng,
+              roadAddress: spot.roadAddress || place.roadAddress,
+              address: spot.address || place.address,
+              phone: spot.phone || place.phone,
+              naverUrl: spot.naverUrl || place.naverUrl,
+              sourceStatus: place.sourceStatus || "local",
+            };
+          });
+        } catch {
+          return spots.map((spot) => ({
+            ...spot,
+            category: spot.category || "spot",
+            sourceStatus: "failed",
+          }));
+        }
+      }
+
+      const guideMapState = {
+        map: null,
+        markers: [],
+        spots: [],
+        loadPromise: null,
+      };
+
+      function setGuideMapStatus(message) {
+        const status = document.getElementById("guide-map-status");
+        if (status) status.textContent = message;
+      }
+
+      function renderVisibleGuideSpots(spots) {
+        const list = document.getElementById("guide-visible-spots");
+        if (!list) return;
+        if (!spots.length) {
+          list.innerHTML = `<p class="empty-state">현재 지도 안에 표시할 추천 스팟이 없습니다.</p>`;
+          return;
+        }
+
+        list.innerHTML = spots.map((spot) => {
+          const address = getSpotAddress(spot) || getSpotSummary(spot);
+          return `
+            <button class="guide-place-item" type="button" data-open-url="${escapeHtml(getNaverUrl(spot))}">
+              <strong>${escapeHtml(getSpotTitle(spot))}</strong>
+              ${address ? `<span>${escapeHtml(address)}</span>` : ""}
+            </button>
+          `;
+        }).join("");
+      }
+
+      function getActiveSpotFilter() {
+        return document.querySelector("[data-spot-filter].active")?.dataset.spotFilter || "all";
+      }
+
+      function getGuideDisplaySpots() {
+        const filter = getActiveSpotFilter();
+        return guideMapState.spots.filter((spot) => filter === "all" || spot.category === filter);
+      }
+
+      function loadNaverMaps() {
+        if (window.naver?.maps) return Promise.resolve();
+        if (!naverGuideConfig.ncpKeyId) {
+          return Promise.reject(new Error("네이버 지도 키가 설정되지 않았습니다."));
+        }
+        if (guideMapState.loadPromise) return guideMapState.loadPromise;
+
+        guideMapState.loadPromise = new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${encodeURIComponent(naverGuideConfig.ncpKeyId)}`;
+          script.async = true;
+          script.onload = () => {
+            if (window.naver?.maps) {
+              resolve();
+            } else {
+              reject(new Error("네이버 지도 SDK가 초기화되지 않았습니다. 네이버 콘솔의 허용 도메인을 확인해 주세요."));
+            }
+          };
+          script.onerror = () => reject(new Error("네이버 지도를 불러오지 못했습니다."));
+          document.head.appendChild(script);
+        });
+        return guideMapState.loadPromise;
+      }
+
+      function clearGuideMarkers() {
+        guideMapState.markers.forEach((marker) => marker.setMap(null));
+        guideMapState.markers = [];
+      }
+
+      function hasGuideSpotInBounds(spot) {
+        if (!guideMapState.map || !spot.lat || !spot.lng) return false;
+        const latLng = new naver.maps.LatLng(Number(spot.lat), Number(spot.lng));
+        const bounds = guideMapState.map.getBounds();
+        if (typeof bounds.hasLatLng === "function") return bounds.hasLatLng(latLng);
+
+        const sw = bounds.getSW();
+        const ne = bounds.getNE();
+        const lat = latLng.lat();
+        const lng = latLng.lng();
+        return lat >= sw.lat() && lat <= ne.lat() && lng >= sw.lng() && lng <= ne.lng();
+      }
+
+      function updateVisibleGuideSpots() {
+        const displaySpots = getGuideDisplaySpots();
+        const visibleSpots = displaySpots.filter(hasGuideSpotInBounds);
+        renderVisibleGuideSpots(visibleSpots);
+        const totalPinned = displaySpots.filter((spot) => spot.lat && spot.lng).length;
+        setGuideMapStatus(`지도 안에 보이는 추천 스팟 ${visibleSpots.length}개 / 전체 핀 ${totalPinned}개`);
+      }
+
+      async function initGuideMap() {
+        const mapEl = document.getElementById("guide-map");
+        if (!views.spots.classList.contains("active")) return;
+        if (!mapEl || !guideMapState.spots.length) return;
+
+        const pinnedSpots = getGuideDisplaySpots().filter((spot) => spot.lat && spot.lng);
+        if (!pinnedSpots.length) {
+          mapEl.textContent = "좌표를 확인한 추천 스팟이 없습니다.";
+          renderVisibleGuideSpots([]);
+          setGuideMapStatus("네이버 매장 ID 조회가 실패하면 지도 핀을 표시할 수 없습니다.");
+          return;
+        }
+
+        try {
+          await loadNaverMaps();
+        } catch (error) {
+          mapEl.textContent = "네이버 지도 키를 설정하면 이 영역에 지도가 표시됩니다.";
+          renderVisibleGuideSpots(pinnedSpots);
+          setGuideMapStatus(error instanceof Error ? error.message : "네이버 지도를 불러오지 못했습니다.");
+          return;
+        }
+
+        const centerSpot = pinnedSpots[0];
+        if (!guideMapState.map) {
+          guideMapState.map = new naver.maps.Map(mapEl, {
+            center: new naver.maps.LatLng(Number(centerSpot.lat), Number(centerSpot.lng)),
+            zoom: 15,
+            minZoom: 12,
+            scaleControl: false,
+            mapDataControl: false,
+          });
+          naver.maps.Event.addListener(guideMapState.map, "idle", updateVisibleGuideSpots);
+        }
+
+        clearGuideMarkers();
+        pinnedSpots.forEach((spot) => {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(Number(spot.lat), Number(spot.lng)),
+            map: guideMapState.map,
+            title: getSpotTitle(spot),
+          });
+          naver.maps.Event.addListener(marker, "click", () => {
+            const url = getNaverUrl(spot);
+            if (url) window.open(url, "_blank", "noopener");
+          });
+          guideMapState.markers.push(marker);
+        });
+
+        updateVisibleGuideSpots();
+      }
+
+      async function loadSpots() {
+        const spotList = document.getElementById("spot-list");
+        try {
+          const indexResponse = await fetch("spots/index.json");
+          if (!indexResponse.ok) throw new Error("Spot index could not be loaded.");
+          const files = await indexResponse.json();
+          const spots = await Promise.all(files.map(async (file) => {
+            const response = await fetch(`spots/${file}`);
+            if (!response.ok) throw new Error(`${file} could not be loaded.`);
+            const { data, body } = parseFrontMatter(await response.text());
+            return { ...data, body };
+          }));
+          const enrichedSpots = await enrichSpotsWithNaver(spots);
+
+          guideMapState.spots = enrichedSpots;
+          spotList.innerHTML = enrichedSpots.map(renderSpotCard).join("");
+          const activeFilter = getActiveSpotFilter();
+          setSpotFilter(activeFilter);
+          renderVisibleGuideSpots(getGuideDisplaySpots().filter((spot) => spot.lat && spot.lng));
+          initGuideMap();
+        } catch {
+          spotList.innerHTML = `<p class="empty-state">추천 스팟을 불러오지 못했습니다.</p>`;
+          renderVisibleGuideSpots([]);
+        }
+      }
+
       function collectTextNodes() {
         const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
           acceptNode(node) {
@@ -2306,6 +2703,9 @@
         Object.entries(views).forEach(([key, view]) => view.classList.toggle("active", key === name));
         bottomNavItems.forEach((item) => item.classList.toggle("active", item.dataset.nav === name));
         window.scrollTo({ top: 0, behavior: "smooth" });
+        if (name === "spots") {
+          window.requestAnimationFrame(initGuideMap);
+        }
       }
 
       navItems.forEach((item) => {
@@ -2356,15 +2756,30 @@
         setFaqFilter(activeFilter);
       });
 
+      function setSpotFilter(filter) {
+        document.querySelectorAll("[data-spot-filter]").forEach((chip) => {
+          chip.classList.toggle("active", chip.dataset.spotFilter === filter);
+        });
+        document.querySelectorAll("[data-spot]").forEach((card) => {
+          card.hidden = filter !== "all" && card.dataset.spot !== filter;
+        });
+        if (guideMapState.map) {
+          initGuideMap();
+        } else {
+          renderVisibleGuideSpots(getGuideDisplaySpots().filter((spot) => spot.lat && spot.lng));
+        }
+      }
+
       document.querySelectorAll("[data-spot-filter]").forEach((chip) => {
         chip.addEventListener("click", () => {
-          document.querySelectorAll("[data-spot-filter]").forEach((item) => item.classList.remove("active"));
-          chip.classList.add("active");
-          const filter = chip.dataset.spotFilter;
-          document.querySelectorAll("[data-spot]").forEach((card) => {
-            card.hidden = filter !== "all" && card.dataset.spot !== filter;
-          });
+          setSpotFilter(chip.dataset.spotFilter);
         });
+      });
+
+      document.getElementById("spots-view").addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target.closest("[data-open-url]") : null;
+        if (!target?.dataset.openUrl) return;
+        window.open(target.dataset.openUrl, "_blank", "noopener");
       });
 
       const pinData = {
@@ -2873,8 +3288,10 @@
         }
       });
 
-      collectTextNodes();
-      applyLanguage(currentLang);
+      loadSpots().finally(() => {
+        collectTextNodes();
+        applyLanguage(currentLang);
+      });
     </script>
   </body>
 </html>
