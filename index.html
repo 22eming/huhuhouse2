@@ -2775,12 +2775,13 @@
 
       async function loadSpots() {
         const spotList = document.getElementById("spot-list");
+        const spotDataVersion = "3b26a35";
         try {
-          const indexResponse = await fetch("spots/index.json");
+          const indexResponse = await fetch(`spots/index.json?v=${spotDataVersion}`, { cache: "no-store" });
           if (!indexResponse.ok) throw new Error("Spot index could not be loaded.");
           const files = await indexResponse.json();
           const spots = await Promise.all(files.map(async (file, index) => {
-            const response = await fetch(`spots/${file}`);
+            const response = await fetch(`spots/${file}?v=${spotDataVersion}`, { cache: "no-store" });
             if (!response.ok) throw new Error(`${file} could not be loaded.`);
             const { data, body } = parseFrontMatter(await response.text());
             return { ...data, body, slug: file.replace(/\.md$/, ""), originalIndex: index };
