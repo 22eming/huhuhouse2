@@ -499,11 +499,17 @@
       }
 
       .guide-map {
-        display: grid;
-        place-items: center;
+        position: relative;
+        overflow: hidden;
+        display: block;
         width: 100%;
         height: 320px;
         background: var(--surface-soft);
+      }
+
+      .guide-map.is-message {
+        display: grid;
+        place-items: center;
         color: var(--muted);
         font-size: 13px;
         line-height: 19px;
@@ -1716,7 +1722,7 @@
             <button class="chip" type="button" data-spot-filter="night">액티비티</button>
           </nav>
           <section class="guide-map-panel" aria-label="추천 스팟 지도">
-            <div class="guide-map" id="guide-map">네이버 지도를 준비하고 있습니다.</div>
+            <div class="guide-map is-message" id="guide-map">네이버 지도를 준비하고 있습니다.</div>
             <p class="guide-map-status" id="guide-map-status">지도 안에 보이는 추천 스팟만 아래에 표시됩니다.</p>
           </section>
           <section class="guide-place-sheet" aria-label="현재 지도 안 추천 스팟">
@@ -2562,6 +2568,7 @@
 
         const pinnedSpots = getGuideDisplaySpots().filter((spot) => spot.lat && spot.lng);
         if (!pinnedSpots.length) {
+          mapEl.classList.add("is-message");
           mapEl.textContent = "좌표를 확인한 추천 스팟이 없습니다.";
           renderVisibleGuideSpots([]);
           setGuideMapStatus("네이버 매장 ID 조회가 실패하면 지도 핀을 표시할 수 없습니다.");
@@ -2571,11 +2578,15 @@
         try {
           await loadNaverMaps();
         } catch (error) {
+          mapEl.classList.add("is-message");
           mapEl.textContent = "네이버 지도 키를 설정하면 이 영역에 지도가 표시됩니다.";
           renderVisibleGuideSpots(pinnedSpots);
           setGuideMapStatus(error instanceof Error ? error.message : "네이버 지도를 불러오지 못했습니다.");
           return;
         }
+
+        mapEl.classList.remove("is-message");
+        if (!guideMapState.map) mapEl.textContent = "";
 
         const centerSpot = pinnedSpots[0];
         if (!guideMapState.map) {
