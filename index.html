@@ -314,7 +314,10 @@
         display: flex;
         align-items: center;
         gap: 14px;
+        width: 100%;
         padding: 16px;
+        color: var(--text);
+        text-align: left;
         backdrop-filter: blur(14px);
       }
 
@@ -1445,13 +1448,13 @@
                 <span class="icon">content_copy</span>
               </button>
             </article>
-            <article class="info-card">
-              <div class="info-icon"><span class="icon">event_busy</span></div>
+            <button class="info-card" type="button" data-nav="faq" data-filter="house">
+              <div class="info-icon"><span class="icon">rule</span></div>
               <div class="info-body">
-                <div class="label">체크아웃</div>
-                <div class="value">오전 11:00</div>
+                <div class="label">숙소 이용 규칙</div>
+                <div class="value">소음, 금연, 반려동물 안내</div>
               </div>
-            </article>
+            </button>
           </section>
 
           <section class="section" aria-label="주요 안내">
@@ -1462,25 +1465,25 @@
               </div>
             </div>
             <div class="tile-grid">
-              <button class="guide-card" type="button" data-nav="faq" data-filter="house">
-                <span class="icon">rule</span>
-                <strong>숙소 이용 규칙</strong>
-                <span>소음, 금연, 반려동물 안내</span>
+              <button class="guide-card" type="button" data-nav="faq" data-filter="check">
+                <span class="icon">event_busy</span>
+                <strong>체크인/아웃</strong>
+                <span>체크인, 체크아웃, 오시는 길</span>
               </button>
               <button class="guide-card" type="button" data-nav="map">
                 <span class="icon">map</span>
                 <strong>실내 안내 지도</strong>
                 <span>기기별 위치와 사용법</span>
               </button>
-              <button class="guide-card" type="button" data-nav="spots">
-                <span class="icon">restaurant</span>
-                <strong>주변 맛집</strong>
-                <span>호스트가 고른 동네 스팟</span>
-              </button>
               <button class="guide-card" type="button" data-nav="faq" data-filter="waste">
                 <span class="icon">delete</span>
                 <strong>쓰레기 분리 배출</strong>
                 <span>일반 쓰레기와 재활용 안내</span>
+              </button>
+              <button class="guide-card" type="button" data-nav="spots">
+                <span class="icon">restaurant</span>
+                <strong>주변 맛집</strong>
+                <span>호스트가 고른 동네 스팟</span>
               </button>
             </div>
           </section>
@@ -1617,6 +1620,19 @@
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
+                <span>서울역에서 택시를 타고 싶어요</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>서울역 1번 출구로 나오면 택시 승강장이 있습니다.</p>
+                  <p>기사님께 <strong>서울특별시 용산구 후암로30길 22</strong>로 가달라고 말씀해 주세요.</p>
+                  <p>도착 후 해당 건물의 가장 윗층으로 오시면 됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
                 <span>서울역에서 걸어오고 싶어요</span>
                 <span class="icon">expand_more</span>
               </button>
@@ -1682,6 +1698,23 @@
                 <div>
                   <p>해당 숙소는 2.5층 높이의 계단을 올라야 합니다. 체크인과 짐 이동 시 참고해 주세요.</p>
                   <p>가끔 1층 할머니가 1층 문을 열어둘 때가 있습니다. 조용히 살짝 지나가시면 됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
+                <span>체크아웃 전에 무엇을 하면 되나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>Before you leave, please double-check that you haven’t left anything behind.</p>
+                  <ul>
+                    <li>Each trash bin is labeled for its specific type of waste. Please use the bags hanging next to each bin.</li>
+                    <li>For food waste, please use the small yellow bags provided. They are located in the leftmost drawer in the kitchen.</li>
+                    <li>Please leave all trash bags under the utility pole outside the house, and place the food waste bag inside the bin with the orange lid.</li>
+                  </ul>
+                  <p>I hope you’ve made happy memories here, and if you have a moment, I would truly appreciate a lovely review! 🤍</p>
                 </div>
               </div>
             </article>
@@ -1754,6 +1787,36 @@
                 <div>
                   <p>준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.</p>
                   <p>사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="amenity">
+              <button class="faq-question" type="button">
+                <span>대신 결제 서비스가 있나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>음식 배달이나 쇼핑몰 등 온라인 주문이 힘든 경우, 주문 링크와 필요한 물품을 설명해 주시면 대신 주문해드립니다.</p>
+                  <p>결제는 에어비앤비의 <strong>도움 요청</strong> → <strong>도움말 센터</strong>를 통해 결제 요청으로 진행됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="amenity">
+              <button class="faq-question" type="button">
+                <span>뜨거운 물이 안 나와요</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/boiler-controller.png" alt="보일러 컨트롤러 온수 버튼 위치" />
+                      <figcaption>큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.</figcaption>
+                    </figure>
+                  </div>
+                  <p>큰방 입구쪽에 보일러 컨트롤러가 있습니다.</p>
+                  <p>보일러 전원과 온수 불이 켜져 있는지 확인해주세요.</p>
                 </div>
               </div>
             </article>
@@ -1931,6 +1994,7 @@
           "자주 확인하는 내용을 빠르게 열어보세요.": "Open the most-used guide items quickly.",
           "숙소 이용 규칙": "House Rules",
           "소음, 금연, 반려동물 안내": "Noise, smoking, and pet rules",
+          "체크인, 체크아웃, 오시는 길": "Check-in, check-out, and directions",
           "실내 안내 지도": "Indoor Guide Map",
           "기기별 위치와 사용법": "Locations and how to use each item",
           "주변 맛집": "Nearby Spots",
@@ -1993,6 +2057,11 @@
           "Naver Map": "Naver Map",
           " 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.": ", which supports English, and searching the Korean address below.",
           "서울특별시 용산구 후암로30길 22": "22 Huam-ro 30-gil, Yongsan-gu, Seoul",
+          "서울역에서 택시를 타고 싶어요": "I want to take a taxi from Seoul Station",
+          "서울역 1번 출구로 나오면 택시 승강장이 있습니다.": "There is a taxi stand outside Seoul Station Exit 1.",
+          "기사님께 ": "Please ask the driver to go to ",
+          "로 가달라고 말씀해 주세요.": ".",
+          "도착 후 해당 건물의 가장 윗층으로 오시면 됩니다.": "After arriving, please come up to the top floor of the building.",
           "숙대입구역에서 어떻게 오나요?": "How do I get here from Sookmyung Women's Univ. Station?",
           "숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.": "Exit Sookmyung Women's Univ. Station through Exit 5 and take the Yongsan 02 village bus at the stop in front.",
           "4정거장 뒤 후암시장 정류장에서 하차합니다.": "Get off after 4 stops at Huam Market.",
@@ -2008,6 +2077,12 @@
           "계단이나 짐 이동 시 주의할 점이 있나요?": "Anything to know about stairs or luggage?",
           "해당 숙소는 2.5층 높이의 계단을 올라야 합니다. 체크인과 짐 이동 시 참고해 주세요.": "The house requires climbing stairs equivalent to about 2.5 floors. Please keep this in mind for check-in and luggage.",
           "가끔 1층 할머니가 1층 문을 열어둘 때가 있습니다. 조용히 살짝 지나가시면 됩니다.": "Sometimes the elderly neighbor on the first floor leaves her door open. Please just pass by quietly.",
+          "체크아웃 전에 무엇을 하면 되나요?": "What should I do before checking out?",
+          "Before you leave, please double-check that you haven’t left anything behind.": "Before you leave, please double-check that you haven’t left anything behind.",
+          "Each trash bin is labeled for its specific type of waste. Please use the bags hanging next to each bin.": "Each trash bin is labeled for its specific type of waste. Please use the bags hanging next to each bin.",
+          "For food waste, please use the small yellow bags provided. They are located in the leftmost drawer in the kitchen.": "For food waste, please use the small yellow bags provided. They are located in the leftmost drawer in the kitchen.",
+          "Please leave all trash bags under the utility pole outside the house, and place the food waste bag inside the bin with the orange lid.": "Please leave all trash bags under the utility pole outside the house, and place the food waste bag inside the bin with the orange lid.",
+          "I hope you’ve made happy memories here, and if you have a moment, I would truly appreciate a lovely review! 🤍": "I hope you’ve made happy memories here, and if you have a moment, I would truly appreciate a lovely review! 🤍",
           "소음 관련 주의사항이 있나요?": "Are there any noise rules?",
           "오래된 주택이라 방음이 완벽하지 않습니다. 특히 밤늦은 시간에는 이웃을 위해 목소리, 통화 소리, 음악 소리를 낮춰 주세요.": "This is an older house, so soundproofing is not perfect. Please keep voices, phone calls, and music low, especially late at night.",
           "밤 10시 이후에는 큰 음악이나 큰 대화를 삼가 주세요.": "Please avoid loud music or loud conversations after 10:00 PM.",
@@ -2028,6 +2103,18 @@
           "커피 캡슐과 인센스는 사용해도 되나요?": "Can I use the coffee capsules and incense?",
           "준비된 커피 캡슐과 인센스는 자유롭게 사용하셔도 됩니다.": "You are welcome to use the prepared coffee capsules and incense.",
           "사용한 캡슐과 인센스 재는 종류에 맞게 잘 버려주세요.": "Please dispose of used capsules and incense ash properly.",
+          "대신 결제 서비스가 있나요?": "Can you help pay for online orders?",
+          "음식 배달이나 쇼핑몰 등 온라인 주문이 힘든 경우, 주문 링크와 필요한 물품을 설명해 주시면 대신 주문해드립니다.": "If ordering food delivery or shopping online is difficult, send the link and explain what you need, and we can place the order for you.",
+          "결제는 에어비앤비의 ": "Payment will be requested through Airbnb’s ",
+          "도움 요청": "Request help",
+          " → ": " → ",
+          "도움말 센터": "Help Center",
+          "를 통해 결제 요청으로 진행됩니다.": ".",
+          "뜨거운 물이 안 나와요": "There is no hot water",
+          "보일러 컨트롤러 온수 버튼 위치": "Hot water button on the boiler controller",
+          "큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.": "The boiler controller is near the entrance of the large bedroom. Please check the boiler power and hot water lights.",
+          "큰방 입구쪽에 보일러 컨트롤러가 있습니다.": "The boiler controller is near the entrance of the large bedroom.",
+          "보일러 전원과 온수 불이 켜져 있는지 확인해주세요.": "Please check that the boiler power and hot water lights are on.",
           "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "Where are the indoor trash bins and how are they sorted?",
           "쓰레기통은 부엌 옆 창고에 있습니다.": "The trash bins are in the storage area next to the kitchen.",
           "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "The three-tier bin is divided into general trash, cans, and bottles. There is also a separate bin for hard plastic.",
