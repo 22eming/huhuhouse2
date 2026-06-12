@@ -767,9 +767,10 @@
 
       .guide-marker {
         display: grid;
+        width: 132px;
+        height: 52px;
         justify-items: center;
         gap: 3px;
-        transform: translate(-50%, -100%);
         white-space: nowrap;
       }
 
@@ -2719,7 +2720,7 @@
                 </div>
               `,
               size: new naver.maps.Size(132, 52),
-              anchor: new naver.maps.Point(66, 24),
+              anchor: new naver.maps.Point(66, 10),
             },
           });
           naver.maps.Event.addListener(marker, "click", () => setActiveSpot(spot, { pan: true, scroll: true }));
@@ -2775,7 +2776,7 @@
 
       async function loadSpots() {
         const spotList = document.getElementById("spot-list");
-        const spotDataVersion = "3b26a35";
+        const spotDataVersion = "c7e51b9";
         try {
           const indexResponse = await fetch(`spots/index.json?v=${spotDataVersion}`, { cache: "no-store" });
           if (!indexResponse.ok) throw new Error("Spot index could not be loaded.");
