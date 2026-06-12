@@ -504,6 +504,8 @@
 
       .guide-map-stage {
         position: relative;
+        display: grid;
+        grid-template-rows: minmax(0, 1fr) clamp(280px, 38%, 360px);
         overflow: hidden;
         width: 100%;
         height: 100%;
@@ -511,8 +513,8 @@
       }
 
       .guide-map {
-        position: absolute !important;
-        inset: 0;
+        position: relative !important;
+        min-height: 0;
         width: 100% !important;
         height: 100% !important;
         overflow: hidden;
@@ -556,15 +558,13 @@
       }
 
       .guide-bottom-sheet {
-        position: absolute;
-        right: 12px;
-        bottom: 12px;
-        left: 12px;
+        position: relative;
         z-index: 6;
         display: grid;
-        grid-template-rows: auto 1fr;
-        max-height: min(45dvh, 380px);
-        min-height: 238px;
+        grid-template-rows: auto auto minmax(0, 1fr);
+        min-height: 0;
+        height: calc(100% - 12px);
+        margin: 0 12px 12px;
         overflow: hidden;
         border: 1px solid rgba(230, 215, 216, 0.86);
         border-radius: 14px 14px 8px 8px;
@@ -617,10 +617,12 @@
 
       .spot-sheet-card {
         display: grid;
-        grid-template-columns: 92px minmax(0, 1fr);
+        grid-template-columns: 112px minmax(0, 1fr);
+        align-items: start;
         gap: 12px;
         width: 100%;
-        min-height: 104px;
+        min-height: 132px;
+        overflow: hidden;
         padding: 10px;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -636,8 +638,9 @@
       }
 
       .spot-sheet-card .spot-image {
+        width: 112px;
+        height: 112px;
         min-height: 0;
-        height: 100%;
         border-radius: 7px;
       }
 
@@ -700,9 +703,11 @@
         justify-content: space-between;
         align-items: start;
         gap: 12px;
+        min-width: 0;
       }
 
       .spot-title h3 {
+        min-width: 0;
         overflow: hidden;
         display: -webkit-box;
         font-size: 15px;
@@ -713,10 +718,14 @@
 
       .category {
         flex: 0 0 auto;
+        max-width: 64px;
+        overflow: hidden;
         color: var(--brand-deep);
         font-size: 12px;
         line-height: 18px;
         font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .spot-copy > p {
@@ -727,17 +736,21 @@
         font-size: 12px;
         line-height: 17px;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
       }
 
       .spot-meta {
         display: flex;
         flex-wrap: wrap;
         gap: 5px;
+        min-width: 0;
         margin-top: 8px;
+        overflow: hidden;
       }
 
       .spot-meta span {
+        max-width: 100%;
+        overflow: hidden;
         padding: 4px 7px;
         border-radius: 999px;
         background: var(--surface-soft);
@@ -745,6 +758,8 @@
         font-size: 11px;
         line-height: 15px;
         font-weight: 800;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       .spot-open {
@@ -2497,7 +2512,7 @@
         const summary = getSpotSummary(spot);
         const naverUrl = getNaverUrl(spot);
         const spotKey = getSpotKey(spot);
-        const meta = [spot.distance, spot.hours, spot.price, getSpotAddress(spot)]
+        const meta = [spot.distance, spot.hours, spot.price]
           .filter(Boolean)
           .map((item) => `<span>${escapeHtml(item)}</span>`)
           .join("");
