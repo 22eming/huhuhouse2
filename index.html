@@ -957,6 +957,16 @@
         font-weight: 800;
       }
 
+      .faq-answer a {
+        color: var(--primary);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .faq-answer a:hover {
+        text-decoration: underline;
+      }
+
       .faq-photos {
         display: grid;
         gap: 10px;
@@ -977,6 +987,14 @@
         background: var(--surface-soft);
         object-fit: cover;
         box-shadow: var(--soft-shadow);
+      }
+
+      .faq-photos img.faq-photo-contain {
+        object-fit: contain;
+      }
+
+      .faq-photos img.faq-photo-tall {
+        aspect-ratio: 9 / 14;
       }
 
       .faq-photos figcaption {
@@ -1604,77 +1622,143 @@
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
-                <span>서울역에서 어떻게 오나요?</span>
+                <span>인천공항 - 서울역 (직통열차)</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/arex-express-train-gate.png" alt="인천공항 AREX 직통열차 주황색 개찰구" />
+                      <figcaption>주황색 직통열차 안내판과 개찰구를 확인해 주세요.</figcaption>
+                    </figure>
+                  </div>
+                  <p><strong>가격:</strong> 약 13,000KRW</p>
+                  <p><strong>1. 표 구매</strong></p>
                   <ul>
-                    <li>서울역 11번 출구로 나와 약 90m 직진해 주세요.</li>
-                    <li>버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.</li>
-                    <li>길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.</li>
-                    <li>골목 안으로 약 90m 걸으면 숙소가 있습니다.</li>
+                    <li>Klook에서 구매하면 가장 저렴합니다. 약 11,500KRW이며, <a href="https://www.klook.com/en-US/activity/1163-airport-to-seoul-city-center-arex-train-incheon/?spm=LanguageCurrencySelectionPopup.SuggestLanguage_LIST&amp;clickId=a40f198e9d" target="_blank" rel="noopener noreferrer">구매 사이트</a>에서 예약할 수 있습니다.</li>
+                    <li>현장 구매는 약 13,000KRW입니다. 아래 설명할 개찰구 주변에서 구매할 수 있지만, 주말에는 매진일 수 있으니 예약을 추천드립니다.</li>
                   </ul>
-                </div>
-              </div>
-            </article>
-            <article class="faq-card" data-category="check">
-              <button class="faq-question" type="button">
-                <span>서울역에서 택시를 타고 싶어요</span>
-                <span class="icon">expand_more</span>
-              </button>
-              <div class="faq-answer">
-                <div>
-                  <p>서울역 1번 출구로 나오면 택시 승강장이 있습니다.</p>
-                  <p>기사님께 <strong>서울특별시 용산구 후암로30길 22</strong>로 가달라고 말씀해 주세요.</p>
-                  <p>도착 후 해당 건물의 가장 윗층으로 오시면 됩니다.</p>
-                </div>
-              </div>
-            </article>
-            <article class="faq-card" data-category="check">
-              <button class="faq-question" type="button">
-                <span>서울역에서 걸어오고 싶어요</span>
-                <span class="icon">expand_more</span>
-              </button>
-              <div class="faq-answer">
-                <div>
-                  <p>서울역에서 숙소까지 도보로 약 10~12분 정도 걸립니다. 서울역에 도착하시면 11번 또는 12번 출구 이용을 추천드립니다.</p>
+                  <p><strong>2. 탑승</strong></p>
                   <ul>
-                    <li>출구에서 나와 남쪽 방향으로 걸어가 주세요.</li>
-                    <li><strong>Twin City Namsan</strong>이라는 큰 건물이 보이면, 건물 앞에서 왼쪽으로 꺾어 길을 따라 직진해 주세요.</li>
-                    <li>계속 걷다 보면 후암시장이 나옵니다. 시장을 지나 길을 건너면 LG U+ 매장이 보입니다.</li>
-                    <li>LG U+ 매장 옆 골목으로 들어와 오르막길을 따라 올라오면 HUHU House에 도착합니다.</li>
+                    <li><strong>1터미널:</strong> 입국장에서 나온 뒤 지하 1층으로 내려가면 공항철도 승강장이 나와요. 표지판을 따라 직진하면 일반 공항철도 승강장이 먼저 나오고, 그 맞은편에 주황색 '직통열차' 안내판이 있는 AREX 직통열차 전용 승강장이 있습니다.</li>
+                    <li><strong>2터미널:</strong> 입국장에서 나온 뒤 지하 2층으로 내려가면 공항철도 승강장이 나와요. 주황색 직통열차 표지판을 따라 개찰구로 진입하시면 됩니다.</li>
                   </ul>
-                  <p><strong>도보 이동 팁:</strong> 한국에서는 Google Maps의 도보 길찾기가 부정확할 때가 있습니다. 영어를 지원하는 <strong>Naver Map</strong> 앱을 내려받아 아래 한국어 주소로 검색하시는 것을 추천드립니다.</p>
-                  <p>서울특별시 용산구 후암로30길 22</p>
+                  <p><strong>3. 서울역에서 하차</strong></p>
                 </div>
               </div>
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
-                <span>숙대입구역에서 어떻게 오나요?</span>
+                <span>인천공항 - 서울역 (공항철도)</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
+                  <p><strong>가격:</strong> 4,850KRW</p>
+                  <p>직통열차와 개찰구 위치는 같습니다. 일반철도 개찰구로 들어가면 됩니다.</p>
+                  <p>탑승 후 서울역에서 하차하면 됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
+                <span>인천공항 - 서울역 (버스)</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p><strong>가격:</strong> 18,500KRW</p>
+                  <p><strong>1. 표 구매</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/airport-bus-ticket-machine.png" alt="인천공항 공항버스 승차권 무인발권기" />
+                      <figcaption>1터미널 Gate 4~9번 주변의 공항버스 무인발권기에서 표를 구매할 수 있습니다.</figcaption>
+                    </figure>
+                  </div>
                   <ul>
-                    <li>숙대입구역 5번 출구로 나와 앞 정류장에서 용산02 마을버스를 타세요.</li>
-                    <li>4정거장 뒤 후암시장 정류장에서 하차합니다.</li>
-                    <li>길을 건너 LG U+ 휴대폰 매장 옆 골목으로 들어와 주세요.</li>
-                    <li>골목 안으로 약 90m 걸으면 숙소가 있습니다.</li>
+                    <li>1터미널 Gate 4~9번에 공항버스 무인발권기가 있습니다.</li>
+                    <li>6001번 버스를 예매 후 해당 게이트 번호에서 탑승합니다.</li>
                   </ul>
+                  <p><strong>2. 한강대교북단.LG유플러스에서 하차</strong></p>
+                  <p><strong>3. 605번 버스를 탑니다. (파란색 버스)</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img class="faq-photo-contain faq-photo-tall" src="images/airport-bus-605-map.png" alt="한강대교북단 LG유플러스 정류장에서 605번 버스로 환승하는 지도" />
+                      <figcaption>한강대교북단.LG유플러스에서 내린 뒤 605번 파란색 버스로 환승합니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p><strong>4. 후암시장에서 하차</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img class="faq-photo-contain faq-photo-tall" src="images/huam-market-stop-map.png" alt="후암시장 정류장에서 숙소 방향으로 이동하는 지도" />
+                      <figcaption>후암시장에서 하차한 뒤 숙소 방향으로 이동합니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p><strong>5. LG U+ 매장 옆 골목으로 이동</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/huam-lg-uplus-alley.png" alt="후암시장 근처 LG U+ 매장과 숙소로 올라가는 골목" />
+                      <figcaption>언덕을 내려가면 LG U+ 매장이 보입니다. 매장 옆 골목으로 들어와 체크인 안내에 있는 건물로 오시면 됩니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p>언덕을 내려가면 LG U+ 매장이 보입니다. 해당 골목으로 들어와 <strong>체크인은 어떻게 하나요?</strong>에 있는 건물로 오시면 됩니다.</p>
                 </div>
               </div>
             </article>
             <article class="faq-card" data-category="check">
               <button class="faq-question" type="button">
-                <span>가까운 지하철과 버스는 무엇인가요?</span>
+                <span>서울역 - 숙소</span>
                 <span class="icon">expand_more</span>
               </button>
               <div class="faq-answer">
                 <div>
-                  <p><strong>지하철:</strong> 서울역 1호선/4호선, 숙대입구역 4호선</p>
-                  <p><strong>버스:</strong> 400, 605, 202, 용산02</p>
+                  <p><strong>택시</strong></p>
+                  <p>서울역에서 1번 출구로 나오면 바로 앞에 택시 승강장이 있습니다.</p>
+                  <p>택시기사님께 <strong>용산구 후암로 30길 22</strong> 주소를 보여주세요.</p>
+                  <p><strong>버스</strong></p>
+                  <p><strong>1. 11번 출구</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img class="faq-photo-contain faq-photo-tall" src="images/seoul-station-exit-11-bus-stop.png" alt="서울역 11번 출구에서 버스정류장으로 이동하는 안내" />
+                      <figcaption>서울역 11번 출구로 나온 뒤 잠깐 걸으면 버스정류장이 나옵니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p>11번 출구로 나옵니다. 잠깐 걷다보면 버스정류장이 나옵니다.</p>
+                  <p><strong>2. 버스 탑승</strong></p>
+                  <p>해당 위치에서 605, 400 버스를 탑승합니다.</p>
+                  <p><strong>3. 후암시장에서 하차</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img class="faq-photo-contain faq-photo-tall" src="images/huam-market-stop-map.png" alt="후암시장 정류장에서 숙소 방향으로 이동하는 지도" />
+                      <figcaption>후암시장에서 하차한 뒤 숙소 방향으로 이동합니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p><strong>4. LG U+ 매장 옆 골목으로 이동</strong></p>
+                  <div class="faq-photos">
+                    <figure>
+                      <img src="images/huam-lg-uplus-alley.png" alt="후암시장 근처 LG U+ 매장과 숙소로 올라가는 골목" />
+                      <figcaption>언덕을 내려가면 LG U+ 매장이 보입니다. 매장 옆 골목으로 들어와 체크인 안내에 있는 건물로 오시면 됩니다.</figcaption>
+                    </figure>
+                  </div>
+                  <p>LG U+ 매장 옆 골목으로 들어와 <strong>체크인은 어떻게 하나요?</strong>에 있는 건물로 오시면 됩니다.</p>
+                </div>
+              </div>
+            </article>
+            <article class="faq-card" data-category="check">
+              <button class="faq-question" type="button">
+                <span>교통팁</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p><strong>1. 교통카드</strong></p>
+                  <p>편의점에서 T-money 카드를 구매 후 충전하면 지하철이나 버스 이용 시 사용할 수 있습니다.</p>
+                  <p>버스는 승차할 때와 하차할 때 모두 교통카드를 태그해야 합니다.</p>
+                  <p><strong>2. 환승</strong></p>
+                  <p>30분 이내에 다른 교통수단으로 갈아탈 시 추가 요금 없이 이어서 이동할 수 있습니다.</p>
+                  <p><strong>3. 앱 추천</strong></p>
+                  <p>Naver Map, Kakao Map을 다운받으면 지하철 노선도나 경로 탐색이 쉽습니다.</p>
                 </div>
               </div>
             </article>
@@ -2043,6 +2127,67 @@
           "국문:": "Korean:",
           "서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": "22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea",
           " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 22 Huam-ro 30-gil, 2F (top floor), Yongsan-gu, Seoul, Korea",
+          "인천공항 - 서울역 (공항철도)": "Incheon Airport - Seoul Station (Airport Railroad)",
+          "인천공항 - 서울역 (직통열차)": "Incheon Airport - Seoul Station (Express Train)",
+          "인천공항 - 서울역 (버스)": "Incheon Airport - Seoul Station (Bus)",
+          "서울역 - 숙소": "Seoul Station - House",
+          "인천공항 AREX 직통열차 주황색 개찰구": "Orange AREX Express Train gate at Incheon Airport",
+          "주황색 직통열차 안내판과 개찰구를 확인해 주세요.": "Look for the orange Express Train sign and gate.",
+          "가격:": "Price:",
+          "약 13,000KRW": "About KRW 13,000",
+          "1. 표 구매": "1. Buy a ticket",
+          "Klook에서 구매하면 가장 저렴합니다. 약 11,500KRW이며,": "Klook is usually the cheapest option, about KRW 11,500. Use the",
+          "구매 사이트": "booking site",
+          "에서 예약할 수 있습니다.": " to reserve.",
+          "현장 구매는 약 13,000KRW입니다. 아래 설명할 개찰구 주변에서 구매할 수 있지만, 주말에는 매진일 수 있으니 예약을 추천드립니다.": "On-site purchase is about KRW 13,000. You can buy it near the gate described below, but weekend seats may sell out, so booking in advance is recommended.",
+          "2. 탑승": "2. Boarding",
+          "1터미널:": "Terminal 1:",
+          "입국장에서 나온 뒤 지하 1층으로 내려가면 공항철도 승강장이 나와요. 표지판을 따라 직진하면 일반 공항철도 승강장이 먼저 나오고, 그 맞은편에 주황색 '직통열차' 안내판이 있는 AREX 직통열차 전용 승강장이 있습니다.": "After leaving arrivals, go down to B1 to reach the Airport Railroad area. Follow the signs straight ahead; you will see the regular Airport Railroad platform first, and across from it is the AREX Express Train-only platform with the orange 'Express Train' sign.",
+          "2터미널:": "Terminal 2:",
+          "입국장에서 나온 뒤 지하 2층으로 내려가면 공항철도 승강장이 나와요. 주황색 직통열차 표지판을 따라 개찰구로 진입하시면 됩니다.": "After leaving arrivals, go down to B2 to reach the Airport Railroad area. Follow the orange Express Train signs and enter through the gate.",
+          "3. 서울역에서 하차": "3. Get off at Seoul Station",
+          "4,850KRW": "KRW 4,850",
+          "직통열차와 개찰구 위치는 같습니다. 일반철도 개찰구로 들어가면 됩니다.": "The gate area is the same as the Express Train. Enter through the regular train gate.",
+          "탑승 후 서울역에서 하차하면 됩니다.": "After boarding, get off at Seoul Station.",
+          "18,500KRW": "KRW 18,500",
+          "인천공항 공항버스 승차권 무인발권기": "Incheon Airport bus ticket vending machine",
+          "1터미널 Gate 4~9번 주변의 공항버스 무인발권기에서 표를 구매할 수 있습니다.": "You can buy a ticket at the airport bus ticket vending machines near Terminal 1 Gates 4-9.",
+          "1터미널 Gate 4~9번에 공항버스 무인발권기가 있습니다.": "Airport bus ticket vending machines are located at Terminal 1 Gates 4-9.",
+          "6001번 버스를 예매 후 해당 게이트 번호에서 탑승합니다.": "Reserve bus 6001, then board at the assigned gate number.",
+          "2. 한강대교북단.LG유플러스에서 하차": "2. Get off at Hangangdaegyobukdan.LG Uplus",
+          "3. 605번 버스를 탑니다. (파란색 버스)": "3. Take bus 605. (blue bus)",
+          "한강대교북단 LG유플러스 정류장에서 605번 버스로 환승하는 지도": "Map for transferring to bus 605 at Hangangdaegyobukdan LG Uplus stop",
+          "한강대교북단.LG유플러스에서 내린 뒤 605번 파란색 버스로 환승합니다.": "After getting off at Hangangdaegyobukdan.LG Uplus, transfer to the blue 605 bus.",
+          "4. 후암시장에서 하차": "4. Get off at Huam Market",
+          "후암시장 정류장에서 숙소 방향으로 이동하는 지도": "Map from Huam Market stop toward the house",
+          "후암시장에서 하차한 뒤 숙소 방향으로 이동합니다.": "After getting off at Huam Market, head toward the house.",
+          "5. LG U+ 매장 옆 골목으로 이동": "5. Go to the alley next to the LG U+ store",
+          "후암시장 근처 LG U+ 매장과 숙소로 올라가는 골목": "LG U+ store near Huam Market and the alley up to the house",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 매장 옆 골목으로 들어와 체크인 안내에 있는 건물로 오시면 됩니다.": "Walk down the hill and you will see the LG U+ store. Enter the alley next to the store and come to the building shown in the check-in guide.",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 해당 골목으로 들어와": "Walk down the hill and you will see the LG U+ store. Enter that alley and come to the building shown in",
+          "체크인은 어떻게 하나요?": "How do I check in?",
+          "에 있는 건물로 오시면 됩니다.": ".",
+          "택시": "Taxi",
+          "서울역에서 1번 출구로 나오면 바로 앞에 택시 승강장이 있습니다.": "If you exit Seoul Station through Exit 1, there is a taxi stand right in front.",
+          "택시기사님께": "Please show the taxi driver",
+          "용산구 후암로 30길 22": "22 Huam-ro 30-gil, Yongsan-gu",
+          "주소를 보여주세요.": "as the address.",
+          "버스": "Bus",
+          "1. 11번 출구": "1. Exit 11",
+          "서울역 11번 출구에서 버스정류장으로 이동하는 안내": "Directions from Seoul Station Exit 11 to the bus stop",
+          "서울역 11번 출구로 나온 뒤 잠깐 걸으면 버스정류장이 나옵니다.": "Exit Seoul Station through Exit 11 and walk a short distance to the bus stop.",
+          "11번 출구로 나옵니다. 잠깐 걷다보면 버스정류장이 나옵니다.": "Exit through Exit 11. After a short walk, you will reach the bus stop.",
+          "2. 버스 탑승": "2. Board the bus",
+          "해당 위치에서 605, 400 버스를 탑승합니다.": "Take bus 605 or 400 from this stop.",
+          "LG U+ 매장 옆 골목으로 들어와": "Enter the alley next to the LG U+ store and come to the building shown in",
+          "교통팁": "Transportation Tips",
+          "1. 교통카드": "1. Transit card",
+          "편의점에서 T-money 카드를 구매 후 충전하면 지하철이나 버스 이용 시 사용할 수 있습니다.": "Buy and top up a T-money card at a convenience store to use it on subways and buses.",
+          "버스는 승차할 때와 하차할 때 모두 교통카드를 태그해야 합니다.": "On buses, tap your transit card both when boarding and when getting off.",
+          "2. 환승": "2. Transfers",
+          "30분 이내에 다른 교통수단으로 갈아탈 시 추가 요금 없이 이어서 이동할 수 있습니다.": "If you transfer to another mode of transportation within 30 minutes, you can continue without an additional fare.",
+          "3. 앱 추천": "3. Recommended apps",
+          "Naver Map, Kakao Map을 다운받으면 지하철 노선도나 경로 탐색이 쉽습니다.": "Download Naver Map or Kakao Map to easily check subway maps and route directions.",
           "서울역에서 어떻게 오나요?": "How do I get here from Seoul Station?",
           "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "Exit Seoul Station through Exit 11 and walk straight for about 90 meters.",
           "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "Take bus 400 or 605 and get off after 2 stops.",
@@ -2237,6 +2382,67 @@
           "국문:": "中文：",
           "서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": "韩国首尔特别市龙山区厚岩路30街22，2层（顶层）",
           " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 韩国首尔特别市龙山区厚岩路30街22，2层（顶层）",
+          "인천공항 - 서울역 (공항철도)": "仁川机场 - 首尔站（机场铁路）",
+          "인천공항 - 서울역 (직통열차)": "仁川机场 - 首尔站（直达列车）",
+          "인천공항 - 서울역 (버스)": "仁川机场 - 首尔站（巴士）",
+          "서울역 - 숙소": "首尔站 - 住宿",
+          "인천공항 AREX 직통열차 주황색 개찰구": "仁川机场 AREX 直达列车橙色闸机",
+          "주황색 직통열차 안내판과 개찰구를 확인해 주세요.": "请确认橙色直达列车指示牌和闸机。",
+          "가격:": "价格：",
+          "약 13,000KRW": "约 13,000 韩元",
+          "1. 표 구매": "1. 购票",
+          "Klook에서 구매하면 가장 저렴합니다. 약 11,500KRW이며,": "在 Klook 购买通常最便宜，约 11,500 韩元。可通过",
+          "구매 사이트": "购票网站",
+          "에서 예약할 수 있습니다.": "预约。",
+          "현장 구매는 약 13,000KRW입니다. 아래 설명할 개찰구 주변에서 구매할 수 있지만, 주말에는 매진일 수 있으니 예약을 추천드립니다.": "现场购买约 13,000 韩元。可在下方说明的闸机附近购买，但周末可能售罄，建议提前预约。",
+          "2. 탑승": "2. 乘车",
+          "1터미널:": "1号航站楼：",
+          "입국장에서 나온 뒤 지하 1층으로 내려가면 공항철도 승강장이 나와요. 표지판을 따라 직진하면 일반 공항철도 승강장이 먼저 나오고, 그 맞은편에 주황색 '직통열차' 안내판이 있는 AREX 직통열차 전용 승강장이 있습니다.": "从入境大厅出来后，下到地下1层即可到达机场铁路区域。沿指示牌直行会先看到普通机场铁路站台，对面就是带有橙色“直达列车”指示牌的 AREX 直达列车专用站台。",
+          "2터미널:": "2号航站楼：",
+          "입국장에서 나온 뒤 지하 2층으로 내려가면 공항철도 승강장이 나와요. 주황색 직통열차 표지판을 따라 개찰구로 진입하시면 됩니다.": "从入境大厅出来后，下到地下2层即可到达机场铁路区域。请跟随橙色直达列车指示牌进入闸机。",
+          "3. 서울역에서 하차": "3. 在首尔站下车",
+          "4,850KRW": "4,850 韩元",
+          "직통열차와 개찰구 위치는 같습니다. 일반철도 개찰구로 들어가면 됩니다.": "闸机位置与直达列车相同。请从普通列车闸机进入。",
+          "탑승 후 서울역에서 하차하면 됩니다.": "乘车后在首尔站下车即可。",
+          "18,500KRW": "18,500 韩元",
+          "인천공항 공항버스 승차권 무인발권기": "仁川机场机场巴士车票自助售票机",
+          "1터미널 Gate 4~9번 주변의 공항버스 무인발권기에서 표를 구매할 수 있습니다.": "可在1号航站楼4-9号Gate附近的机场巴士自助售票机购买车票。",
+          "1터미널 Gate 4~9번에 공항버스 무인발권기가 있습니다.": "1号航站楼4-9号Gate设有机场巴士自助售票机。",
+          "6001번 버스를 예매 후 해당 게이트 번호에서 탑승합니다.": "预约6001路巴士后，在对应Gate号码处乘车。",
+          "2. 한강대교북단.LG유플러스에서 하차": "2. 在汉江大桥北端.LG Uplus下车",
+          "3. 605번 버스를 탑니다. (파란색 버스)": "3. 乘坐605路巴士。（蓝色巴士）",
+          "한강대교북단 LG유플러스 정류장에서 605번 버스로 환승하는 지도": "在汉江大桥北端 LG Uplus 站换乘605路巴士的地图",
+          "한강대교북단.LG유플러스에서 내린 뒤 605번 파란색 버스로 환승합니다.": "在汉江大桥北端.LG Uplus下车后，换乘蓝色605路巴士。",
+          "4. 후암시장에서 하차": "4. 在厚岩市场下车",
+          "후암시장 정류장에서 숙소 방향으로 이동하는 지도": "从厚岩市场站前往住宿方向的地图",
+          "후암시장에서 하차한 뒤 숙소 방향으로 이동합니다.": "在厚岩市场下车后，往住宿方向移动。",
+          "5. LG U+ 매장 옆 골목으로 이동": "5. 前往 LG U+ 门店旁的小巷",
+          "후암시장 근처 LG U+ 매장과 숙소로 올라가는 골목": "厚岩市场附近的 LG U+ 门店和通往住宿的小巷",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 매장 옆 골목으로 들어와 체크인 안내에 있는 건물로 오시면 됩니다.": "下坡后会看到 LG U+ 门店。进入门店旁的小巷，前往入住说明中显示的建筑即可。",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 해당 골목으로 들어와": "下坡后会看到 LG U+ 门店。进入那条小巷，前往",
+          "체크인은 어떻게 하나요?": "如何入住？",
+          "에 있는 건물로 오시면 됩니다.": "中显示的建筑即可。",
+          "택시": "出租车",
+          "서울역에서 1번 출구로 나오면 바로 앞에 택시 승강장이 있습니다.": "从首尔站1号出口出来后，前方就有出租车乘车点。",
+          "택시기사님께": "请向出租车司机出示",
+          "용산구 후암로 30길 22": "龙山区厚岩路30街22",
+          "주소를 보여주세요.": "这个地址。",
+          "버스": "公交",
+          "1. 11번 출구": "1. 11号出口",
+          "서울역 11번 출구에서 버스정류장으로 이동하는 안내": "从首尔站11号出口前往公交站的指引",
+          "서울역 11번 출구로 나온 뒤 잠깐 걸으면 버스정류장이 나옵니다.": "从首尔站11号出口出来后，步行一小段即可到达公交站。",
+          "11번 출구로 나옵니다. 잠깐 걷다보면 버스정류장이 나옵니다.": "从11号出口出来。步行一小段后会看到公交站。",
+          "2. 버스 탑승": "2. 乘坐公交",
+          "해당 위치에서 605, 400 버스를 탑승합니다.": "在该位置乘坐605或400路公交。",
+          "LG U+ 매장 옆 골목으로 들어와": "进入 LG U+ 门店旁的小巷，前往",
+          "교통팁": "交通提示",
+          "1. 교통카드": "1. 交通卡",
+          "편의점에서 T-money 카드를 구매 후 충전하면 지하철이나 버스 이용 시 사용할 수 있습니다.": "在便利店购买并充值 T-money 卡后，可用于乘坐地铁和公交。",
+          "버스는 승차할 때와 하차할 때 모두 교통카드를 태그해야 합니다.": "乘坐公交时，上车和下车都需要刷交通卡。",
+          "2. 환승": "2. 换乘",
+          "30분 이내에 다른 교통수단으로 갈아탈 시 추가 요금 없이 이어서 이동할 수 있습니다.": "30分钟内换乘其他交通工具时，可无需额外费用继续乘车。",
+          "3. 앱 추천": "3. 推荐应用",
+          "Naver Map, Kakao Map을 다운받으면 지하철 노선도나 경로 탐색이 쉽습니다.": "下载 Naver Map 或 Kakao Map 后，可方便查看地铁线路图和搜索路线。",
           "서울역에서 어떻게 오나요?": "从首尔站怎么来？",
           "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "从首尔站 11 号出口出来后，直走约 90 米。",
           "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "乘坐 400 路或 605 路公交，2 站后下车。",
@@ -2427,6 +2633,67 @@
           "국문:": "日本語：",
           "서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": "韓国 ソウル特別市 龍山区 厚岩路30ギル 22 2階（最上階）",
           " 서울특별시 용산구 후암로30길 22 2층 (가장 윗층)": " 韓国 ソウル特別市 龍山区 厚岩路30ギル 22 2階（最上階）",
+          "인천공항 - 서울역 (공항철도)": "仁川空港 - ソウル駅（空港鉄道）",
+          "인천공항 - 서울역 (직통열차)": "仁川空港 - ソウル駅（直通列車）",
+          "인천공항 - 서울역 (버스)": "仁川空港 - ソウル駅（バス）",
+          "서울역 - 숙소": "ソウル駅 - 宿泊先",
+          "인천공항 AREX 직통열차 주황색 개찰구": "仁川空港 AREX直通列車のオレンジ色改札口",
+          "주황색 직통열차 안내판과 개찰구를 확인해 주세요.": "オレンジ色の直通列車案内板と改札口を確認してください。",
+          "가격:": "料金：",
+          "약 13,000KRW": "約13,000ウォン",
+          "1. 표 구매": "1. チケット購入",
+          "Klook에서 구매하면 가장 저렴합니다. 약 11,500KRW이며,": "Klookで購入すると通常最も安く、約11,500ウォンです。",
+          "구매 사이트": "購入サイト",
+          "에서 예약할 수 있습니다.": "から予約できます。",
+          "현장 구매는 약 13,000KRW입니다. 아래 설명할 개찰구 주변에서 구매할 수 있지만, 주말에는 매진일 수 있으니 예약을 추천드립니다.": "現地購入は約13,000ウォンです。下記で説明する改札口周辺で購入できますが、週末は売り切れる場合があるため予約をおすすめします。",
+          "2. 탑승": "2. 乗車",
+          "1터미널:": "第1ターミナル：",
+          "입국장에서 나온 뒤 지하 1층으로 내려가면 공항철도 승강장이 나와요. 표지판을 따라 직진하면 일반 공항철도 승강장이 먼저 나오고, 그 맞은편에 주황색 '직통열차' 안내판이 있는 AREX 직통열차 전용 승강장이 있습니다.": "到着ロビーを出た後、地下1階へ下りると空港鉄道エリアがあります。案内板に沿って直進すると一般空港鉄道の乗り場が先に見え、その向かいにオレンジ色の「直通列車」案内板があるAREX直通列車専用乗り場があります。",
+          "2터미널:": "第2ターミナル：",
+          "입국장에서 나온 뒤 지하 2층으로 내려가면 공항철도 승강장이 나와요. 주황색 직통열차 표지판을 따라 개찰구로 진입하시면 됩니다.": "到着ロビーを出た後、地下2階へ下りると空港鉄道エリアがあります。オレンジ色の直通列車案内板に沿って改札口へ進んでください。",
+          "3. 서울역에서 하차": "3. ソウル駅で下車",
+          "4,850KRW": "4,850ウォン",
+          "직통열차와 개찰구 위치는 같습니다. 일반철도 개찰구로 들어가면 됩니다.": "改札口の場所は直通列車と同じです。一般列車の改札口から入ってください。",
+          "탑승 후 서울역에서 하차하면 됩니다.": "乗車後、ソウル駅で下車してください。",
+          "18,500KRW": "18,500ウォン",
+          "인천공항 공항버스 승차권 무인발권기": "仁川空港 空港バス乗車券 自動券売機",
+          "1터미널 Gate 4~9번 주변의 공항버스 무인발권기에서 표를 구매할 수 있습니다.": "第1ターミナルGate 4-9付近の空港バス自動券売機でチケットを購入できます。",
+          "1터미널 Gate 4~9번에 공항버스 무인발권기가 있습니다.": "第1ターミナルGate 4-9に空港バスの自動券売機があります。",
+          "6001번 버스를 예매 후 해당 게이트 번호에서 탑승합니다.": "6001番バスを予約し、指定されたゲート番号から乗車します。",
+          "2. 한강대교북단.LG유플러스에서 하차": "2. 漢江大橋北端.LG Uplusで下車",
+          "3. 605번 버스를 탑니다. (파란색 버스)": "3. 605番バスに乗ります。（青色バス）",
+          "한강대교북단 LG유플러스 정류장에서 605번 버스로 환승하는 지도": "漢江大橋北端 LG Uplus停留所で605番バスに乗り換える地図",
+          "한강대교북단.LG유플러스에서 내린 뒤 605번 파란색 버스로 환승합니다.": "漢江大橋北端.LG Uplusで下車後、青色の605番バスに乗り換えます。",
+          "4. 후암시장에서 하차": "4. 厚岩市場で下車",
+          "후암시장 정류장에서 숙소 방향으로 이동하는 지도": "厚岩市場停留所から宿泊先方面へ移動する地図",
+          "후암시장에서 하차한 뒤 숙소 방향으로 이동합니다.": "厚岩市場で下車した後、宿泊先方面へ移動します。",
+          "5. LG U+ 매장 옆 골목으로 이동": "5. LG U+店舗横の路地へ移動",
+          "후암시장 근처 LG U+ 매장과 숙소로 올라가는 골목": "厚岩市場近くのLG U+店舗と宿泊先へ上がる路地",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 매장 옆 골목으로 들어와 체크인 안내에 있는 건물로 오시면 됩니다.": "坂を下るとLG U+店舗が見えます。店舗横の路地に入り、チェックイン案内にある建物までお越しください。",
+          "언덕을 내려가면 LG U+ 매장이 보입니다. 해당 골목으로 들어와": "坂を下るとLG U+店舗が見えます。その路地に入り、",
+          "체크인은 어떻게 하나요?": "チェックイン方法は？",
+          "에 있는 건물로 오시면 됩니다.": "にある建物までお越しください。",
+          "택시": "タクシー",
+          "서울역에서 1번 출구로 나오면 바로 앞에 택시 승강장이 있습니다.": "ソウル駅1番出口を出ると、すぐ前にタクシー乗り場があります。",
+          "택시기사님께": "タクシー運転手さんに",
+          "용산구 후암로 30길 22": "龍山区 厚岩路30ギル 22",
+          "주소를 보여주세요.": "の住所を見せてください。",
+          "버스": "バス",
+          "1. 11번 출구": "1. 11番出口",
+          "서울역 11번 출구에서 버스정류장으로 이동하는 안내": "ソウル駅11番出口からバス停へ移動する案内",
+          "서울역 11번 출구로 나온 뒤 잠깐 걸으면 버스정류장이 나옵니다.": "ソウル駅11番出口を出て少し歩くとバス停があります。",
+          "11번 출구로 나옵니다. 잠깐 걷다보면 버스정류장이 나옵니다.": "11番出口から出ます。少し歩くとバス停があります。",
+          "2. 버스 탑승": "2. バスに乗車",
+          "해당 위치에서 605, 400 버스를 탑승합니다.": "この場所から605番または400番バスに乗ります。",
+          "LG U+ 매장 옆 골목으로 들어와": "LG U+店舗横の路地に入り、",
+          "교통팁": "交通のヒント",
+          "1. 교통카드": "1. 交通カード",
+          "편의점에서 T-money 카드를 구매 후 충전하면 지하철이나 버스 이용 시 사용할 수 있습니다.": "コンビニでT-moneyカードを購入してチャージすると、地下鉄やバスで利用できます。",
+          "버스는 승차할 때와 하차할 때 모두 교통카드를 태그해야 합니다.": "バスでは乗車時と下車時の両方で交通カードをタッチしてください。",
+          "2. 환승": "2. 乗り換え",
+          "30분 이내에 다른 교통수단으로 갈아탈 시 추가 요금 없이 이어서 이동할 수 있습니다.": "30分以内に別の交通手段へ乗り換える場合、追加料金なしで続けて移動できます。",
+          "3. 앱 추천": "3. おすすめアプリ",
+          "Naver Map, Kakao Map을 다운받으면 지하철 노선도나 경로 탐색이 쉽습니다.": "Naver MapまたはKakao Mapをダウンロードすると、地下鉄路線図や経路検索が簡単です。",
           "서울역에서 어떻게 오나요?": "ソウル駅からの行き方は？",
           "서울역 11번 출구로 나와 약 90m 직진해 주세요.": "ソウル駅11番出口を出て、約90m直進してください。",
           "버스 400번 또는 605번을 타고 2정거장 뒤 하차합니다.": "400番または605番バスに乗り、2停留所後に下車します。",
