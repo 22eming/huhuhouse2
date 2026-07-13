@@ -1090,12 +1090,6 @@
         background: var(--brand);
       }
 
-      .pin.lock {
-        top: 18%;
-        left: 86%;
-        background: #3f51b5;
-      }
-
       .pin.boiler {
         top: 58%;
         left: 15%;
@@ -1470,7 +1464,7 @@
               <div class="info-icon"><span class="icon">rule</span></div>
               <div class="info-body">
                 <div class="label">숙소 이용 규칙</div>
-                <div class="value">소음, 금연, 반려동물 안내</div>
+                <div class="value">소음, 금연, Wi-Fi 전원선 안내</div>
               </div>
             </button>
           </section>
@@ -1530,9 +1524,6 @@
             </button>
             <button class="pin coffee" type="button" data-pin="coffee" aria-label="커피 머신">
               <span class="icon">coffee_maker</span>
-            </button>
-            <button class="pin lock" type="button" data-pin="lock" aria-label="문 잠금">
-              <span class="icon">lock</span>
             </button>
             <button class="pin boiler" type="button" data-pin="boiler" aria-label="온수 보일러">
               <span class="icon">water_heater</span>
@@ -1850,6 +1841,18 @@
                 </div>
               </div>
             </article>
+            <article class="faq-card" data-category="house">
+              <button class="faq-question" type="button">
+                <span>Wi-Fi 전원선 관련 주의사항이 있나요?</span>
+                <span class="icon">expand_more</span>
+              </button>
+              <div class="faq-answer">
+                <div>
+                  <p>Wi-Fi 전원선은 뽑지 말아 주세요.</p>
+                  <p>전원선은 소파방 문 입구와 소파 옆에 있습니다.</p>
+                </div>
+              </div>
+            </article>
             <article class="faq-card" data-category="amenity">
               <button class="faq-question" type="button">
                 <span>Wi-Fi는 어떻게 연결하나요?</span>
@@ -1896,11 +1899,12 @@
                   <div class="faq-photos">
                     <figure>
                       <img src="images/boiler-controller.png" alt="보일러 컨트롤러 온수 버튼 위치" />
-                      <figcaption>큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.</figcaption>
+                      <figcaption>우측 버튼은 온수 조절 버튼이고, 중앙 다이얼은 바닥 난방 조절입니다.</figcaption>
                     </figure>
                   </div>
                   <p>큰방 입구쪽에 보일러 컨트롤러가 있습니다.</p>
-                  <p>보일러 전원과 온수 불이 켜져 있는지 확인해주세요.</p>
+                  <p>우측 버튼은 온수 조절 버튼이고, 중앙 다이얼은 바닥 난방 조절입니다.</p>
+                  <p>뜨거운 물이 나오지 않으면 우측 온수 조절 버튼과 보일러 전원을 확인해주세요.</p>
                 </div>
               </div>
             </article>
@@ -2077,7 +2081,7 @@
           "주요 안내 사항": "Main Guide",
           "자주 확인하는 내용을 빠르게 열어보세요.": "Open the most-used guide items quickly.",
           "숙소 이용 규칙": "House Rules",
-          "소음, 금연, 반려동물 안내": "Noise, smoking, and pet rules",
+          "소음, 금연, Wi-Fi 전원선 안내": "Noise, smoking, and Wi-Fi power cable guide",
           "체크인, 체크아웃, 오시는 길": "Check-in, check-out, and directions",
           "실내 안내 지도": "Indoor Guide Map",
           "기기별 위치와 사용법": "Locations and how to use each item",
@@ -2093,7 +2097,6 @@
           "변기 사용 안내": "Toilet Guide",
           "블라인드 고정": "Blind Cord",
           "커피 머신": "Coffee Tools",
-          "문 잠금": "Door Lock",
           "온수 보일러": "Hot Water Boiler",
           "안내 닫기": "Close guide",
           "자주 묻는 질문": "Frequently Asked Questions",
@@ -2249,6 +2252,9 @@
           "금연 관련 규칙이 있나요?": "What is the smoking rule?",
           "숙소 내부에서는 절대 금연입니다.": "Smoking is strictly prohibited inside the house.",
           "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "If you smoke outside, please bring the cigarette butts back and dispose of them properly.",
+          "Wi-Fi 전원선 관련 주의사항이 있나요?": "Is there anything to know about the Wi-Fi power cable?",
+          "Wi-Fi 전원선은 뽑지 말아 주세요.": "Please do not unplug the Wi-Fi power cable.",
+          "전원선은 소파방 문 입구와 소파 옆에 있습니다.": "The power cables are by the entrance to the sofa room and next to the sofa.",
           "Wi-Fi는 어떻게 연결하나요?": "How do I connect to Wi-Fi?",
           "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "Please scan the QR code on the first page of the guestbook next to the green sofa.",
           "직접 입력할 경우 Wi-Fi 이름은": "If entering manually, the Wi-Fi name is",
@@ -2269,9 +2275,9 @@
           "를 통해 결제 요청으로 진행됩니다.": ".",
           "뜨거운 물이 안 나와요": "There is no hot water",
           "보일러 컨트롤러 온수 버튼 위치": "Hot water button on the boiler controller",
-          "큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.": "The boiler controller is near the entrance of the large bedroom. Please check the boiler power and hot water lights.",
           "큰방 입구쪽에 보일러 컨트롤러가 있습니다.": "The boiler controller is near the entrance of the large bedroom.",
-          "보일러 전원과 온수 불이 켜져 있는지 확인해주세요.": "Please check that the boiler power and hot water lights are on.",
+          "우측 버튼은 온수 조절 버튼이고, 중앙 다이얼은 바닥 난방 조절입니다.": "The button on the right controls hot water, and the center dial controls floor heating.",
+          "뜨거운 물이 나오지 않으면 우측 온수 조절 버튼과 보일러 전원을 확인해주세요.": "If hot water is not working, please check the hot water control button on the right and the boiler power.",
           "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "Where are the indoor trash bins and how are they sorted?",
           "쓰레기통은 부엌 옆 창고에 있습니다.": "The trash bins are in the storage area next to the kitchen.",
           "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "The three-tier bin is divided into general trash, cans, and bottles. There is also a separate bin for hard plastic.",
@@ -2333,7 +2339,7 @@
           "주요 안내 사항": "主要指南",
           "자주 확인하는 내용을 빠르게 열어보세요.": "快速查看常用内容。",
           "숙소 이용 규칙": "住宿规则",
-          "소음, 금연, 반려동물 안내": "噪音、禁烟、宠物相关说明",
+          "소음, 금연, Wi-Fi 전원선 안내": "噪音、禁烟、Wi-Fi 电源线说明",
           "체크인, 체크아웃, 오시는 길": "入住，退房，回来的路上",
           "실내 안내 지도": "室内指南地图",
           "기기별 위치와 사용법": "各设备位置与使用方法",
@@ -2349,7 +2355,6 @@
           "변기 사용 안내": "马桶使用说明",
           "블라인드 고정": "百叶窗固定",
           "커피 머신": "咖啡器具",
-          "문 잠금": "门锁",
           "온수 보일러": "热水锅炉",
           "안내 닫기": "关闭说明",
           "자주 묻는 질문": "常见问题",
@@ -2501,6 +2506,9 @@
           "금연 관련 규칙이 있나요?": "禁烟规则是什么？",
           "숙소 내부에서는 절대 금연입니다.": "住宿室内绝对禁烟。",
           "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "如在室外吸烟，请将烟蒂带回并丢弃，谢谢。",
+          "Wi-Fi 전원선 관련 주의사항이 있나요?": "Wi-Fi 电源线有什么注意事项？",
+          "Wi-Fi 전원선은 뽑지 말아 주세요.": "请不要拔掉 Wi-Fi 电源线。",
+          "전원선은 소파방 문 입구와 소파 옆에 있습니다.": "电源线位于沙发房门口和沙发旁。",
           "Wi-Fi는 어떻게 연결하나요?": "如何连接 Wi-Fi？",
           "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "请扫描绿色沙发旁访客手册第一页上的二维码。",
           "직접 입력할 경우 Wi-Fi 이름은": "如手动输入，Wi-Fi 名称为",
@@ -2518,9 +2526,9 @@
           "도움말 센터": "帮助中心",
           "를 통해 결제 요청으로 진행됩니다.": "发起付款请求。",
           "뜨거운 물이 안 나와요": "没有热水",
-          "큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.": "大房间入口附近有锅炉控制器。请检查锅炉电源和热水指示灯。",
           "큰방 입구쪽에 보일러 컨트롤러가 있습니다.": "大房间入口附近有锅炉控制器。",
-          "보일러 전원과 온수 불이 켜져 있는지 확인해주세요.": "请确认锅炉电源和热水指示灯是否亮着。",
+          "우측 버튼은 온수 조절 버튼이고, 중앙 다이얼은 바닥 난방 조절입니다.": "右侧按钮是热水调节按钮，中间旋钮用于调节地暖。",
+          "뜨거운 물이 나오지 않으면 우측 온수 조절 버튼과 보일러 전원을 확인해주세요.": "如果没有热水，请确认右侧热水调节按钮和锅炉电源。",
           "따릉이 앱 열기 → 외국인 선택 → 이용권 구매 → 이용권 사용": "打开首尔共享单车 App → 选择外国人 → 购买使用券 → 使用",
           "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "室内垃圾桶在哪里，如何分类？",
           "쓰레기통은 부엌 옆 창고에 있습니다.": "垃圾桶在厨房旁的储物间。",
@@ -2582,7 +2590,7 @@
           "주요 안내 사항": "主な案内",
           "자주 확인하는 내용을 빠르게 열어보세요.": "よく確認する内容をすぐに開けます。",
           "숙소 이용 규칙": "ハウスルール",
-          "소음, 금연, 반려동물 안내": "騒音・禁煙・ペットに関する案内",
+          "소음, 금연, Wi-Fi 전원선 안내": "騒音・禁煙・Wi-Fi電源コード案内",
           "체크인, 체크아웃, 오시는 길": "チェックイン、チェックアウト、アクセス",
           "실내 안내 지도": "室内案内マップ",
           "기기별 위치와 사용법": "設備の場所と使い方",
@@ -2598,7 +2606,6 @@
           "변기 사용 안내": "トイレ使用案内",
           "블라인드 고정": "ブラインド固定",
           "커피 머신": "コーヒー器具",
-          "문 잠금": "ドアロック",
           "온수 보일러": "給湯ボイラー",
           "안내 닫기": "案内を閉じる",
           "자주 묻는 질문": "よくある質問",
@@ -2751,6 +2758,9 @@
           "금연 관련 규칙이 있나요?": "禁煙ルールは？",
           "숙소 내부에서는 절대 금연입니다.": "室内は完全禁煙です。",
           "숙소 외부에서 흡연하시는 경우 담배꽁초는 숙소로 가져와 버려주시면 감사하겠습니다.": "屋外で喫煙される場合、吸い殻は宿泊先まで持ち帰って捨てていただけると助かります。",
+          "Wi-Fi 전원선 관련 주의사항이 있나요?": "Wi-Fi電源コードの注意事項は？",
+          "Wi-Fi 전원선은 뽑지 말아 주세요.": "Wi-Fi電源コードは抜かないでください。",
+          "전원선은 소파방 문 입구와 소파 옆에 있습니다.": "電源コードはソファ部屋の入口とソファ横にあります。",
           "Wi-Fi는 어떻게 연결하나요?": "Wi-Fiの接続方法は？",
           "초록색 소파 옆 게스트북 첫 페이지에 붙어 있는 QR 코드를 스캔해 주세요.": "緑のソファ横にあるゲストブックの最初のページのQRコードをスキャンしてください。",
           "직접 입력할 경우 Wi-Fi 이름은": "手入力する場合、Wi-Fi名は",
@@ -2768,9 +2778,9 @@
           "도움말 센터": "ヘルプセンター",
           "를 통해 결제 요청으로 진행됩니다.": "を通じて支払いリクエストとしてご案内します。",
           "뜨거운 물이 안 나와요": "お湯が出ません",
-          "큰방 입구쪽에 보일러 컨트롤러가 있습니다. 보일러 전원과 온수 불을 확인해주세요.": "大きい部屋の入口近くにボイラーコントローラーがあります。ボイラーの電源とお湯ランプをご確認ください。",
           "큰방 입구쪽에 보일러 컨트롤러가 있습니다.": "大きい部屋の入口近くにボイラーコントローラーがあります。",
-          "보일러 전원과 온수 불이 켜져 있는지 확인해주세요.": "ボイラーの電源とお湯ランプが点灯しているかご確認ください。",
+          "우측 버튼은 온수 조절 버튼이고, 중앙 다이얼은 바닥 난방 조절입니다.": "右側のボタンはお湯の調節ボタンで、中央のダイヤルは床暖房の調節です。",
+          "뜨거운 물이 나오지 않으면 우측 온수 조절 버튼과 보일러 전원을 확인해주세요.": "お湯が出ない場合は、右側のお湯調節ボタンとボイラー電源をご確認ください。",
           "실내 쓰레기통은 어디에 있고 어떻게 나누나요?": "室内のごみ箱はどこにあり、どう分別しますか？",
           "쓰레기통은 부엌 옆 창고에 있습니다.": "ごみ箱はキッチン横の収納スペースにあります。",
           "3단 쓰레기통은 일반 쓰레기, 캔, 병으로 구분되어 있고, 옆에는 단단한 플라스틱 전용 쓰레기통이 있습니다.": "3段のごみ箱は一般ごみ・缶・びんに分かれており、横に硬質プラスチック専用のごみ箱があります。",
@@ -3502,20 +3512,6 @@
             "마음껏 사용하시되 사용 후에는 주변 물기, 커피 자국, 사용한 도구를 깔끔하게 정리해 주세요.",
           ],
         },
-        lock: {
-          title: "문 잠금",
-          summary: "벌레 유입과 안전을 위해 출입 후 문을 꼭 닫고 잠가 주세요.",
-          icon: "lock",
-          color: "#3f51b5",
-          usage: [
-            "출입 후 문이 완전히 닫혔는지 확인해 주세요.",
-            "외출하거나 실내에 있을 때도 문이 제대로 잠겼는지 확인해 주세요.",
-          ],
-          cautions: [
-            "바람에 문이 열리면 벌레가 들어올 수 있습니다.",
-            "중문은 살짝 힘을 주면 닫힙니다.",
-          ],
-        },
         boiler: {
           title: "온수 보일러",
           summary: "온수는 큰방 입구 쪽 보일러 컨트롤러에서 확인할 수 있습니다.",
@@ -3609,18 +3605,6 @@
               "Please enjoy them freely, but clean up water, coffee stains, and used tools afterward.",
             ],
           },
-          lock: {
-            title: "Door Lock",
-            summary: "Please close and lock the door after entering or leaving for safety and to keep insects out.",
-            usage: [
-              "Check that the door is fully closed after entering or leaving.",
-              "Please also check that it is locked when you are inside or going out.",
-            ],
-            cautions: [
-              "If the wind opens the door, insects can come in.",
-              "The inner door closes if you push it with a little force.",
-            ],
-          },
           boiler: {
             title: "Hot Water Boiler",
             summary: "Hot water can be checked on the boiler controller near the entrance of the large bedroom.",
@@ -3703,18 +3687,6 @@
               "可自由使用，但使用后请清理水渍、咖啡痕迹和用过的器具。",
             ],
           },
-          lock: {
-            title: "门锁",
-            summary: "为安全和防虫，进出后请务必关门并上锁。",
-            usage: [
-              "进出后请确认门已完全关闭。",
-              "外出或在室内时，也请确认门是否锁好。",
-            ],
-            cautions: [
-              "风把门吹开时，虫子可能会进入。",
-              "中门稍微用力推一下就能关上。",
-            ],
-          },
           boiler: {
             title: "热水锅炉",
             summary: "热水可在大卧室入口处的锅炉控制器确认。",
@@ -3795,18 +3767,6 @@
             ],
             cautions: [
               "自由にお使いいただけますが、使用後は水気、コーヒー跡、使用済み器具をきれいに片付けてください。",
-            ],
-          },
-          lock: {
-            title: "ドアロック",
-            summary: "虫の侵入防止と安全のため、出入り後は必ずドアを閉めて施錠してください。",
-            usage: [
-              "出入り後、ドアが完全に閉まっているか確認してください。",
-              "外出時や室内にいる時も、きちんと施錠されているか確認してください。",
-            ],
-            cautions: [
-              "風でドアが開くと虫が入ることがあります。",
-              "中門は少し力を入れると閉まります。",
             ],
           },
           boiler: {
