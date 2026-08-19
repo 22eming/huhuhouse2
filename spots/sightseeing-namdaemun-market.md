@@ -5,6 +5,7 @@ titleZh: 南大门市场
 titleJa: 南大門市場
 category: spot
 area: central
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/174def423bd875194589f59560551f7fd57b0f90?original
 imageClass: landmark
 roadAddress: 서울 중구 남대문시장4길 21
 lat: 37.559174

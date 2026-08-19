@@ -5,6 +5,7 @@ titleZh: 景福宫
 titleJa: 景福宮
 category: spot
 area: palace-west
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/945aa46e832311ef63403c74aa0cc3d5621bbb94?original
 imageClass: landmark
 roadAddress: 서울 종로구 사직로 161
 lat: 37.579617

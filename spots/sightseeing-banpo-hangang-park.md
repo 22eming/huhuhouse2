@@ -5,6 +5,7 @@ titleZh: 汉江·盘浦汉江公园
 titleJa: 漢江・盤浦漢江公園
 category: spot
 area: banpo
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/ce7a64f0a6a26a1b963f48a2017750064f49c0da?original
 imageClass: landmark
 roadAddress: 서울 서초구 신반포로11길 40
 lat: 37.510729

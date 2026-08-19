@@ -5,6 +5,7 @@ titleZh: 德寿宫
 titleJa: 徳寿宮
 category: spot
 area: central
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/69dae893c6f05ccd54d2db999fb9b789989d85de?original
 imageClass: landmark
 roadAddress: 서울 중구 세종대로 99
 lat: 37.565804

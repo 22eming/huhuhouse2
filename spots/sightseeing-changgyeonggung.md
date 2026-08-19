@@ -5,6 +5,7 @@ titleZh: 昌庆宫
 titleJa: 昌慶宮
 category: spot
 area: palace-east
+image: https://t1.daumcdn.net/local/booking/review/A3A1803E488D42338198EA85774DCC5C
 imageClass: landmark
 roadAddress: 서울 종로구 창경궁로 185
 lat: 37.578751

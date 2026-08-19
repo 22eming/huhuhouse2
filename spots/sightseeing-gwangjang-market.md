@@ -5,6 +5,7 @@ titleZh: 广藏市场
 titleJa: 広蔵市場
 category: spot
 area: palace-east
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/862a784b2e59807bc5f22827157f5057d6ae33a3?original
 imageClass: landmark
 roadAddress: 서울 종로구 창경궁로 88
 lat: 37.570039

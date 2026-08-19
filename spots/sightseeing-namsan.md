@@ -5,6 +5,7 @@ titleZh: 南山·N首尔塔
 titleJa: 南山・Nソウルタワー
 category: spot
 area: central
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/5d4a4dc148f7575d132a609a240f72016b389afd?original
 imageClass: landmark
 roadAddress: 서울 용산구 남산공원길 105
 lat: 37.5511694

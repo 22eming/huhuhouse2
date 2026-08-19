@@ -5,6 +5,7 @@ titleZh: 韩国国立中央博物馆
 titleJa: 国立中央博物館
 category: spot
 area: yongsan
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/0b7c3f6c3976cae68e35cc829b4b35d71a18f873?original
 imageClass: landmark
 roadAddress: 서울 용산구 서빙고로 137
 lat: 37.52385

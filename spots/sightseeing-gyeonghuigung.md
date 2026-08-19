@@ -5,6 +5,7 @@ titleZh: 庆熙宫
 titleJa: 慶熙宮
 category: spot
 area: palace-west
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/417d1a76fb53741907f748d0373113e3b77f08b7?original
 imageClass: landmark
 roadAddress: 서울 종로구 새문안로 45
 lat: 37.571471

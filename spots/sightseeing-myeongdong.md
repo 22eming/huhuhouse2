@@ -5,6 +5,7 @@ titleZh: 明洞
 titleJa: 明洞
 category: spot
 area: central
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/614f2618eb40a98c22f031ef0d0c9130671a8983?original
 imageClass: landmark
 roadAddress: 서울 중구 명동길 일대
 lat: 37.563671

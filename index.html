@@ -3087,6 +3087,7 @@
         spots: [],
         loadPromise: null,
         activeSpotKey: "",
+        focusFrame: 0,
         sheetScrollFrame: 0,
       };
 
@@ -3172,10 +3173,11 @@
       function focusSpotOnMap(spot) {
         if (!guideMapState.map || !hasNaverMapsApi() || !hasSpotLocation(spot)) return;
         const position = new naver.maps.LatLng(Number(spot.lat), Number(spot.lng));
-        if (typeof guideMapState.map.panTo === "function") {
-          guideMapState.map.panTo(position);
-        } else {
+        naver.maps.Event.trigger(guideMapState.map, "resize");
+        if (typeof guideMapState.map.setCenter === "function") {
           guideMapState.map.setCenter(position);
+        } else if (typeof guideMapState.map.panTo === "function") {
+          guideMapState.map.panTo(position);
         }
       }
 
@@ -3191,7 +3193,13 @@
           if (isActive && scroll) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
         });
 
-        if (pan) focusSpotOnMap(spot);
+        if (pan) {
+          window.cancelAnimationFrame(guideMapState.focusFrame);
+          guideMapState.focusFrame = window.requestAnimationFrame(() => {
+            guideMapState.focusFrame = 0;
+            focusSpotOnMap(spot);
+          });
+        }
       }
 
       function findSpotByKey(spotKey) {
@@ -3201,10 +3209,21 @@
       function getTopSheetSpotKey() {
         const list = document.getElementById("spot-list");
         if (!list) return "";
-        const listTop = list.getBoundingClientRect().top;
-        const cards = [...list.querySelectorAll(".spot-sheet-card")];
-        const topCard = cards.find((card) => card.getBoundingClientRect().bottom > listTop + 8) || cards[0];
-        return topCard?.dataset.spotKey || "";
+        const listRect = list.getBoundingClientRect();
+        const targetY = listRect.top + Math.min(44, listRect.height * 0.2);
+        const visibleCards = [...list.querySelectorAll(".spot-sheet-card")]
+          .filter((card) => {
+            const rect = card.getBoundingClientRect();
+            return rect.bottom > listRect.top && rect.top < listRect.bottom;
+          });
+        const nearestCard = visibleCards.reduce((nearest, card) => {
+          if (!nearest) return card;
+          return Math.abs(card.getBoundingClientRect().top - targetY)
+            < Math.abs(nearest.getBoundingClientRect().top - targetY)
+            ? card
+            : nearest;
+        }, null);
+        return nearestCard?.dataset.spotKey || "";
       }
 
       function handleSpotSheetScroll() {
@@ -3294,7 +3313,7 @@
 
       async function loadSpots() {
         const spotList = document.getElementById("spot-list");
-        const spotDataVersion = "dining-thumbnails-20260819";
+        const spotDataVersion = "guide-spots-20260819-3";
         try {
           const [indexResponse, recommendationResponse] = await Promise.all([
             fetch(`spots/index.json?v=${spotDataVersion}`, { cache: "no-store" }),

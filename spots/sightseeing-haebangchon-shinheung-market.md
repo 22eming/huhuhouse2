@@ -5,6 +5,7 @@ titleZh: 解放村新兴市场
 titleJa: 解放村・新興市場
 category: spot
 area: yongsan
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/b1701b5bbc96449320d5ff5e81b605b02710c38e?original
 imageClass: landmark
 roadAddress: 서울 용산구 신흥로 95-9 일대
 lat: 37.545684

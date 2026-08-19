@@ -5,6 +5,7 @@ titleZh: 昌德宫
 titleJa: 昌徳宮
 category: spot
 area: palace-east
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/b65259fc05f34db1d97d9cac7cb2f36d0814b457?original
 imageClass: landmark
 roadAddress: 서울 종로구 율곡로 99
 lat: 37.57943

@@ -5,6 +5,7 @@ titleZh: 清溪川
 titleJa: 清渓川
 category: spot
 area: central
+image: https://t1.daumcdn.net/local/kakaomapPhoto/review/b45b14e3249fa7650d68762e790ffd75f22fda9f?original
 imageClass: landmark
 roadAddress: 서울 중구 청계광장 일대
 lat: 37.569013

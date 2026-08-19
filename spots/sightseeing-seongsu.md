@@ -5,6 +5,7 @@ titleZh: 圣水洞练武场街
 titleJa: 聖水洞・練武場通り
 category: spot
 area: seongsu
+image: https://cphoto.asiae.co.kr/listimglink/1/2024082807155898631_1724796958.jpg
 imageClass: landmark
 roadAddress: 서울 성동구 연무장길 일대
 lat: 37.543685
