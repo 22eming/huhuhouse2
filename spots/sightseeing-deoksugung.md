@@ -4,6 +4,7 @@ titleEn: Deoksugung Palace
 titleZh: 德寿宫
 titleJa: 徳寿宮
 category: spot
+area: central
 imageClass: landmark
 roadAddress: 서울 중구 세종대로 99
 lat: 37.565804

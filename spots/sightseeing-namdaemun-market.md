@@ -4,6 +4,7 @@ titleEn: Namdaemun Market
 titleZh: 南大门市场
 titleJa: 南大門市場
 category: spot
+area: central
 imageClass: landmark
 roadAddress: 서울 중구 남대문시장4길 21
 lat: 37.559174

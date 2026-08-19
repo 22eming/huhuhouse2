@@ -4,6 +4,7 @@ titleEn: Changdeokgung Palace
 titleZh: 昌德宫
 titleJa: 昌徳宮
 category: spot
+area: palace-east
 imageClass: landmark
 roadAddress: 서울 종로구 율곡로 99
 lat: 37.57943

@@ -4,6 +4,7 @@ titleEn: Haebangchon Sinheung Market
 titleZh: 解放村新兴市场
 titleJa: 解放村・新興市場
 category: spot
+area: yongsan
 imageClass: landmark
 roadAddress: 서울 용산구 신흥로 95-9 일대
 lat: 37.545684

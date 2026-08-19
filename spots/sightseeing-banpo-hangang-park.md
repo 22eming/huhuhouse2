@@ -4,6 +4,7 @@ titleEn: Hangang & Banpo Hangang Park
 titleZh: 汉江·盘浦汉江公园
 titleJa: 漢江・盤浦漢江公園
 category: spot
+area: banpo
 imageClass: landmark
 roadAddress: 서울 서초구 신반포로11길 40
 lat: 37.510729

@@ -4,6 +4,7 @@ titleEn: Seongsu Yeonmujang-gil
 titleZh: 圣水洞练武场街
 titleJa: 聖水洞・練武場通り
 category: spot
+area: seongsu
 imageClass: landmark
 roadAddress: 서울 성동구 연무장길 일대
 lat: 37.543685

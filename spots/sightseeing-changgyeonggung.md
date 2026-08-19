@@ -4,6 +4,7 @@ titleEn: Changgyeonggung Palace
 titleZh: 昌庆宫
 titleJa: 昌慶宮
 category: spot
+area: palace-east
 imageClass: landmark
 roadAddress: 서울 종로구 창경궁로 185
 lat: 37.578751

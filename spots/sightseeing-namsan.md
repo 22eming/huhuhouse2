@@ -4,6 +4,7 @@ titleEn: Namsan & N Seoul Tower
 titleZh: 南山·N首尔塔
 titleJa: 南山・Nソウルタワー
 category: spot
+area: central
 imageClass: landmark
 roadAddress: 서울 용산구 남산공원길 105
 lat: 37.5511694

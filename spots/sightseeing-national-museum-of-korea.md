@@ -4,6 +4,7 @@ titleEn: National Museum of Korea
 titleZh: 韩国国立中央博物馆
 titleJa: 国立中央博物館
 category: spot
+area: yongsan
 imageClass: landmark
 roadAddress: 서울 용산구 서빙고로 137
 lat: 37.52385

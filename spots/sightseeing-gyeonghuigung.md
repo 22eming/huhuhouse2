@@ -4,6 +4,7 @@ titleEn: Gyeonghuigung Palace
 titleZh: 庆熙宫
 titleJa: 慶熙宮
 category: spot
+area: palace-west
 imageClass: landmark
 roadAddress: 서울 종로구 새문안로 45
 lat: 37.571471

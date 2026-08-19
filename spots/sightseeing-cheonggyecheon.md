@@ -4,6 +4,7 @@ titleEn: Cheonggyecheon Stream
 titleZh: 清溪川
 titleJa: 清渓川
 category: spot
+area: central
 imageClass: landmark
 roadAddress: 서울 중구 청계광장 일대
 lat: 37.569013

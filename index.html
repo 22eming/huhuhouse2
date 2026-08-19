@@ -783,6 +783,17 @@
         font-weight: 800;
       }
 
+      .spot-open-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .spot-open.kakao {
+        background: #fee500;
+        color: #191919;
+      }
+
       .spot-open .icon {
         font-size: 16px;
       }
@@ -2319,6 +2330,7 @@
           "맛집": "Restaurants",
           "카페": "Cafes",
           "네이버지도": "Naver Map",
+          "카카오맵": "Kakao Map",
           "Map Q&A": "Map Q&A",
           "Home": "Home",
           "FAQ": "FAQ",
@@ -2571,6 +2583,7 @@
           "맛집": "餐厅",
           "카페": "咖啡馆",
           "네이버지도": "NAVER地图",
+          "카카오맵": "Kakao地图",
           "Home": "首页",
           "Map Q&A": "地图问答",
           "FAQ": "常见问题",
@@ -2824,6 +2837,7 @@
           "맛집": "レストラン",
           "카페": "カフェ",
           "네이버지도": "NAVERマップ",
+          "카카오맵": "Kakaoマップ",
           "Home": "ホーム",
           "Map Q&A": "マップQ&A",
           "FAQ": "FAQ",
@@ -2929,7 +2943,16 @@
 
       function getNaverUrl(spot) {
         const id = getNaverPlaceId(spot);
-        return spot.naverUrl || spot.url || (id ? `https://map.naver.com/p/entry/place/${encodeURIComponent(id)}` : "");
+        if (spot.naverUrl || spot.url) return spot.naverUrl || spot.url;
+        if (id) return `https://map.naver.com/p/entry/place/${encodeURIComponent(id)}`;
+        const query = [spot.title || spot.name || getSpotTitle(spot), getSpotAddress(spot)].filter(Boolean).join(" ");
+        return query ? `https://map.naver.com/p/search/${encodeURIComponent(query)}` : "";
+      }
+
+      function getKakaoUrl(spot) {
+        if (spot.kakaoUrl) return spot.kakaoUrl;
+        const query = [spot.title || spot.name || getSpotTitle(spot), getSpotAddress(spot)].filter(Boolean).join(" ");
+        return query ? `https://map.kakao.com/?q=${encodeURIComponent(query)}` : "";
       }
 
       function getSpotTitle(spot) {
@@ -2943,7 +2966,10 @@
 
       function getLocalizedSpotField(spot, field) {
         const suffix = { en: "En", zh: "Zh", ja: "Ja" }[currentLang];
-        return (suffix && spot[`${field}${suffix}`]) || spot[field] || "";
+        return (suffix && spot[`${field}${suffix}`])
+          || (currentLang !== "ko" && spot[`${field}En`])
+          || spot[field]
+          || "";
       }
 
       function getSpotAddress(spot) {
@@ -2967,8 +2993,13 @@
         const category = spot.category || "spot";
         const summary = getSpotSummary(spot);
         const naverUrl = getNaverUrl(spot);
+        const kakaoUrl = getKakaoUrl(spot);
         const spotKey = getSpotKey(spot);
-        const meta = [spot.distance, spot.hours, spot.price]
+        const meta = [
+          getLocalizedSpotField(spot, "distance"),
+          getLocalizedSpotField(spot, "hours"),
+          getLocalizedSpotField(spot, "price"),
+        ]
           .filter(Boolean)
           .map((item) => `<span>${escapeHtml(item)}</span>`)
           .join("");
@@ -2985,17 +3016,21 @@
               </div>
               <p>${escapeHtml(summary)}</p>
               ${meta ? `<div class="spot-meta">${meta}</div>` : ""}
-              ${spot.tip ? `
-                <div class="host-tip">
-                  <span class="icon">${escapeHtml(getSpotIcon(category))}</span>
-                  <p>"${escapeHtml(spot.tip)}"</p>
+              ${(naverUrl || kakaoUrl) ? `
+                <div class="spot-open-group">
+                  ${naverUrl ? `
+                    <button class="spot-open" type="button" data-open-url="${escapeHtml(naverUrl)}">
+                      <span class="icon">map</span>
+                      ${escapeHtml(translatedMessage("네이버지도"))}
+                    </button>
+                  ` : ""}
+                  ${kakaoUrl ? `
+                    <button class="spot-open kakao" type="button" data-open-url="${escapeHtml(kakaoUrl)}">
+                      <span class="icon">map</span>
+                      ${escapeHtml(translatedMessage("카카오맵"))}
+                    </button>
+                  ` : ""}
                 </div>
-              ` : ""}
-              ${naverUrl ? `
-                <button class="spot-open" type="button" data-open-url="${escapeHtml(naverUrl)}">
-                  <span class="icon">map</span>
-                  ${escapeHtml(translatedMessage("네이버지도"))}
-                </button>
               ` : ""}
             </div>
           </article>
@@ -3075,8 +3110,7 @@
         const nextActiveSpot = activeSpotExists ? spots.find((spot) => getSpotKey(spot) === guideMapState.activeSpotKey) : firstLocatedSpot || spots[0];
         setActiveSpot(nextActiveSpot, { pan: false, scroll: false });
 
-        const pinnedCount = spots.filter(hasSpotLocation).length;
-        setGuideMapStatus(`추천 스팟 ${spots.length}개 · 지도 핀 ${pinnedCount}개`);
+        setGuideMapStatus(`추천 ${spots.length}개`);
       }
 
       function getActiveSpotFilter() {
@@ -3224,7 +3258,7 @@
             mapEl.classList.add("is-message");
             mapEl.textContent = "좌표를 확인한 추천 스팟이 없습니다.";
           }
-          setGuideMapStatus(`추천 스팟 ${displaySpots.length}개 · 지도 핀 0개`);
+          setGuideMapStatus(`추천 스팟 ${displaySpots.length}개`);
           return;
         }
 
@@ -3260,17 +3294,27 @@
 
       async function loadSpots() {
         const spotList = document.getElementById("spot-list");
-        const spotDataVersion = "sightseeing-20260819";
+        const spotDataVersion = "dining-thumbnails-20260819";
         try {
-          const indexResponse = await fetch(`spots/index.json?v=${spotDataVersion}`, { cache: "no-store" });
-          if (!indexResponse.ok) throw new Error("Spot index could not be loaded.");
+          const [indexResponse, recommendationResponse] = await Promise.all([
+            fetch(`spots/index.json?v=${spotDataVersion}`, { cache: "no-store" }),
+            fetch(`spots/recommendations.json?v=${spotDataVersion}`, { cache: "no-store" }),
+          ]);
+          if (!indexResponse.ok || !recommendationResponse.ok) {
+            throw new Error("Guide data could not be loaded.");
+          }
           const files = await indexResponse.json();
-          const spots = await Promise.all(files.map(async (file, index) => {
+          const markdownSpots = await Promise.all(files.map(async (file, index) => {
             const response = await fetch(`spots/${file}?v=${spotDataVersion}`, { cache: "no-store" });
             if (!response.ok) throw new Error(`${file} could not be loaded.`);
             const { data, body } = parseFrontMatter(await response.text());
             return { ...data, body, slug: file.replace(/\.md$/, ""), originalIndex: index };
           }));
+          const recommendations = (await recommendationResponse.json()).map((spot, index) => ({
+            ...spot,
+            originalIndex: markdownSpots.length + index,
+          }));
+          const spots = [...markdownSpots, ...recommendations];
           const enrichedSpots = await enrichSpotsWithNaver(spots);
 
           guideMapState.spots = enrichedSpots;

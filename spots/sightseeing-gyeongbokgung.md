@@ -4,6 +4,7 @@ titleEn: Gyeongbokgung Palace
 titleZh: 景福宫
 titleJa: 景福宮
 category: spot
+area: palace-west
 imageClass: landmark
 roadAddress: 서울 종로구 사직로 161
 lat: 37.579617

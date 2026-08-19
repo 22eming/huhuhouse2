@@ -4,6 +4,7 @@ titleEn: Myeongdong
 titleZh: 明洞
 titleJa: 明洞
 category: spot
+area: central
 imageClass: landmark
 roadAddress: 서울 중구 명동길 일대
 lat: 37.563671
